@@ -51,6 +51,9 @@ import java.util.regex.Pattern;
 import static com.alienation.coregamefiles.Character.*;
 import static com.alienation.coregamefiles.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
+import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
+import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
+import static com.alienation.coregamefiles.hashmaps.DirectionsHashMap.getAvailableDirectionsMap;
 
 /**
  * Menu For Console
@@ -265,7 +268,7 @@ public class Menu {
     // Run from alien to previous room
     public static void run(Rooms currentRoom) throws Exception {
         Set<String> aliens = Alien.getAliens().keySet();
-        List<String> itemsInRoom = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> itemsInRoom = getAvailableItemsMap().get(currentRoom);
 
         boolean foundAlien = false;
         for (String key : itemsInRoom) {
@@ -287,7 +290,7 @@ public class Menu {
     /* -- Attack the Alien in the room -- START */
     // Starting Attack the Alien process in the room
     public static void attack(Rooms currentRoom) throws Exception {
-        List<String> roomItems = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> roomItems = getAvailableItemsMap().get(currentRoom);
         Set<String> aliens = Alien.getAliens().keySet();
 
         item1 = capitalizeAll(Input.getItem1());
@@ -415,7 +418,7 @@ public class Menu {
                 }
                 else{
                     //Remove from available items of room
-                    List<String> availableItems = Engine.getAvailableItemsMap().get(currentRoom);
+                    List<String> availableItems = getAvailableItemsMap().get(currentRoom);
                     availableItems.remove(alienType);
                     System.out.println(ANSI_RED + "\nThe alien is fatally wounded and falls to it's death " +
                             "in a pool of blood." + ANSI_RESET);
@@ -423,7 +426,7 @@ public class Menu {
                     List<String> inventory = getInventory();
                     inventory.add("Code");
                     setInventory(inventory);
-                    Engine.setAvailableItemsMap(currentRoom, availableItems);
+                    setAvailableItemsMap(currentRoom, availableItems);
                     displayMenu();
                 }
             }
@@ -444,7 +447,7 @@ public class Menu {
         System.out.println(space + ANSI_YELLOW + "You see:\n");
         System.out.println(lines);
 
-        List<String> keys = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> keys = getAvailableItemsMap().get(currentRoom);
         for (String key : keys) {
             System.out.println(key);
         }
@@ -477,7 +480,7 @@ public class Menu {
         item1 = capitalizeAll(Input.getItem1());; // Chips
         item2 = capitalizeAll(Input.getItem2()); // Oxygen Tank
 
-        List<String> items = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> items = getAvailableItemsMap().get(currentRoom);
 
         if(items.contains(item2) || items.contains(item1)) {
             try {
@@ -493,7 +496,7 @@ public class Menu {
                         newItems.add("Ignition Switch");
                         // delete item from room and code from inventory
                         items.remove("Ignition Switch");
-                        Engine.setAvailableItemsMap(currentRoom, items);
+                        setAvailableItemsMap(currentRoom, items);
                         newItems.remove("Code");
                         setInventory(newItems);
                     }
@@ -518,7 +521,7 @@ public class Menu {
 
     // Grab the item from the room
     public static void grab(Rooms currentRoom) throws Exception {
-        List<String> items = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> items = getAvailableItemsMap().get(currentRoom);
 
         item1 = capitalizeAll(Input.getItem1());
         item2 = capitalizeAll(Input.getItem2());
@@ -541,7 +544,7 @@ public class Menu {
                 System.out.println(ANSI_YELLOW + "\nYou just increased " + oxygen + " levels." +
                         ANSI_RESET);
                 items.remove(item2);
-                Engine.setAvailableItemsMap(currentRoom, items);
+                setAvailableItemsMap(currentRoom, items);
                 displayMenu();
             }
 
@@ -552,7 +555,7 @@ public class Menu {
 
             // delete item from room
             items.remove(item1);
-            Engine.setAvailableItemsMap(currentRoom, items);
+            setAvailableItemsMap(currentRoom, items);
 
         }else if(Input.getItem1().equals("empty")){
             System.out.println(ANSI_RED + "\n" + Menu.capitalizeAll(action.toString().toLowerCase()) +
@@ -575,7 +578,7 @@ public class Menu {
 
     // Eat the item from the room
     public static void eat(Rooms currentRoom) throws Exception {
-        List<String> items = Engine.getAvailableItemsMap().get(currentRoom);
+        List<String> items = getAvailableItemsMap().get(currentRoom);
 
         item1 = capitalizeAll(Input.getItem1());; // Chips
         item2 = capitalizeAll(Input.getItem2()); // Oxygen Tank
@@ -594,7 +597,7 @@ public class Menu {
                         setHealth(healthPoints);
                         //Remove from available items of room
                         items.remove(edible.getName());
-                        Engine.setAvailableItemsMap(currentRoom, items);
+                        setAvailableItemsMap(currentRoom, items);
                     }else if(getInventory().contains(item1)){
                         edibleItems++;
                         System.out.println(ANSI_YELLOW + "\nYou ate " + item1 + ".  HP ++" + ANSI_RESET);
@@ -623,7 +626,7 @@ public class Menu {
 
     // Move Room from one to another
     public static void moveRoom(String direction, Rooms currentRoom) throws Exception {
-        Rooms nextRoom = Engine.getAvailableDirectionsMap().get(currentRoom).get(direction);
+        Rooms nextRoom = getAvailableDirectionsMap().get(currentRoom).get(direction);
         if(nextRoom != null){
             setPreviousRoom(currentRoom);
             setTempRoom(currentRoom);
@@ -743,7 +746,7 @@ public class Menu {
 
             //append room available item list to root element
             for (Rooms room : Rooms.values()) {
-                rootElement.appendChild(getGameData(doc,room.toString(),Engine.getAvailableItemsMap().get(room)));
+                rootElement.appendChild(getGameData(doc,room.toString(),getAvailableItemsMap().get(room)));
             }
 
             //for output to file, console

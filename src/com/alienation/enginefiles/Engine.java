@@ -24,7 +24,9 @@ package com.alienation.enginefiles;
 import com.alienation.coregamefiles.*;
 import com.alienation.coregamefiles.Character;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
+import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -34,14 +36,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.*;
 
+import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
+import static java.lang.System.getProperty;
+
 /**
  * Game Engine
  * This class is used to start the Engine of the game
  */
 public class Engine {
-
-    private static Map<Rooms,List<String>> availableItemsMap = new HashMap<>();
-    private static Map<Rooms,Map<String, Rooms>> availableDirectionsMap = new HashMap<>();
 
     /*************** PUBLIC METHODS  ******************/
     // Method when our Game Engine starts
@@ -53,7 +55,7 @@ public class Engine {
     //User wants to resume old game or start new one
     public static void ResumeOrNewGame(Boolean isDead) throws Exception {
         if(!isDead) {
-            File gameState = new File(System.getProperty("user.dir") + "\\SaveState.xml");
+            File gameState = new File(getProperty("user.dir") + "\\SaveState.xml");
             if (gameState.exists()) {
                 final String lines = "---------------------------------------------------------------------------------------------------------------------------------";
                 System.out.println("\nDo you want to Resume Game<R> or Play New Game<N>??");
@@ -123,11 +125,11 @@ public class Engine {
                         Character.setInventory(inventory);
 
                         //Get Available Items Map
-                        availableItemsMap.clear();
+                        clearAvailableItemsMap();
                         for(Rooms room : Rooms.values()){
                             NodeList capsuleRoomNodeList = dDoc.getElementsByTagName(room.toString());
                             List<String> availableItems = getAvailableItemsXML(capsuleRoomNodeList);
-                            availableItemsMap.put(room,availableItems);
+                            newRoomAvailableItemsMapPut(room, availableItems);
                         }
 
                         //Get Current Room
@@ -160,79 +162,6 @@ public class Engine {
         Oxygen.setOxygen(50);
         new CapsuleRoom().count = 0;
         //TODO store attackCount instead
-        availableItemsMap.clear();
-    }
-
-    //Get available items for room from XML
-    private static List<String> getAvailableItemsXML(NodeList nList){
-        List<String> availableItems = new ArrayList<>();
-        Element eElement = (Element) nList.item(0);
-        NodeList childItems = eElement.getElementsByTagName("Item");
-        for (int temp = 0; temp < childItems.getLength(); temp++) {
-            availableItems.add(childItems.item(temp).getTextContent());
-        }
-        return availableItems;
-    }
-
-    /**
-     * you're not letting each room class deal with its items
-     * in objected oriented standpoint
-     */
-    // Get Available Items Map
-    public static Map<Rooms, List<String>> getAvailableItemsMap() {
-        if(availableItemsMap.size() == 0) {
-            availableItemsMap.put(Rooms.CapsuleRoom, new ArrayList<String>(Arrays.asList("Pods", "Oxygen Tank", "Racks", "Lockers")));
-            availableItemsMap.put(Rooms.AlienRoom, new ArrayList<String>(Arrays.asList("Humanoid", "Bed", "Mirror", "Old Box")));
-            availableItemsMap.put(Rooms.Kitchen, new ArrayList<String>(Arrays.asList("Refrigerator", "Microwave", "Cabinets", "Dustbin", "Snickers", "Flamethrower")));
-            availableItemsMap.put(Rooms.SupplyRoom, new ArrayList<String>(Arrays.asList("Computer", "Desk", "Sofa", "Racks", "Supplies", "Cage")));
-            availableItemsMap.put(Rooms.ControlRoom, new ArrayList<String>(Arrays.asList("Monitor", "Control Panel", "Pilot Seats", "Laser", "Chips")));
-        }
-        return availableItemsMap;
-    }
-
-    //set availableI items map
-    public static void setAvailableItemsMap(Rooms key, List<String> items){
-        availableItemsMap.remove(key);
-        availableItemsMap.put(key, items);
-    }
-
-    //Get Available Directions Map
-    public static Map<Rooms,Map<String, Rooms>> getAvailableDirectionsMap() {
-        Map<String, Rooms> roomsMap = new HashMap<String, Rooms>();
-        roomsMap.put("N",Rooms.SupplyRoom);
-        roomsMap.put("S",Rooms.ControlRoom);
-        roomsMap.put("E",Rooms.AlienRoom);
-        roomsMap.put("W",null);
-        availableDirectionsMap.put(Rooms.CapsuleRoom, roomsMap);
-
-        roomsMap = new HashMap<String, Rooms>();
-        roomsMap.put("N",Rooms.Kitchen);
-        roomsMap.put("S",null);
-        roomsMap.put("E",null);
-        roomsMap.put("W",Rooms.CapsuleRoom);
-        availableDirectionsMap.put(Rooms.AlienRoom, roomsMap);
-
-        roomsMap = new HashMap<String, Rooms>();
-        roomsMap.put("N",null);
-        roomsMap.put("S", Rooms.AlienRoom);
-        roomsMap.put("E",null);
-        roomsMap.put("W", Rooms.SupplyRoom);
-        availableDirectionsMap.put(Rooms.Kitchen, roomsMap);
-
-        roomsMap = new HashMap<String, Rooms>();
-        roomsMap.put("N",null);
-        roomsMap.put("S",Rooms.CapsuleRoom);
-        roomsMap.put("E",Rooms.Kitchen);
-        roomsMap.put("W",null);
-        availableDirectionsMap.put(Rooms.SupplyRoom, roomsMap);
-
-        roomsMap = new HashMap<String, Rooms>();
-        roomsMap.put("N", Rooms.CapsuleRoom);
-        roomsMap.put("S",null);
-        roomsMap.put("E",null);
-        roomsMap.put("W",null);
-        availableDirectionsMap.put(Rooms.ControlRoom, roomsMap);
-
-        return availableDirectionsMap;
+        clearAvailableItemsMap();
     }
 }
