@@ -31,7 +31,7 @@ import java.util.List;
 
 import static com.alienation.coregamefiles.gameart.TextColors.ANSI_BLUE;
 import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
-
+import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
 
 /**
@@ -51,7 +51,7 @@ public class AlienRoom extends Room {
 
     // Get Story line while page loads
     public String getStory() {
-        List<String> availableItems = Engine.getAvailableItemsMap().get(Rooms.AlienRoom);
+        List<String> availableItems = getAvailableItemsMap().get(Rooms.AlienRoom);
         if (!availableItems.contains("Humanoid")) {
             return getLastStory();
         }else if (Menu.attackCount > 0 && availableItems.contains("Humanoid")){

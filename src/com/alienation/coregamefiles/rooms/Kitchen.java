@@ -29,6 +29,7 @@ import com.alienation.coregamefiles.gameart.RoomsMap;
 
 import static com.alienation.coregamefiles.gameart.TextColors.ANSI_BLUE;
 import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
 /**
  * Kitchen - This is the room where user can go and investigate
@@ -46,7 +47,7 @@ public class Kitchen extends Room {
 
     // Get Story line while page loads
     public String getStory() {
-        if (!Engine.getAvailableItemsMap().get(Rooms.Kitchen).contains("Snickers")) {
+        if (!getAvailableItemsMap().get(Rooms.Kitchen).contains("Snickers")) {
             return getUpdatedStory();
         } else {
             return getInitialStory();
