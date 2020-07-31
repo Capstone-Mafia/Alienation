@@ -1,7 +1,7 @@
 # Alienation
 Text-Based console game using JAVA language.  Character explores rooms on a spaceship trying to survive while avoiding attacks from aliens.
 
-# Authors
+## Authors
 <b>Original Authors:</b> [Dhruti Kosta](https://github.com/dhruti-kosta), [Terrell Douglas](https://github.com/Dougie105), [Brad Smialek](https://github.com/bradsmialek).
 
 <b>Contributing Authors:</b> [Bruce West](https://github.com/BruceBAWest), [Gurinder Batth](https://github.com/GurinderB), [Daeun Lok](https://github.com/koreareefclub).
