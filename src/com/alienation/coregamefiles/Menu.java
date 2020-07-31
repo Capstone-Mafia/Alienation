@@ -104,9 +104,7 @@ public class Menu {
         Rooms currentRoom = getCurrentRoom();
         Rooms nextRoom = null;
 
-        /**lots of unimplemented actions, could be simplified"
-         *
-         */
+        /********* lots of unimplemented actions, could be simplified" *******/
         // Action verbs... things the character can do
         switch (action) {
             case INVESTIGATE:
