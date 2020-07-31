@@ -35,6 +35,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.*;
 
+import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
 import static java.lang.System.getProperty;
 
@@ -133,7 +134,7 @@ public class Engine {
 
                         //Get Current Room
                         String currentRoom = dDoc.getElementsByTagName("CurrentRoom").item(0).getTextContent();
-                        Menu.loadRoom(Rooms.valueOf(currentRoom));
+                        loadRoom(Rooms.valueOf(currentRoom));
 
                     } catch (Exception e) {
                         e.printStackTrace();
