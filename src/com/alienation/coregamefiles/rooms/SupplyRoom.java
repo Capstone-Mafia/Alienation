@@ -22,8 +22,8 @@
 
 package com.alienation.coregamefiles.rooms;
 
-import com.alienation.coregamefiles.Character;
-import com.alienation.coregamefiles.Menu;
+import com.alienation.coregamefiles.charactersetc.Player;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gameart.RoomsMap;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -47,10 +47,10 @@ public class SupplyRoom extends Room {
     // Get Story line while page loads
     //check for items
     public String getStory() {
-        if (!Character.getInventory().contains("Code")) { //if inv does not contain code
+        if (!Player.getInventory().contains("Code")) { //if inv does not contain code
             return getInitialStory();
         } else {
-            if(!Character.getInventory().contains("Ignition Switch")){ //has code, no ignition
+            if(!Player.getInventory().contains("Ignition Switch")){ //has code, no ignition
                 return getLastStory();
             }
             return getUpdatedStory();

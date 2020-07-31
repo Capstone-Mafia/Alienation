@@ -22,7 +22,7 @@
 
 package com.alienation.coregamefiles.gameart;
 
-import com.alienation.coregamefiles.Menu;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 

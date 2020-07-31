@@ -20,8 +20,10 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.coregamefiles;
+package com.alienation.coregamefiles.gamefunctionclasses;
 
+import com.alienation.coregamefiles.charactersetc.Alien;
+import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.gameart.Death;
 import com.alienation.coregamefiles.rooms.*;
@@ -48,8 +50,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import static com.alienation.coregamefiles.Character.*;
-import static com.alienation.coregamefiles.Oxygen.getOxygen;
+import static com.alienation.coregamefiles.charactersetc.Player.*;
+import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
@@ -241,7 +243,7 @@ public class Menu {
         }
         try {
             /**
-             * Character keeps inventory. Check if weapon.getName() is in it
+             * Player keeps inventory. Check if weapon.getName() is in it
              */
             Weapons weapon = Weapons.findWeaponsByName(answer);
             setCurrentWeapon(weapon.getName());

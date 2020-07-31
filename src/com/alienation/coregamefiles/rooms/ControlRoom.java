@@ -22,8 +22,8 @@
 
 package com.alienation.coregamefiles.rooms;
 
-import com.alienation.coregamefiles.Character;
-import com.alienation.coregamefiles.Menu;
+import com.alienation.coregamefiles.charactersetc.Player;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gameart.RoomsMap;
 import com.alienation.coregamefiles.gameart.Win;
 
@@ -42,7 +42,7 @@ public class ControlRoom extends Room {
     public void loadEnvironment() throws Exception {
         super.loadEnvironment();
         System.out.println(RoomsMap.controlRoom());
-        if (!Character.getInventory().contains("Ignition Switch")){
+        if (!Player.getInventory().contains("Ignition Switch")){
             Menu.displayMenu();
         } else {
             try {
@@ -57,7 +57,7 @@ public class ControlRoom extends Room {
     // Get Story line while page loads
     // check inventory for part
     public String getStory() {
-        if (!Character.getInventory().contains("Ignition Switch")) { //if inventory does not contain ignition
+        if (!Player.getInventory().contains("Ignition Switch")) { //if inventory does not contain ignition
             return getInitialStory();
         } else{
             return getLastStory();

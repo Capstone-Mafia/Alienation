@@ -22,8 +22,7 @@
 
 package com.alienation.coregamefiles.rooms;
 
-import com.alienation.coregamefiles.Menu;
-import com.alienation.enginefiles.Engine;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.gameart.RoomsMap;
 
