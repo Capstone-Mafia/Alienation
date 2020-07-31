@@ -7,13 +7,14 @@ import static com.alienation.coregamefiles.enums.Actions.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alienAttack;
+import static com.alienation.coregamefiles.gamefunctionclasses.EatItems.eat;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
 
 public class AlienAttackOrRun {
 
-    // Attack or Run from Alien in the room to previous room
+    // AttackAlien or Run from Alien in the room to previous room
     public static void alienAttackOrRun(Rooms currentRoom, String alienType) {
         System.out.println(ANSI_YELLOW + "\nWhat do you want to do?" + ANSI_RESET);
 

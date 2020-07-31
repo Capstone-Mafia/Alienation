@@ -25,6 +25,7 @@ package com.alienation.coregamefiles.gameart;
 import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
+import static com.alienation.coregamefiles.gamefunctionclasses.StartNewOrQuitGame.startNewOrQuitGame;
 
 /**
  * Created by bradsmialek on Wed - 7/29/20 @ 1:45 AM
@@ -40,6 +41,6 @@ public class Death {
                 "    |  |    |  `--'  | |  `--'  |     /  _____  \\  |  |\\  \\----.|  |____    |  '--'  ||  |____ /  _____  \\  |  '--'  | __ __ __ __ \n" +
                 "    |__|     \\______/   \\______/     /__/     \\__\\ | _| `._____||_______|   |_______/ |_______/__/     \\__\\ |_______/ (__|__|__|__)\n" +
                 "                                                                                                                                   " + ANSI_RESET);
-        Menu.StartNewOrQuitGame();
+        startNewOrQuitGame();
     }
 }
