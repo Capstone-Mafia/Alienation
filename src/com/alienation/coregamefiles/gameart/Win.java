@@ -26,6 +26,7 @@ import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 
 import java.util.concurrent.TimeUnit;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
+import static com.alienation.coregamefiles.gamefunctionclasses.StartNewOrQuitGame.startNewOrQuitGame;
 
 /**
  * Created by bradsmialek on Wed - 7/29/20 @ 8:03 AM
@@ -51,7 +52,7 @@ public class Win {
         try {
             TimeUnit.SECONDS.sleep(1);
             System.out.println("You feel movement in your belly...");
-            Menu.StartNewOrQuitGame();
+            startNewOrQuitGame();
         } catch (InterruptedException e) {
             System.out.println("Something wrong with the Game!!!");
         }
