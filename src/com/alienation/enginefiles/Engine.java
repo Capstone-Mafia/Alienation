@@ -21,12 +21,11 @@
  */
 
 package com.alienation.enginefiles;
-import com.alienation.coregamefiles.*;
-import com.alienation.coregamefiles.Character;
+import com.alienation.coregamefiles.charactersetc.Oxygen;
+import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
-import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
-import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -89,30 +88,30 @@ public class Engine {
                         Document dDoc = builder.parse(gameState);
                         dDoc.getDocumentElement().normalize();
 
-                        // Get Character Health
+                        // Get Player Health
                         int currentHealth = Integer.parseInt(dDoc.getElementsByTagName("CurrentHealth").item(0).getTextContent());
 
-                        Character.setHealth(currentHealth - Character.getHealth());
-                        /**ideally Character is its own instance.
+                        Player.setHealth(currentHealth - Player.getHealth());
+                        /**ideally Player is its own instance.
                          * and each cahracter will have its own getHealth method, so it should have instance method not
                          class method
                          bc there's only one character it's ok now. still not ideal*/
 
-                        //Get Character Oxygen level
+                        //Get Player Oxygen level
                         int currentOxygen = Integer.parseInt(dDoc.getElementsByTagName("CurrentOxygen").item(0).getTextContent()) + 10;
                         Oxygen.setOxygen(currentOxygen);
 
                         //Get Current Weapon
                         String currentWeapon = dDoc.getElementsByTagName("CurrentWeapon").item(0).getTextContent();
-                        Character.setCurrentWeapon(currentWeapon);
+                        Player.setCurrentWeapon(currentWeapon);
 
                         //Get Temp Room
                         String tempRoom = dDoc.getElementsByTagName("TempRoom").item(0).getTextContent();
-                        Character.setTempRoom(Rooms.valueOf(tempRoom));
+                        Player.setTempRoom(Rooms.valueOf(tempRoom));
 
                         //Get Previous Room
                         String previousRoom = dDoc.getElementsByTagName("PreviousRoom").item(0).getTextContent();
-                        Character.setPreviousRoom(Rooms.valueOf(previousRoom));
+                        Player.setPreviousRoom(Rooms.valueOf(previousRoom));
 
                         //Get inventory
                         List<String> inventory = new ArrayList<>();
@@ -122,7 +121,7 @@ public class Engine {
                         for (int temp = 0; temp < childItems.getLength(); temp++) {
                             inventory.add(childItems.item(temp).getTextContent());
                         }
-                        Character.setInventory(inventory);
+                        Player.setInventory(inventory);
 
                         //Get Available Items Map
                         clearAvailableItemsMap();
@@ -153,12 +152,12 @@ public class Engine {
 
     //Reset all data if user restarts the game
     private static void ResetData(){
-        Character.setHealth(5);
-        Character.setCurrentRoom(Rooms.CapsuleRoom);
-        Character.setInventory(new ArrayList<String>());
-        Character.setPreviousRoom(null);
-        Character.setCurrentWeapon("Bad Breath");
-        Character.setTempRoom(null);
+        Player.setHealth(5);
+        Player.setCurrentRoom(Rooms.CapsuleRoom);
+        Player.setInventory(new ArrayList<String>());
+        Player.setPreviousRoom(null);
+        Player.setCurrentWeapon("Bad Breath");
+        Player.setTempRoom(null);
         Oxygen.setOxygen(50);
         new CapsuleRoom().count = 0;
         //TODO store attackCount instead

@@ -20,7 +20,7 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.coregamefiles;
+package com.alienation.coregamefiles.charactersetc;
 
 import java.util.*;
 

@@ -1,12 +1,13 @@
 package com.alienation.coregamefiles;
 
+import com.alienation.coregamefiles.charactersetc.Oxygen;
+import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 /**
  * Created by bradsmialek on Fri - 7/24/20 @ 12:26 PM
@@ -58,30 +59,30 @@ public class MenuTest {
     public void open() {
     }
 
-    @Test
-    //happy
-    public void grab_anItem_should_storeIn_inventory() throws FileNotFoundException {
-        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/src/grabtoinventory.txt");
-        Scanner scnr = new Scanner(text);
-        System.out.println(scnr);
-        System.out.println("passed");
-    }
-    @Test
-    //fail
-    public void grab_an_Inelligible_itemShould_throwError() throws FileNotFoundException {
-        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/src/grabFail.txt");
-        Scanner scnr = new Scanner(text);
-        System.out.println(scnr);
-        System.out.println("passed");
-    }
+//    @Test
+//    //happy
+//    public void grab_anItem_should_storeIn_inventory() throws FileNotFoundException {
+//        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/src/grabtoinventory.txt");
+//        Scanner scnr = new Scanner(text);
+//        System.out.println(scnr);
+//        System.out.println("passed");
+//    }
+//    @Test
+//    //fail
+//    public void grab_an_Inelligible_itemShould_throwError() throws FileNotFoundException {
+//        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/src/grabFail.txt");
+//        Scanner scnr = new Scanner(text);
+//        System.out.println(scnr);
+//        System.out.println("passed");
+//    }
 
     @Test
     //happy oxy
     public void grabOxygenTank_shouldIncrease_o2Levels() throws FileNotFoundException{
         Oxygen oxy = new Oxygen();
         Menu menu = new Menu();
-        Character character = new Character();
-        Rooms currentRoom = character.getCurrentRoom();
+        Player player = new Player();
+        Rooms currentRoom = player.getCurrentRoom();
 //        String line = null;
 //        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/tests/grabOxygen.txt");
 //        Scanner scnr = new Scanner(text);
@@ -106,7 +107,7 @@ public class MenuTest {
 //    public void moveToRoom_should_decrease_o2Levels() throws FileNotFoundException{
 //        Oxygen oxy = new Oxygen();
 //        Menu menu = new Menu();
-//        Character character = new Character();
+//        Player character = new Player();
 //        Rooms currentRoom = character.getCurrentRoom();
 //        String line = null;
 //        File text = new File("/Users/bradsmialek/tlg/java/projects/Alienation/src/grabOxygen.txt");

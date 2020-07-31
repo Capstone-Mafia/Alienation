@@ -20,7 +20,7 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.coregamefiles;
+package com.alienation.coregamefiles.charactersetc;
 
 import com.alienation.coregamefiles.enums.Rooms;
 
@@ -30,10 +30,10 @@ import java.util.List;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 
 /**
- * Character Class
+ * Player Class
  * This class used for maintaining characteristics for character like health points, current weapon.
  */
-public class Character {
+public class Player {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     public static final int MAX_HEALTH = 100;
@@ -55,7 +55,7 @@ public class Character {
     public static void setHealth(int newHealth) {
         if ((health + newHealth) > MAX_HEALTH) {
             health = MAX_HEALTH;
-        } else if((Character.health + newHealth) < MIN_HEALTH) {
+        } else if((Player.health + newHealth) < MIN_HEALTH) {
             health = MIN_HEALTH;
         } else {
             health += newHealth;

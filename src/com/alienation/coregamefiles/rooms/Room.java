@@ -22,8 +22,8 @@
 
 package com.alienation.coregamefiles.rooms;
 
-import com.alienation.coregamefiles.Character;
-import com.alienation.coregamefiles.Oxygen;
+import com.alienation.coregamefiles.charactersetc.Player;
+import com.alienation.coregamefiles.charactersetc.Oxygen;
 
 public abstract class Room {
     private int minusOxy = 10; // TODO: Make random number??
@@ -33,7 +33,7 @@ public abstract class Room {
     }
 
     public void loadEnvironment() throws Exception {
-        Character.checkHealth();
+        Player.checkHealth();
         Oxygen.minOxygen(minusOxy);
         Oxygen.checkOxy();
         System.out.println(getStory());

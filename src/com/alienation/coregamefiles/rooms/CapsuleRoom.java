@@ -22,7 +22,7 @@
 
 package com.alienation.coregamefiles.rooms;
 
-import com.alienation.coregamefiles.Menu;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gameart.RoomsMap;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
