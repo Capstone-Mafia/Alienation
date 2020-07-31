@@ -85,7 +85,7 @@ public class Menu {
         final String space = "                                      ";
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
-                "   " + oxygen + " " + green  + getOxygenString() + end + "   Wpn: " + ANSI_BLUE +
+                "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + ANSI_BLUE +
                 getCurrentWeapon() + end  + "]");
         System.out.println(lines);
 
@@ -453,7 +453,7 @@ public class Menu {
 
             //append child elements to root element
             rootElement.appendChild(getGameElements(doc,"CurrentHealth",String.valueOf(getHealth())));
-            rootElement.appendChild(getGameElements(doc,"CurrentOxygen",String.valueOf(getOxygenString())));
+            rootElement.appendChild(getGameElements(doc,"CurrentOxygen",String.valueOf(getOxygen())));
             rootElement.appendChild(getGameElements(doc,"CurrentWeapon",String.valueOf(getCurrentWeapon())));
             rootElement.appendChild(getGameElements(doc,"CurrentRoom",String.valueOf(getCurrentRoom())));
             rootElement.appendChild(getGameElements(doc,"TempRoom",String.valueOf(getTempRoom())));
