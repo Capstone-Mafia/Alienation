@@ -48,7 +48,7 @@ public class Oxygen {
         } else {
             Oxygen.oxygen = Oxygen.oxygen - minusOxy;
         }
-        System.out.println(ANSI_RED + "-10 " + oTwo + ANSI_RESET);
+        System.out.println(getAnsiRed() + "-10 " + oTwo + getAnsiReset());
     }
 
     //Increases oxygen levels SETTERS
@@ -60,7 +60,7 @@ public class Oxygen {
     // checks oxygen levels
     public static void checkOxy(){
         if(Oxygen.getOxygen() == 0){
-            System.out.println(ANSI_RED + "\n\nOxygen depleted..." + ANSI_RESET); // Better Death
+            System.out.println(getAnsiRed() + "\n\nOxygen depleted..." + getAnsiReset()); // Better Death
             Death.death();
         }
     }

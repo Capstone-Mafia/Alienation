@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.alienation.coregamefiles.charactersetc.Player.getPreviousRoom;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RED;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.displayMenu;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
@@ -25,7 +24,7 @@ public class RunAway {
         for (String key : itemsInRoom) {
             for(String alien : aliens){
                 if(key.equals(alien)){
-                    System.out.println(ANSI_RED + "\n\nYou ran away as fast as you can!" + ANSI_RESET);
+                    System.out.println(getAnsiRed() + "\n\nYou ran away as fast as you can!" + getAnsiReset());
                     loadRoom(getPreviousRoom());
 
                     foundAlien = true;
@@ -33,7 +32,7 @@ public class RunAway {
             }
         }
         if(!foundAlien){
-            System.out.println(ANSI_RED + "\nYou can only run from an alien scaredy pants!" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\nYou can only run from an alien scaredy pants!" + getAnsiReset());
         }
         displayMenu();
     }
