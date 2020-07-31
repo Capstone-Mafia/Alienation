@@ -23,10 +23,8 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Alien;
-import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.gameart.Death;
-import com.alienation.coregamefiles.rooms.*;
 import com.alienation.enginefiles.Engine;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -42,24 +40,21 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.List;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
+import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alienAttack;
 import static com.alienation.coregamefiles.gamefunctionclasses.GrabItems.grab;
 import static com.alienation.coregamefiles.gamefunctionclasses.ImageViewer.viewer;
 import static com.alienation.coregamefiles.gamefunctionclasses.InvestigateRoom.investigate;
-import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.gamefunctionclasses.MoveRoom.moveRoom;
 import static com.alienation.coregamefiles.gamefunctionclasses.ReadThings.read;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
-import static com.alienation.coregamefiles.hashmaps.DirectionsHashMap.getAvailableDirectionsMap;
 
 /**
  * Menu For Console
@@ -90,7 +85,7 @@ public class Menu {
         final String space = "                                      ";
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
-                "   " + oxygen + " " + green  + getOxygen() + end + "   Wpn: " + ANSI_BLUE +
+                "   " + oxygen + " " + green  + getOxygenString() + end + "   Wpn: " + ANSI_BLUE +
                 getCurrentWeapon() + end  + "]");
         System.out.println(lines);
 
@@ -193,7 +188,7 @@ public class Menu {
         if(roomItems.contains(item2) || roomItems.contains(item1)) {
             try {
                 if(aliens.contains(item1)){
-                    if(getHealth() == 0 || getOxygen()== 0) {
+                    if(getHealth() == 0 || getOxygen() == 0) {
                         Death.death();
                     }
                     else {
@@ -458,7 +453,7 @@ public class Menu {
 
             //append child elements to root element
             rootElement.appendChild(getGameElements(doc,"CurrentHealth",String.valueOf(getHealth())));
-            rootElement.appendChild(getGameElements(doc,"CurrentOxygen",String.valueOf(getOxygen())));
+            rootElement.appendChild(getGameElements(doc,"CurrentOxygen",String.valueOf(getOxygenString())));
             rootElement.appendChild(getGameElements(doc,"CurrentWeapon",String.valueOf(getCurrentWeapon())));
             rootElement.appendChild(getGameElements(doc,"CurrentRoom",String.valueOf(getCurrentRoom())));
             rootElement.appendChild(getGameElements(doc,"TempRoom",String.valueOf(getTempRoom())));
@@ -567,7 +562,7 @@ public class Menu {
         Menu.action = action;
     }
 
-    public static String getOxygen() {
+    public static String getOxygenString() {
         return oxygen;
     }
 }
