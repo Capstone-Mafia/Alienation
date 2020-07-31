@@ -28,8 +28,7 @@ import com.alienation.coregamefiles.gameart.RoomsMap;
 
 import java.util.List;
 
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_BLUE;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.getAttackCount;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
@@ -63,16 +62,16 @@ public class AlienRoom extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public String getInitialStory() {
-        return ANSI_BLUE + "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
-                    "Wait... you see something in the corner slumped over, moving back and forth.\n" + ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
+                    "Wait... you see something in the corner slumped over, moving back and forth.\n" + getAnsiReset();
     }
 
     public String getUpdatedStory() {
-        return ANSI_BLUE + "\n\nLast time you were here you fought the alien. It's still in here.... I can smell it.\n" + ANSI_RESET;
+        return getAnsiBlue() + "\n\nLast time you were here you fought the alien. It's still in here.... I can smell it.\n" + getAnsiReset();
     }
 
     public String getLastStory() {
-        return ANSI_BLUE + "\n\nYou are back in the room where you killed your crew member.... I mean alien. Nothing has changed except the pools of your friends blood.\n" +
-                    "OOPS... did it again." + ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou are back in the room where you killed your crew member.... I mean alien. Nothing has changed except the pools of your friends blood.\n" +
+                    "OOPS... did it again." + getAnsiReset();
     }
 }

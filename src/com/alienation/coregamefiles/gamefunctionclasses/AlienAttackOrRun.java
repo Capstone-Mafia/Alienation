@@ -3,9 +3,8 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.enums.Actions;
 import com.alienation.coregamefiles.enums.Rooms;
 
-import static com.alienation.coregamefiles.enums.Actions.*;
+
 import static com.alienation.coregamefiles.gameart.TextColors.*;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alienAttack;
 import static com.alienation.coregamefiles.gamefunctionclasses.EatItems.eat;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
@@ -16,7 +15,7 @@ public class AlienAttackOrRun {
 
     // AttackAlien or Run from Alien in the room to previous room
     public static void alienAttackOrRun(Rooms currentRoom, String alienType) {
-        System.out.println(ANSI_YELLOW + "\nWhat do you want to do?" + ANSI_RESET);
+        System.out.println(getAnsiYellow() + "\nWhat do you want to do?" + getAnsiReset());
 
         boolean repeat = true;
         while (repeat) {
@@ -50,7 +49,7 @@ public class AlienAttackOrRun {
                         break;
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(ANSI_RED + "\nCan't do that!" + ANSI_RESET);
+                System.out.println(getAnsiRed() + "\nCan't do that!" + getAnsiReset());
                 repeat = true;
             } catch (Exception e) {
                 e.printStackTrace();

@@ -60,17 +60,17 @@ public class CapsuleRoom extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public String getInitialStory() {
-        return ANSI_BLUE + "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
+        return getAnsiBlue() + "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
                 "You can tell the oxygen levels are low as it seems harder to breathe.  As you look around you notice that there is one crew member\n" +
                 "missing and their sleeping capsule is shattered with blood splattered across the front. The ship seems to be drifting in\n" +
-                "space and the lights are dim, most likely on some sort of backup system. You notice a Taser on the floor.\n"+ ANSI_RESET;
+                "space and the lights are dim, most likely on some sort of backup system. You notice a Taser on the floor.\n"+ getAnsiReset();
     }
 
     public String getUpdatedStory() {
-        return ANSI_BLUE + "\n\nYou are back in the Capsule Room. Another crew member is missing. There is a blood trail....\n"+ ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Another crew member is missing. There is a blood trail....\n"+ getAnsiReset();
     }
 
     public String getLastStory() {
-        return ANSI_BLUE + "\n\nYou are back in the Capsule Room. Nothing has changed. There are crew members missing and blood everywhere."+ ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Nothing has changed. There are crew members missing and blood everywhere."+ getAnsiReset();
     }
 }

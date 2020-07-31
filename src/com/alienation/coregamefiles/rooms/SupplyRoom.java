@@ -59,18 +59,18 @@ public class SupplyRoom extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public String getInitialStory() {
-        return ANSI_BLUE + "\n\nYou've entered a dim room with racks of common supplies. This must be the supply room.  There's a big metal\n" +
+        return getAnsiBlue() + "\n\nYou've entered a dim room with racks of common supplies. This must be the supply room.  There's a big metal\n" +
                 "cage where all the rare and expensive parts are kept, but it's locked. The only way to open it is at the computer terminal with\n" +
                 "an access code. Something is dripping onto your shoulder... some sort of slimey viscous substance. It looks like one computer still\n" +
-                "works, but you need an access code.\n" + ANSI_RESET;
+                "works, but you need an access code.\n" + getAnsiReset();
     }
 
     public String getUpdatedStory() {
-        return ANSI_BLUE + "\n\nYou're back in the Server room and you have found an ignition switch. This thing must do something, but what!?\n"+ ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou're back in the Server room and you have found an ignition switch. This thing must do something, but what!?\n"+ getAnsiReset();
     }
 
     public String getLastStory() {
-        return ANSI_BLUE + "\n\nYou are back in the Server Room. You have the access code to open the cage. You enter the code into the terminal and\n" +
-                "you hear metal grinding on metal and then a loud click."+ ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou are back in the Server Room. You have the access code to open the cage. You enter the code into the terminal and\n" +
+                "you hear metal grinding on metal and then a loud click."+ getAnsiReset();
     }
 }

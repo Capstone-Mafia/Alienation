@@ -79,13 +79,13 @@ public class Menu {
     /*************** PUBLIC METHODS  ******************/
     // This method used to display Menu to user
     public static void displayMenu() throws Exception {
-        final String green = ANSI_GREEN;
-        final String end = ANSI_RESET;
+        final String green = getAnsiGreen();
+        final String end = getAnsiReset();
         final String lines = "---------------------------------------------------------------------------------------------------------------------------------";
         final String space = "                                      ";
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
-                "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + ANSI_BLUE +
+                "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + getAnsiBlue() +
                 getCurrentWeapon() + end  + "]");
         System.out.println(lines);
 
@@ -97,7 +97,7 @@ public class Menu {
                 action = Actions.valueOf(Input.getActionInput());
                 repeat = false;
             } catch (IllegalArgumentException e) {
-                System.out.println(ANSI_RED + "Enter something." + ANSI_RESET);
+                System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
                 repeat = true;
             }
         }
@@ -154,8 +154,8 @@ public class Menu {
                 break;
             case OPTIONS:
             case O:
-                System.out.println("\n" + ANSI_BLUE + getActions() + "\n" + getDirections() + "\n" + getInv() +
-                        "\n" + getSaveGame() + ANSI_RESET);
+                System.out.println("\n" + getAnsiBlue() + getActions() + "\n" + getDirections() + "\n" + getInv() +
+                        "\n" + getSaveGame() + getAnsiReset());
                 displayMenu();
                 break;
             case INVENTORY:
