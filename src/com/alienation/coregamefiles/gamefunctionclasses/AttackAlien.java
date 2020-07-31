@@ -4,6 +4,7 @@ import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
+import com.alienation.coregamefiles.parseinput.Input;
 
 import java.util.List;
 import java.util.Set;

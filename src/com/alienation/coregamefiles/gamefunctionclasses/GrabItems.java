@@ -2,6 +2,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.parseinput.Input;
 
 import java.util.ArrayList;
 import java.util.Arrays;

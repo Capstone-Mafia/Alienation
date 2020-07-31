@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DirectionsHashMap {
-    private static Map<Rooms,Map<String, Rooms>> availableDirectionsMap = new HashMap<>();
+    private static final Map<Rooms,Map<String, Rooms>> availableDirectionsMap = new HashMap<>();
 
     //Get Available Directions Map
     public static Map<Rooms,Map<String, Rooms>> getAvailableDirectionsMap() {
