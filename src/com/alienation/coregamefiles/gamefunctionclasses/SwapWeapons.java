@@ -8,7 +8,6 @@ import java.util.List;
 import static com.alienation.coregamefiles.charactersetc.Player.getInventory;
 import static com.alienation.coregamefiles.charactersetc.Player.setCurrentWeapon;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 
 public class SwapWeapons {
@@ -24,19 +23,19 @@ public class SwapWeapons {
         List<String> keys = getInventory();
 
         if(keys.size() == 0){
-            System.out.println(ANSI_RED + "\nYou don't have any weapons in your inventory. " +
-                    "Grab some weapons to swap!!" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\nYou don't have any weapons in your inventory. " +
+                    "Grab some weapons to swap!!" + getAnsiReset());
             displayMenu();
         }else if(!Input.getItem1().equals("empty")){
             setAnswer(capitalizeAll(Input.getItem1()));
         }
         else {
-            System.out.println(space + ANSI_YELLOW + "Which weapon would you like to hold?\n");
+            System.out.println(space + getAnsiYellow() + "Which weapon would you like to hold?\n");
             System.out.println(lines);
             for (String key : keys) {
                 System.out.println(key);
             }
-            System.out.println(lines + ANSI_RESET);
+            System.out.println(lines + getAnsiReset());
             Input.getInput();
 
             try {
@@ -45,7 +44,7 @@ public class SwapWeapons {
                  * does the method 'drop inventory' exist
                  */
             } catch (Exception e) {
-                System.out.println(ANSI_RED + "\nYou can't swap with that." + ANSI_RESET);
+                System.out.println(getAnsiRed() + "\nYou can't swap with that." + getAnsiReset());
             }
         }
         try {
@@ -54,10 +53,10 @@ public class SwapWeapons {
              */
             Weapons weapon = Weapons.findWeaponsByName(getAnswer());
             setCurrentWeapon(weapon.getName());
-            System.out.println(ANSI_YELLOW + "\nYou are now holding a " + getAnswer() + "." + ANSI_RESET);
+            System.out.println(getAnsiYellow() + "\nYou are now holding a " + getAnswer() + "." + getAnsiReset());
 
         } catch(Exception e){
-            System.out.println(ANSI_RED + "\nYou can't swap with that." + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\nYou can't swap with that." + getAnsiReset());
         }
         displayMenu();
     }
