@@ -1,9 +1,6 @@
 package com.alienation.enginefiles;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -134,12 +131,17 @@ public class Game {
         mainMapPanel.setBounds(0, 50, 400, 350);
         mainMapPanel.setBackground(Color.GREEN);
         window.add(mainMapPanel);
+
+        // Map Label
         BufferedImage img = null;
-        // Fix Image path. make it look like image viewer.
+        // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "CapsuleRoom.png";
         img = ImageIO.read(getClass().getResource(imgPath));
-        ImageIcon imgIcon = new ImageIcon(img);
+        Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
+        ImageIcon imgIcon = new ImageIcon(dimg);
         mainMapLabel = new JLabel();
+        mainMapLabel.setIcon(imgIcon);
+        mainMapPanel.add(mainMapLabel);
 
 
         //Main text panel.
@@ -147,6 +149,7 @@ public class Game {
         mainTextPanel.setBounds(400, 50, 400, 350);
         mainTextPanel.setBackground(Color.cyan);
         window.add(mainTextPanel);
+//        window.pack();
 
         // Adding text field to test panel.
         mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
