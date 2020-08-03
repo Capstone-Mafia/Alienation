@@ -25,7 +25,7 @@ public class InvestigateRoom {
         }
         System.out.println(lines + ANSI_RESET);
         for (String key : keys) {
-            if(Alien.getAliens().containsKey(key)){
+            if(Alien.getAlienNameList().contains(key)){
                 switch (key){
                     case "Vermin":
                         System.out.println(ANSI_BLUE + "\nIt's a Vermin like Creature\n"+ ANSI_RESET);

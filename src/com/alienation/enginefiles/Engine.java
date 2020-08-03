@@ -154,7 +154,7 @@ public class Engine {
     //Reset all data if user restarts the game
     private static void ResetData(){
         Player.setHealth(5);
-        Player.setCurrentRoom(Rooms.CapsuleRoom);
+        Player.setCurrentRoom(Rooms.AlienRoom);
         Player.setInventory(new ArrayList<String>());
         Player.setPreviousRoom(null);
         Player.setCurrentWeapon("Bad Breath");

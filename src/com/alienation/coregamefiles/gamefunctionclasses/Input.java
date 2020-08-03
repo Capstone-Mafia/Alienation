@@ -30,7 +30,7 @@ import java.util.Scanner;
 public class Input {
 
 
-    private static String userResponse;
+    private static String verb;
     private static String item1;
     private static String item2;
 
@@ -44,7 +44,7 @@ public class Input {
         String delims = "[ ]+";
         String[] tokens = s.split(delims);
 
-        userResponse = tokens[0];
+        verb = tokens[0];
 
         if (tokens.length == 1){
             item1 = "empty";
@@ -69,11 +69,11 @@ public class Input {
      * and getUserResponse doesn't have to be capitalized, general input
      */
     public static String getActionInput() {
-        return getUserResponse().toUpperCase();
+        return getVerb().toUpperCase();
     }
 
-    public static String getUserResponse(){
-        return userResponse;
+    public static String getVerb(){
+        return verb;
     }
 
     public static String getItem1() {

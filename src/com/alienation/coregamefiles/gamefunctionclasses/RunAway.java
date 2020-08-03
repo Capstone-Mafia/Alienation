@@ -18,7 +18,7 @@ public class RunAway {
     /********* run only if you're ********/
     // Run from alien to previous room
     public static void run(Rooms currentRoom) throws Exception {
-        Set<String> aliens = Alien.getAliens().keySet();
+        List<String> aliens = Alien.getAlienNameList();
         List<String> itemsInRoom = getAvailableItemsMap().get(currentRoom);
 
         boolean foundAlien = false;

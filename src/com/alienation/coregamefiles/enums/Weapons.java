@@ -22,21 +22,30 @@
 
 package com.alienation.coregamefiles.enums;
 
+import com.alienation.coregamefiles.charactersetc.Alien;
+
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Weapons Enum
  */
 public enum Weapons{
+
     TASER_GUN("Taser Gun", 1),
     LASER("Laser", 3),
     SQUIRT_GUN("Squirt Gun", 4),
     FLAMETHROWER("Flamethrower", 8);
+     /**
+    Set<String> weaponsSet = new HashSet<>();
+    weaponsSet.add("Taser Gun");
+     */
 
     private String name;
     private int damagePoints;
 
-    Weapons(String name, int damagePoints) {
+    Weapons(String name, int damagePoints){
         this.damagePoints = damagePoints;
         this.name = name;
     }
@@ -46,6 +55,13 @@ public enum Weapons{
     }
     public int getDamagePoints() {
         return damagePoints;
+    }
+
+    /**This will maybe change the damagepoints of each weapon over time
+     * if we want to add that feature
+     */
+    public void setDamagePoints(int damagePoints) {
+        this.damagePoints = damagePoints;
     }
 
     public static Weapons findWeaponsByName(String name) throws Exception {
