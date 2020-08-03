@@ -54,7 +54,7 @@ public class Engine {
 
     //User wants to resume old game or start new one
     public static void ResumeOrNewGame(Boolean isDead) throws Exception {
-        if(!isDead) {
+        if (!isDead) {
             File gameState = new File(getProperty("user.dir") + "\\SaveState.xml");
             if (gameState.exists()) {
                 final String lines = "---------------------------------------------------------------------------------------------------------------------------------";
@@ -126,7 +126,7 @@ public class Engine {
 
                         //Get Available Items Map
                         clearAvailableItemsMap();
-                        for(Rooms room : Rooms.values()){
+                        for (Rooms room : Rooms.values()) {
                             NodeList capsuleRoomNodeList = dDoc.getElementsByTagName(room.toString());
                             List<String> availableItems = getAvailableItemsXML(capsuleRoomNodeList);
                             newRoomAvailableItemsMapPut(room, availableItems);
@@ -153,7 +153,7 @@ public class Engine {
 
 
     //Reset all data if user restarts the game
-    private static void ResetData(){
+    private static void ResetData() {
         Player.setHealth(5);
         Player.setCurrentRoom(Rooms.AlienRoom);
         Player.setInventory(new ArrayList<String>());
@@ -165,3 +165,5 @@ public class Engine {
         //TODO store attackCount instead
         clearAvailableItemsMap();
     }
+
+}
