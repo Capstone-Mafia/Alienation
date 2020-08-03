@@ -39,7 +39,7 @@ public class SwapWeapons {
             Input.getInput();
 
             try {
-                setAnswer(capitalizeAll(Input.getUserResponse()));
+                setAnswer(capitalizeAll(Input.getVerb()));
                 /**check if answer exists in the inventory and replace the inventory with answer
                  * does the method 'drop inventory' exist
                  */

@@ -150,4 +150,18 @@ public class Engine {
             new CapsuleRoom().loadEnvironment();
         }
     }
-}
+
+
+    //Reset all data if user restarts the game
+    private static void ResetData(){
+        Player.setHealth(5);
+        Player.setCurrentRoom(Rooms.AlienRoom);
+        Player.setInventory(new ArrayList<String>());
+        Player.setPreviousRoom(null);
+        Player.setCurrentWeapon("Bad Breath");
+        Player.setTempRoom(null);
+        Oxygen.setOxygen(50);
+        new CapsuleRoom().count = 0;
+        //TODO store attackCount instead
+        clearAvailableItemsMap();
+    }

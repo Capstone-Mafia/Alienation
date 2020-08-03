@@ -5,7 +5,9 @@ import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
@@ -22,14 +24,17 @@ public class AttackAlien {
     // Starting AttackAlien the Alien process in the room
     public static void attack(Rooms currentRoom) throws Exception {
         List<String> roomItems = getAvailableItemsMap().get(currentRoom);
-        Set<String> aliens = Alien.getAliens().keySet();
+        Set<String> aliens = new HashSet<>(Alien.getAlienNameList());
 
         setItem1(capitalizeAll(Input.getItem1()));
         setItem2(capitalizeAll(Input.getItem2()));
 
         if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
             try {
-                if(aliens.contains(getItem1())){
+                Optional<Alien> maybeAlien = Alien.getAlien(getItem1());
+
+                if(maybeAlien.isPresent()){
+                    Alien alien = maybeAlien.get();
                     if(getHealth() == 0 || getOxygen() == 0) {
                         Death.death();
                     }
@@ -44,7 +49,8 @@ public class AttackAlien {
                         }
 
                         if(hasWeapon) {
-                            alienAttack(currentRoom, getItem1());
+
+                            alienAttack(currentRoom, alien);
                         }
                         else {
                             System.out.println(getAnsiRed() + "You don't have a weapon equipped to fight with. " +

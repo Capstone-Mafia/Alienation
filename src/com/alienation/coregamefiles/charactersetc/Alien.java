@@ -22,16 +22,61 @@
 
 package com.alienation.coregamefiles.charactersetc;
 
-import java.util.*;
+
+import com.alienation.coregamefiles.enums.Weapons;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Alien Class
  */
-public class Alien {
-    private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
+public abstract class Alien {
+    //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
+    int alienHP;
 
-    // Get the alien
-    public static Map<String,Map<String,Integer>> getAliens(){
+    private static List<Alien> allAlienObjects;
+    static {
+        allAlienObjects.add(new AlienSuperhumanoid(50));
+        allAlienObjects.add(new AlienHumanoid(10));
+        allAlienObjects.add(new AlienCanine(6));
+        allAlienObjects.add(new AlienVermin(4));
+
+    }
+    private static List<Alien> getAlienObjectList() {
+        return allAlienObjects;
+    }
+
+    public Alien(int alienHP) {
+        this.alienHP = alienHP;
+    }
+
+    public abstract String getAlienName();
+
+    public abstract int getAlienDP();
+
+    public abstract int getNewWeaponDamagePoints(Weapons weapons);
+
+    public static List<String> alienNameList = new ArrayList<>();
+
+    public static List<String> getAlienNameList() {
+        return Arrays.asList("Vermin", "Canine", "Humanoid", "Superhumanoid");
+    }
+
+    public static Optional<Alien> getAlien(String alienName){
+        for (Alien alien : allAlienObjects){
+            if (alien.getAlienName().equals(alienName)){
+                return Optional.of(alien);
+            }
+        }
+        return Optional.empty();
+    }
+
+    /**
+    public static Map<String> getAliens(){
+
         if(alienTypes.size() == 0) {
             Map<String, Integer> alienPointWorth = new HashMap<>();
             alienPointWorth.put("HP", 4);
@@ -53,20 +98,19 @@ public class Alien {
             alienPointWorth.put("DP", 10);
             alienTypes.put("Superhumanoid", alienPointWorth);
         }
-        return alienTypes;
+
+    }
+*/
+
+
+    public void setHealthPoints(int alienNewHealthPoints){
+        this.alienHP = alienNewHealthPoints;
+    }
+
+    public int getHealthPoints(){
+        return alienHP;
     }
 
 
-    /*************** GETTER - SETTER METHODS  ******************/
-    //Get HP/DP points
-    public static int getPoints(String alienType,String key){
-        return alienTypes.get(alienType).get(key);
-    }
-
-    //Set HP/DP points
-    public static void setPoints(String alienType, String key, int points){
-        alienTypes.get(alienType).replace(key, points);
-    }
-    //TODO: build in weakness and immunity
 }
 

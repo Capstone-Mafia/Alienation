@@ -1,5 +1,6 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
+import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Actions;
 import com.alienation.coregamefiles.enums.Rooms;
 
@@ -14,8 +15,10 @@ import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
 public class AlienAttackOrRun {
 
     // AttackAlien or Run from Alien in the room to previous room
+
     public static void alienAttackOrRun(Rooms currentRoom, String alienType) {
         System.out.println(getAnsiYellow() + "\nWhat do you want to do?" + getAnsiReset());
+
 
         boolean repeat = true;
         while (repeat) {

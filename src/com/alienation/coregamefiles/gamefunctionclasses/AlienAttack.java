@@ -21,26 +21,39 @@ public class AlienAttack {
     private static int attackCount = 0;
 
     //Attacking the Alien and Alien will attack back to you
+
     public static void alienAttack(Rooms currentRoom, String alienType){
         System.out.println(getAnsiRed() + "\nAttacking Alien..." + getAnsiReset());
+
         attackCount ++;
         try {
             if(getHealth() != 0) {
-                int alienHealthPoints = Alien.getPoints(alienType,"HP");
-                int alienDamagePoints = Alien.getPoints(alienType,"DP");
+                int alienHealthPoints = alien.getHealthPoints();
+                int alienDamagePoints = alien.getAlienDP();
                 int weaponDamagePoints = Weapons.findWeaponsByName(getCurrentWeapon()).getDamagePoints();
+                /**
+                 * Weapon's damage points are adjusted
+                 */
+                int newWeaponDamagePoints = alien.getNewWeaponDamagePoints(Weapons.valueOf(getCurrentWeapon()));
+
                 int alienNewHealthPoints = ((alienHealthPoints - weaponDamagePoints) < 0 ? 0 : (alienHealthPoints - weaponDamagePoints));
-                Alien.setPoints(alienType,"HP", alienNewHealthPoints);
+
+                alien.setHealthPoints(alienNewHealthPoints);
 
                 System.out.println(getAnsiRed() + "\n-" + weaponDamagePoints + " dmg");
                 System.out.println(getAnsiBlue() + "\nAlien HP: " + getAnsiGreen() + alienNewHealthPoints +
                         getAnsiReset());
                 TimeUnit.SECONDS.sleep(2);
 
-                if(alienNewHealthPoints != 0){
+                /**character newHealthPoints after Alien Attack, wrong
+                 *
+                 */
+                if(alienNewHealthPoints > 0){
                     TimeUnit.SECONDS.sleep(2);
-                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back...");
-                    int characterFinalHealth = -alienDamagePoints;
+
+                    System.out.println(ANSI_RED + "\nOops!! Alien attacked you back...");
+                    int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 : (getHealth() - alienDamagePoints));
+
                     setHealth(characterFinalHealth);
                     System.out.println("\n-" + alienDamagePoints + " dmg" + getAnsiReset());
                     System.out.println(getAnsiBlue() + "\nYour HP: " + getAnsiGreen() + getHealth() +
@@ -50,16 +63,18 @@ public class AlienAttack {
                         Death.death();
                     }
                     else {
-                        alienAttackOrRun(currentRoom, alienType);
+                        alienAttackOrRun(currentRoom, alien);
                     }
                 }
                 else{
                     //Remove from available items of room
                     List<String> availableItems = getAvailableItemsMap().get(currentRoom);
-                    availableItems.remove(alienType);
-                    System.out.println(getAnsiRed() + "\nThe alien is fatally wounded and falls to it's death " +
-                            "in a pool of blood." + getAnsiReset());
-                    System.out.println(getAnsiBlue() + "\nThe alien has dropped something." + getAnsiReset());
+
+                    availableItems.remove(alien);
+                    System.out.println(ANSI_RED + "\nThe alien is fatally wounded and falls to it's death " +
+                            "in a pool of blood." + ANSI_RESET);
+                    System.out.println(ANSI_BLUE + "\nThe alien has dropped something." + ANSI_RESET);
+
                     List<String> inventory = getInventory();
                     inventory.add("Code");
                     setInventory(inventory);
