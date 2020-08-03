@@ -103,11 +103,11 @@ public abstract class Alien {
 */
 
 
-    public void setHealthPoints(int alienNewHealthPoints){
+    public static void setHealthPoints(int alienNewHealthPoints){
         this.alienHP = alienNewHealthPoints;
     }
 
-    public int getHealthPoints(){
+    public static int getHealthPoints(){
         return alienHP;
     }
 
