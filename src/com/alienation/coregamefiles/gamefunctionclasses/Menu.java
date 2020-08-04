@@ -23,8 +23,11 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.enums.*;
+import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
 import com.alienation.coregamefiles.parseinput.Input;
 
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
@@ -51,7 +54,13 @@ public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     private static String actionQuestion = "What will you do? (o for options)";
-    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n";
+    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
+            "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
+            "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
+            "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Flamethrower\"\n" +
+            "SupplyRoom started with: \"Computer\", \"Desk\", \"Sofa\", \"Racks\", \"Supplies\", \"Cage\"\n" +
+            "ControlRoom started with: \"Monitor\", \"Control Panel\", \"Pilot Seats\", \"Laser\", \"Chips\"";
+
     private static String directions = "Try : N, north, S, South, e, W, west to move around\n";
     private static String inv = "Check Inventory < i >";
     public static Actions action;
@@ -139,7 +148,7 @@ public class Menu {
                 break;
             case OPTIONS:
             case O:
-                System.out.println("\n" + getAnsiBlue() + getActions() + "\n" + getDirections() + "\n" + getInv() +
+                System.out.println("\n" + getAnsiBlue() + getActions() + "\n\n" + "Now you have: \n" + AvailableItemsHashMap.getAvailableItemsMap() + "\n\n" + getDirections() + "\n" + getInv() +
                         "\n" + getSaveGame() + getAnsiReset());
                 displayMenu();
                 break;
