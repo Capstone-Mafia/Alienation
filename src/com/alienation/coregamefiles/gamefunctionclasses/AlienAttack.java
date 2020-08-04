@@ -23,7 +23,7 @@ public class AlienAttack {
 
     //Attacking the Alien and Alien will attack back to you
 
-    public static void alienAttack(Rooms currentRoom, String alienType){
+    public static void alienAttack(Rooms currentRoom, Alien alien){
         System.out.println(getAnsiRed() + "\nAttacking Alien..." + getAnsiReset());
 
         attackCount ++;
