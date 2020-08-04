@@ -28,7 +28,7 @@ import com.alienation.coregamefiles.charactersetc.Oxygen;
 public abstract class Room {
     private int minusOxy = 10; // TODO: Make random number??
 
-    public String getStory() {
+    public static String getStory() {
         return null;
     }
 
