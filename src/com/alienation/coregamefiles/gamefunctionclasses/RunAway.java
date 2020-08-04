@@ -3,6 +3,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Rooms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +19,10 @@ public class RunAway {
     /********* run only if you're ********/
     // Run from alien to previous room
     public static void run(Rooms currentRoom) throws Exception {
+        System.out.println("Before AlienList");
+        //List<String> aliens = new ArrayList<>();
         List<String> aliens = Alien.getAlienNameList();
+        System.out.println("AlienList");
         List<String> itemsInRoom = getAvailableItemsMap().get(currentRoom);
 
         boolean foundAlien = false;
