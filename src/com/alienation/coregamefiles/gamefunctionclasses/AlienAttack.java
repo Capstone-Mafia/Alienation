@@ -29,17 +29,17 @@ public class AlienAttack {
         attackCount ++;
         try {
             if(getHealth() != 0) {
-                int alienHealthPoints = AlienHumanoid.getHealthPoints();
-                int alienDamagePoints = AlienHumanoid.getAlienDP();
+                int alienHealthPoints = alien.getHealthPoints();
+                int alienDamagePoints = alien.getAlienDP();
                 int weaponDamagePoints = Weapons.findWeaponsByName(getCurrentWeapon()).getDamagePoints();
                 /**
                  * Weapon's damage points are adjusted
                  */
-                int newWeaponDamagePoints = AlienHumanoid.getNewWeaponDamagePoints(Weapons.valueOf(getCurrentWeapon()));
+                int newWeaponDamagePoints = alien.getNewWeaponDamagePoints(Weapons.valueOf(getCurrentWeapon()));
 
                 int alienNewHealthPoints = ((alienHealthPoints - weaponDamagePoints) < 0 ? 0 : (alienHealthPoints - weaponDamagePoints));
 
-                AlienHumanoid.setHealthPoints(alienNewHealthPoints);
+                alien.setHealthPoints(alienNewHealthPoints);
 
                 System.out.println(getAnsiRed() + "\n-" + weaponDamagePoints + " dmg");
                 System.out.println(getAnsiBlue() + "\nAlien HP: " + getAnsiGreen() + alienNewHealthPoints +
