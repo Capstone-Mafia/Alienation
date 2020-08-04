@@ -1,7 +1,6 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Alien;
-import com.alienation.coregamefiles.charactersetc.AlienHumanoid;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
@@ -52,7 +51,7 @@ public class AlienAttack {
                 if(alienNewHealthPoints > 0){
                     TimeUnit.SECONDS.sleep(2);
 
-                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back..." + getAnsiReset());
+                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back...");
                     int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 : (getHealth() - alienDamagePoints));
 
                     setHealth(characterFinalHealth);
