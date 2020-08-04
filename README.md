@@ -1,10 +1,10 @@
 # Alienation
 Text-Based console game using JAVA language.  Character explores rooms on a spaceship trying to survive while avoiding attacks from aliens.
 
-# Authors
-<b>Original Authors:</b> Dhruti Kosta, Terrell Douglas, Brad Smialek
+## Authors
+<b>Original Authors:</b> [Dhruti Kosta](https://github.com/dhruti-kosta), [Terrell Douglas](https://github.com/Dougie105), [Brad Smialek](https://github.com/bradsmialek).
 
-<b>Contributing Authors:</b> Bruce West, Gurinder Batth, Daeun Lok
+<b>Contributing Authors:</b> [Bruce West](https://github.com/BruceBAWest), [Gurinder Batth](https://github.com/GurinderB), [Daeun Lok](https://github.com/koreareefclub).
 
 ## Tech/framework used
 <b>Built with</b>
@@ -15,7 +15,7 @@ Text-Based console game using JAVA language.  Character explores rooms on a spac
 This game is free and open. Fork our repository and hack away. Feel free to take it, run with it, and build your own text adventure games off of our humble little platform.
 
 ## Tests
-Install JAva JDK 11 and JUnit 5 (links above). Recommend the intelliJ IDEA IDE for your development environment, as that is what the project was built on, and we know it works there.
+Install Java JDK 11 and JUnit 5 (links above). Recommend the intelliJ IDEA IDE for your development environment, as that is what the project was built on, and we know it works there.
 
 ## How to use?
 A JAR file will be uploaded in time. One option you may pursue if you seek to play our daringly adventurous game is to clone our repo, and either run it from inside your IDE, or create your own executable JAR file.
@@ -24,9 +24,11 @@ A JAR file will be uploaded in time. One option you may pursue if you seek to pl
 We welcome your contributions! For details on how to contribute to the Alienation game, please see the [contributing guideline](https://github.com/Capstone-Mafia/Alienation/blob/master/CONTRIBUTING.md).
 
 ## Credits
-<b>Many much credit to the original authors of Alienation, Dhruti Kosta, Terrell Douglas, Brad Smialek.</b> Credit to TLG Learning for pushing us through this project. Props to Rennie Araucto for your guidance. Much appreciation to AWS for keeping the lights on during the pandemic.
+Many much credit to the original authors of Alienation, [Dhruti Kosta](https://github.com/dhruti-kosta), [Terrell Douglas](https://github.com/Dougie105), [Brad Smialek](https://github.com/bradsmialek). Click for <b> [Original Repository](https://github.com/bradsmialek/Alienation) </b> 
 
- ## License
+Credit to TLG Learning for pushing us through this project. Props to Rennie Araucto for your guidance. Much appreciation to AWS for keeping the lights on during the pandemic.
+
+## License
  [MIT licensing](https://github.com/Capstone-Mafia/Alienation/blob/master/MIT.txt)
  
  MIT © [Capstone Mafia](https://github.com/Capstone-Mafia)

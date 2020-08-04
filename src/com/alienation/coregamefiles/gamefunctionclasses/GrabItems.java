@@ -10,7 +10,6 @@ import java.util.List;
 import static com.alienation.coregamefiles.charactersetc.Player.getInventory;
 import static com.alienation.coregamefiles.charactersetc.Player.setInventory;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
@@ -27,7 +26,7 @@ public class GrabItems {
         if(items.contains(getItem2()) || items.contains(getItem1())){
             try {
                 if (getXItems().contains(getItem1())){
-                    System.out.println(ANSI_RED + "\nYou can't grab that!" + ANSI_RESET);
+                    System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
                     displayMenu();
                 }
             }
@@ -39,14 +38,14 @@ public class GrabItems {
 
             if(getItem2().equals("Oxygen Tank")){
                 Oxygen.incOxygen(100);
-                System.out.println(ANSI_YELLOW + "\nYou just increased " + getOxygenString() + " levels." +
-                        ANSI_RESET);
+                System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels." +
+                        getAnsiReset());
                 items.remove(getItem2());
                 setAvailableItemsMap(currentRoom, items);
                 displayMenu();
             }
 
-            System.out.println(ANSI_YELLOW + "\n" + getItem1() + " added to Inventory." + ANSI_RESET);
+            System.out.println(getAnsiYellow() + "\n" + getItem1() + " added to Inventory." + getAnsiReset());
             List<String> newItems = getInventory();
             newItems.add(getItem1());
             setInventory(newItems);
@@ -56,11 +55,11 @@ public class GrabItems {
             setAvailableItemsMap(currentRoom, items);
 
         }else if(Input.getItem1().equals("empty")){
-            System.out.println(ANSI_RED + "\n" + capitalizeAll(action.toString().toLowerCase()) +
-                    " what?" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+                    " what?" + getAnsiReset());
         }
         else {
-            System.out.println(ANSI_RED + "\n" + "That's not in this room." + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
         }
         displayMenu();
     }

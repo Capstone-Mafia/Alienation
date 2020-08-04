@@ -64,7 +64,7 @@ public class Player {
 
     public static void checkHealth(){
         if(health <= 20){
-            System.out.println(ANSI_RED + "\nHealth is LOW!" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\nHealth is LOW!" + getAnsiReset());
         }
     }
 

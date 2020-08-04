@@ -24,7 +24,6 @@ package com.alienation.enginefiles;
 import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
-import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -36,6 +35,7 @@ import java.io.File;
 import java.util.*;
 
 import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
+import static com.alienation.coregamefiles.gamefunctionclasses.ResetData.initResetData;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
 import static java.lang.System.getProperty;
 
@@ -146,10 +146,11 @@ public class Engine {
                 new CapsuleRoom().loadEnvironment();
             }
         } else {
-            ResetData();
+            initResetData();
             new CapsuleRoom().loadEnvironment();
         }
     }
+
 
     //Reset all data if user restarts the game
     private static void ResetData(){
@@ -164,4 +165,3 @@ public class Engine {
         //TODO store attackCount instead
         clearAvailableItemsMap();
     }
-}

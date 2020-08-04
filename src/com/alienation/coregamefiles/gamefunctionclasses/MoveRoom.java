@@ -4,8 +4,7 @@ import com.alienation.coregamefiles.enums.Rooms;
 
 import static com.alienation.coregamefiles.charactersetc.Player.setPreviousRoom;
 import static com.alienation.coregamefiles.charactersetc.Player.setTempRoom;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RED;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.displayMenu;
 import static com.alienation.coregamefiles.hashmaps.DirectionsHashMap.getAvailableDirectionsMap;
@@ -21,7 +20,7 @@ public class MoveRoom {
             loadRoom(nextRoom);
         }
         else{
-            System.out.println(ANSI_RED + "\nThere doesn't seem to be a door this way.\n" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\nThere doesn't seem to be a door this way.\n" + getAnsiReset());
             displayMenu();
         }
     }

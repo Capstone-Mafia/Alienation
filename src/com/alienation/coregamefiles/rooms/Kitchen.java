@@ -26,8 +26,7 @@ import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.gameart.RoomsMap;
 
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_BLUE;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
 /**
@@ -55,13 +54,13 @@ public class Kitchen extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public String getInitialStory() {
-        return ANSI_BLUE + "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
+        return getAnsiBlue() + "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
                 "types of nasty smells filling the air, but you are so hungry that the smells can't bother you at this point. There must be something\n" +
-                "that you can eat laying around here somewhere?\n"+ ANSI_RESET;
+                "that you can eat laying around here somewhere?\n"+ getAnsiReset();
     }
 
     public String getUpdatedStory() {
-        return ANSI_BLUE + "\n\nYou are back in the kitchen where you found that delicious snack. It looks like something's been through here\n" +
-                "again.\n"+ ANSI_RESET;
+        return getAnsiBlue() + "\n\nYou are back in the kitchen where you found that delicious snack. It looks like something's been through here\n" +
+                "again.\n"+ getAnsiReset();
     }
 }
