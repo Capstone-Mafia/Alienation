@@ -51,7 +51,7 @@ public class AlienAttack {
                 if(alienNewHealthPoints > 0){
                     TimeUnit.SECONDS.sleep(2);
 
-                    System.out.println(ANSI_RED + "\nOops!! Alien attacked you back...");
+                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back...");
                     int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 : (getHealth() - alienDamagePoints));
 
                     setHealth(characterFinalHealth);
@@ -71,9 +71,9 @@ public class AlienAttack {
                     List<String> availableItems = getAvailableItemsMap().get(currentRoom);
 
                     availableItems.remove(alien);
-                    System.out.println(ANSI_RED + "\nThe alien is fatally wounded and falls to it's death " +
-                            "in a pool of blood." + ANSI_RESET);
-                    System.out.println(ANSI_BLUE + "\nThe alien has dropped something." + ANSI_RESET);
+                    System.out.println(getAnsiRed() + "\nThe alien is fatally wounded and falls to it's death " +
+                            "in a pool of blood." + getAnsiReset());
+                    System.out.println(getAnsiBlue() + "\nThe alien has dropped something." + getAnsiReset());
 
                     List<String> inventory = getInventory();
                     inventory.add("Code");
