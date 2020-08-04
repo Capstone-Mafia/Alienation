@@ -67,7 +67,7 @@ public class Engine {
                 while (repeat) {
                     try {
                         String answer = in.nextLine(); //grabs input
-                        if (answer.toUpperCase().equals("N")) {
+                        if (answer.toUpperCase().trim().equals("N")) {
                             gameState.delete();
                             repeat = false;
                         } else if (answer.toUpperCase().equals("R")) {

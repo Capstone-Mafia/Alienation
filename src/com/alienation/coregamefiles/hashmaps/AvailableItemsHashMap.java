@@ -37,7 +37,7 @@ public class AvailableItemsHashMap {
         return availableItemsMap;
     }
 
-    //set availableI items map
+    //set available Items map
     public static void setAvailableItemsMap(Rooms key, List<String> items){
         availableItemsMap.remove(key);
         availableItemsMap.put(key, items);

@@ -19,6 +19,7 @@ public class GrabItems {
 
     // Grab the item from the room
     public static void grab(Rooms currentRoom) throws Exception {
+        //gets items in the current room
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
         setItem1(capitalizeAll(Input.getItem1()));
