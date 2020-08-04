@@ -23,21 +23,8 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.enums.*;
-import com.alienation.enginefiles.Engine;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import com.alienation.coregamefiles.parseinput.Input;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.util.List;
-import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
@@ -55,8 +42,6 @@ import static com.alienation.coregamefiles.gamefunctionclasses.ReadThings.read;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SaveGame.saveGameDataToFile;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
-import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
-import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
 
 /**
  * Menu For Console

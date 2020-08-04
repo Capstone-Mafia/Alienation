@@ -20,23 +20,18 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.client;
+package com.alienation.coregamefiles.parseinput;
 
-import com.alienation.enginefiles.Engine;
+import java.util.Scanner;
 
-import static com.alienation.coregamefiles.gameart.Banner.*;
-import static com.alienation.enginefiles.Engine.start;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 
-/**
- * Main Class
- */
-public class Main {
-    public static void main(String[] args) {
-        try {
-            System.out.println(getBanner());
-            start();
-        } catch (Exception e) {
-            System.out.println("Something wrong with the Game!!!");
-        }
+public class Attack implements Action {
+
+    @Override
+    public void run(Scanner args) {
+        if (!args.hasNext())
+            throw new IllegalArgumentException(getAnsiRed() + "What do you want to attack?" + getAnsiReset());
+        System.out.println(getAnsiCyan() + "Attacking " + args.next() + getAnsiReset());
     }
 }

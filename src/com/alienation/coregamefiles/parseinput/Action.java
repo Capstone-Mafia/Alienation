@@ -20,23 +20,15 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.client;
+package com.alienation.coregamefiles.parseinput;
 
-import com.alienation.enginefiles.Engine;
+import java.util.Scanner;
 
-import static com.alienation.coregamefiles.gameart.Banner.*;
-import static com.alienation.enginefiles.Engine.start;
+public interface Action {
+    void run(Scanner args);
 
-/**
- * Main Class
- */
-public class Main {
-    public static void main(String[] args) {
-        try {
-            System.out.println(getBanner());
-            start();
-        } catch (Exception e) {
-            System.out.println("Something wrong with the Game!!!");
-        }
-    }
+    //TODO: implement ObjectInputStream, or some other method (check existing xml reader class for idea), to
+    // use this in each implementing class to read from a related xml file for synonyms to implement
+    // as commands you may use to perform each task
+    // such as: grab/get/fetch/retrieve/etc, & look/examine/inspect/etc, & open/unlock/unlatch/etc, etc...
 }

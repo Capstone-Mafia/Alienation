@@ -20,7 +20,7 @@
  *      https://github.com/Capstone-Mafia/Alienation
  */
 
-package com.alienation.coregamefiles.gamefunctionclasses;
+package com.alienation.coregamefiles.parseinput;
 
 import java.util.Scanner;
 
@@ -40,7 +40,7 @@ public class Input {
         item2 = null;
 
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine().toString();
+        String s = scanner.nextLine();
         String delims = "[ ]+";
         String[] tokens = s.split(delims);
 

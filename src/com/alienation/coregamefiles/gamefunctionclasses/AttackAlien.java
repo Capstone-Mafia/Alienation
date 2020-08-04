@@ -5,6 +5,7 @@ import com.alienation.coregamefiles.charactersetc.AlienObjects;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
+import com.alienation.coregamefiles.parseinput.Input;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +15,7 @@ import java.util.Set;
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.charactersetc.Player.getCurrentWeapon;
 import static com.alienation.coregamefiles.charactersetc.Player.getHealth;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RED;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
+import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alienAttack;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
@@ -55,25 +55,25 @@ public class AttackAlien {
                             alienAttack(currentRoom, alien);
                         }
                         else {
-                            System.out.println(ANSI_RED + "You don't have a weapon equipped to fight with. " +
-                                    "Bad breath won't do!" + ANSI_RESET);
+                            System.out.println(getAnsiRed() + "You don't have a weapon equipped to fight with. " +
+                                    "Bad breath won't do!" + getAnsiReset());
                             displayMenu();
                         }
                     }
                 }
                 else {
-                    System.out.println(ANSI_RED + "\nYou can't attack that!" + ANSI_RESET);
+                    System.out.println(getAnsiRed() + "\nYou can't attack that!" + getAnsiReset());
                     displayMenu();
                 }
             } catch (Exception e) {
                 System.out.println();
             }
         }else if(Input.getItem1().equals("empty")){
-            System.out.println(ANSI_RED + "\n" + capitalizeAll(action.toString().toLowerCase()) +
-                    " what?" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+                    " what?" + getAnsiReset());
         }
         else {
-            System.out.println(ANSI_RED + "\n" + "That's not in this room." + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
         }
         displayMenu();
     }

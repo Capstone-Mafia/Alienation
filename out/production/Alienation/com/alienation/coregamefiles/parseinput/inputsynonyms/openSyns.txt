@@ -1,0 +1,8 @@
+commence,
+convene,
+initiate,
+launch,
+unfurl,
+unshut,
+unlatch,
+unlock

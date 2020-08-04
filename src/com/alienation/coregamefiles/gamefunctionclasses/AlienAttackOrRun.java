@@ -3,6 +3,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Actions;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.parseinput.Input;
 
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -16,7 +17,7 @@ public class AlienAttackOrRun {
 
     // AttackAlien or Run from Alien in the room to previous room
 
-    public static void alienAttackOrRun(Rooms currentRoom, String alienType) {
+    public static void alienAttackOrRun(Rooms currentRoom, Alien alienType) {
         System.out.println(getAnsiYellow() + "\nWhat do you want to do?" + getAnsiReset());
 
 
