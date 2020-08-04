@@ -1,6 +1,7 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Alien;
+import com.alienation.coregamefiles.charactersetc.AlienObjects;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
@@ -18,6 +19,7 @@ import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alien
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
+
 public class AttackAlien {
 
     /* -- AttackAlien the Alien in the room -- START */
@@ -31,7 +33,8 @@ public class AttackAlien {
 
         if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
             try {
-                Optional<Alien> maybeAlien = Alien.getAlien(getItem1());
+                //Optional<Alien> maybeAlien = Alien.getAlien(getItem1());
+                Optional<Alien> maybeAlien = AlienObjects.getAlien(getItem1());
 
                 if(maybeAlien.isPresent()){
                     Alien alien = maybeAlien.get();
