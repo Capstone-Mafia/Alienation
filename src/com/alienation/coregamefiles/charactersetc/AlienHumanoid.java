@@ -21,12 +21,12 @@ public class AlienHumanoid extends Alien{
     }
 
     @Override
-    public static int getAlienDP() {
+    public int getAlienDP() {
         return 5;
     }
 
     @Override
-    public static int getNewWeaponDamagePoints(Weapons weapon) {
+    public int getNewWeaponDamagePoints(Weapons weapon) {
         return weapon.getDamagePoints()-1;
     }
 }
