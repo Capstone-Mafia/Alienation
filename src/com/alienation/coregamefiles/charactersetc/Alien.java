@@ -37,6 +37,12 @@ public abstract class Alien {
     //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
     int alienHP;
 
+    public Alien() {
+
+    }
+
+
+    /**
     private static List<Alien> allAlienObjects;
     static {
         allAlienObjects.add(new AlienSuperhumanoid(50));
@@ -47,7 +53,7 @@ public abstract class Alien {
     }
     private static List<Alien> getAlienObjectList() {
         return allAlienObjects;
-    }
+    }*/
 
     public Alien(int alienHP) {
         this.alienHP = alienHP;
@@ -66,12 +72,7 @@ public abstract class Alien {
     }
 
     public static Optional<Alien> getAlien(String alienName){
-        for (Alien alien : allAlienObjects){
-            if (alien.getAlienName().equals(alienName)){
-                return Optional.of(alien);
-            }
-        }
-        return Optional.empty();
+        return AlienObjects.getAlien(alienName);
     }
 
     /**
