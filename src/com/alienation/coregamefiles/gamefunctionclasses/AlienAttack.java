@@ -52,7 +52,11 @@ public class AlienAttack {
                 if(alienNewHealthPoints > 0){
                     TimeUnit.SECONDS.sleep(2);
 
+<<<<<<< HEAD
                     System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back..." + getAnsiReset());
+=======
+                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back...");
+>>>>>>> master
                     int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 : (getHealth() - alienDamagePoints));
 
                     setHealth(characterFinalHealth);
