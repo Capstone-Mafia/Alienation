@@ -7,7 +7,6 @@ import java.util.List;
 
 import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
-import static com.alienation.coregamefiles.gameart.TextColors.ANSI_RESET;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.setAvailableItemsMap;
@@ -32,7 +31,7 @@ public class EatItems {
                     int healthPoints = edible.getHealthPoints();
                     if(items.contains(edible.getName())){
                         edibleItems++;
-                        System.out.println(ANSI_YELLOW + "\nYou ate " + getItem1() + ".  HP ++" + ANSI_RESET);
+                        System.out.println(getAnsiYellow() + "\nYou ate " + getItem1() + ".  HP ++" + getAnsiReset());
                         //Increase health points
                         setHealth(healthPoints);
                         //Remove from available items of room
@@ -40,7 +39,7 @@ public class EatItems {
                         setAvailableItemsMap(currentRoom, items);
                     }else if(getInventory().contains(getItem1())){
                         edibleItems++;
-                        System.out.println(ANSI_YELLOW + "\nYou ate " + getItem1() + ".  HP ++" + ANSI_RESET);
+                        System.out.println(getAnsiYellow() + "\nYou ate " + getItem1() + ".  HP ++" + getAnsiReset());
                         //Increase health points
                         setHealth(healthPoints);
                         List<String> newItems = getInventory();
@@ -49,17 +48,17 @@ public class EatItems {
                     }
                 }
                 if(edibleItems == 0){
-                    System.out.println(ANSI_RED + "There is nothing to eat!!" + ANSI_RESET);
+                    System.out.println(getAnsiRed() + "There is nothing to eat!!" + getAnsiReset());
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(ANSI_RED + "\nYou can't eat that." + ANSI_RESET);
+                System.out.println(getAnsiRed() + "\nYou can't eat that." + getAnsiReset());
             }
         } else if(Input.getItem1().equals("empty")){
-            System.out.println(ANSI_RED + "\n" + capitalizeAll(action.toString().toLowerCase()) +
-                    " what?" + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+                    " what?" + getAnsiReset());
         }
         else {
-            System.out.println(ANSI_RED + "\n" + "That's not in this room or your inventory." + ANSI_RESET);
+            System.out.println(getAnsiRed() + "\n" + "That's not in this room or your inventory." + getAnsiReset());
         }
         displayMenu();
     }
