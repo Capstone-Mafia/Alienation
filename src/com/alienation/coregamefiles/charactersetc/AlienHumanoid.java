@@ -17,7 +17,7 @@ public class AlienHumanoid extends Alien{
 
     @Override
     public String getAlienName() {
-        return "AlienHumanoid";
+        return "AlienSuperhumanoid";
     }
 
     @Override
