@@ -17,7 +17,7 @@ public class AlienAttackOrRun {
 
     // AttackAlien or Run from Alien in the room to previous room
 
-    public static void alienAttackOrRun(Rooms currentRoom, String alienType) {
+    public static void alienAttackOrRun(Rooms currentRoom, Alien alienType) {
         System.out.println(getAnsiYellow() + "\nWhat do you want to do?" + getAnsiReset());
 
 

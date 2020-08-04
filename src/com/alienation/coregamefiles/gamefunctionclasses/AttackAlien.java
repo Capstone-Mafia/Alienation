@@ -20,7 +20,6 @@ import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alien
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
 
-
 public class AttackAlien {
 
     /* -- AttackAlien the Alien in the room -- START */
@@ -34,7 +33,6 @@ public class AttackAlien {
 
         if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
             try {
-                //Optional<Alien> maybeAlien = Alien.getAlien(getItem1());
                 Optional<Alien> maybeAlien = AlienObjects.getAlien(getItem1());
 
                 if(maybeAlien.isPresent()){

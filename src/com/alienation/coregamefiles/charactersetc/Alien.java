@@ -34,28 +34,29 @@ import java.util.Optional;
  * Alien Class
  */
 public abstract class Alien {
-    //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
     int alienHP;
+    //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
+
+
+    public Alien() {
+
+    }
+
 
     /**
-    static List<Alien> allAlienObjects = new ArrayList<>();
+     private static List<Alien> allAlienObjects;
+     static {
+     allAlienObjects.add(new AlienSuperhumanoid(50));
+     allAlienObjects.add(new AlienHumanoid(10));
+     allAlienObjects.add(new AlienCanine(6));
+     allAlienObjects.add(new AlienVermin(4));
 
-    static {
-
-        allAlienObjects.add(new Alien(50));
-        allAlienObjects.add(new AlienHumanoid(10));
-        allAlienObjects.add(new AlienCanine(6));
-        allAlienObjects.add(new AlienVermin(4));
-
-    }
-
-    private static List<Alien> getAlienObjectList() {
-        return allAlienObjects;
-    }
-    */
+     }
+     private static List<Alien> getAlienObjectList() {
+     return allAlienObjects;
+     }*/
 
     public Alien(int alienHP) {
-
         this.alienHP = alienHP;
     }
 
@@ -76,42 +77,39 @@ public abstract class Alien {
     }
 
     /**
-    public static Map<String> getAliens(){
+     public static Map<String> getAliens(){
 
-        if(alienTypes.size() == 0) {
-            Map<String, Integer> alienPointWorth = new HashMap<>();
-            alienPointWorth.put("HP", 4);
-            alienPointWorth.put("DP", 1);
-            alienTypes.put("Vermin", alienPointWorth);
+     if(alienTypes.size() == 0) {
+     Map<String, Integer> alienPointWorth = new HashMap<>();
+     alienPointWorth.put("HP", 4);
+     alienPointWorth.put("DP", 1);
+     alienTypes.put("Vermin", alienPointWorth);
+     
+     alienPointWorth = new HashMap<>();
+     alienPointWorth.put("HP", 6);
+     alienPointWorth.put("DP", 3);
+     alienTypes.put("Canine", alienPointWorth);
 
-            alienPointWorth = new HashMap<>();
-            alienPointWorth.put("HP", 6);
-            alienPointWorth.put("DP", 3);
-            alienTypes.put("Canine", alienPointWorth);
+     alienPointWorth = new HashMap<>();
+     alienPointWorth.put("HP", 10);
+     alienPointWorth.put("DP", 5);
+     alienTypes.put("Humanoid", alienPointWorth);
 
-            alienPointWorth = new HashMap<>();
-            alienPointWorth.put("HP", 10);
-            alienPointWorth.put("DP", 5);
-            alienTypes.put("Humanoid", alienPointWorth);
+     alienPointWorth = new HashMap<>();
+     alienPointWorth.put("HP", 50);
+     alienPointWorth.put("DP", 10);
+     alienTypes.put("Superhumanoid", alienPointWorth);
+     }
 
-            alienPointWorth = new HashMap<>();
-            alienPointWorth.put("HP", 50);
-            alienPointWorth.put("DP", 10);
-            alienTypes.put("Superhumanoid", alienPointWorth);
-        }
-
-    }
-*/
+     }
+     */
 
 
-    public static void setHealthPoints(int alienNewHealthPoints){
+    public void setHealthPoints(int alienNewHealthPoints){
         this.alienHP = alienNewHealthPoints;
     }
 
-    public static int getHealthPoints(){
+    public int getHealthPoints(){
         return alienHP;
     }
-
-
 }
-
