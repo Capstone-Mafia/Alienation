@@ -34,8 +34,9 @@ import java.util.Optional;
  * Alien Class
  */
 public abstract class Alien {
-    //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
     int alienHP;
+    //private static Map<String,Map<String,Integer>> alienTypes = new HashMap<String,Map<String,Integer>>();
+
 
     public Alien() {
 
@@ -83,7 +84,7 @@ public abstract class Alien {
      alienPointWorth.put("HP", 4);
      alienPointWorth.put("DP", 1);
      alienTypes.put("Vermin", alienPointWorth);
-
+     
      alienPointWorth = new HashMap<>();
      alienPointWorth.put("HP", 6);
      alienPointWorth.put("DP", 3);
@@ -111,6 +112,4 @@ public abstract class Alien {
     public int getHealthPoints(){
         return alienHP;
     }
-
-
 }
