@@ -30,6 +30,7 @@ import static com.alienation.coregamefiles.gameart.TextColors.*;
  */
 public class Oxygen {
     public static int oxygen = 50;
+    public static int maxOxygen = 300;
     private static final String oTwo = "O\u2082"; // O₂
 
     //TODO: MAKE MAX OXYGEN
@@ -53,8 +54,11 @@ public class Oxygen {
 
     //Increases oxygen levels SETTERS
     public static void incOxygen(int incOxy) {
-        Oxygen.oxygen = Oxygen.oxygen + incOxy;
-        //TODO: IF OVER 100 SET IT TO MAX
+        if (oxygen+incOxy <= maxOxygen){
+            Oxygen.oxygen = Oxygen.oxygen + incOxy;}
+        else {
+            oxygen = maxOxygen;
+        }
     }
 
     // checks oxygen levels
