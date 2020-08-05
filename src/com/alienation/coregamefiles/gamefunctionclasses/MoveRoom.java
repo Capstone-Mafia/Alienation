@@ -1,6 +1,7 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.rooms.Room;
 
 import static com.alienation.coregamefiles.charactersetc.Player.setPreviousRoom;
 import static com.alienation.coregamefiles.charactersetc.Player.setTempRoom;
@@ -13,7 +14,7 @@ public class MoveRoom {
 
     // Move Room from one to another
     public static void moveRoom(String direction, Rooms currentRoom) throws Exception {
-        Rooms nextRoom = getAvailableDirectionsMap().get(currentRoom).get(direction);
+        Rooms nextRoom = getNextRoom(direction, currentRoom);
         if(nextRoom != null){
             setPreviousRoom(currentRoom);
             setTempRoom(currentRoom);
@@ -23,5 +24,10 @@ public class MoveRoom {
             System.out.println(getAnsiRed() + "\nThere doesn't seem to be a door this way.\n" + getAnsiReset());
             displayMenu();
         }
+    }
+
+    public static Rooms getNextRoom(String direction, Rooms currentRoom){
+        return getAvailableDirectionsMap().get(currentRoom).get(direction);
+
     }
 }
