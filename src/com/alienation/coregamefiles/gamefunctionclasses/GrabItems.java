@@ -40,7 +40,7 @@ public class GrabItems {
 
             if(getItem2().equals("Oxygen Tank")){
                 Oxygen.incOxygen(100);
-                System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels." +
+                System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels to " + Oxygen.getOxygen() +
                         getAnsiReset());
                 items.remove(getItem2());
                 setAvailableItemsMap(currentRoom, items);
