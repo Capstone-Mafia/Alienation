@@ -22,6 +22,7 @@
 
 package com.alienation.coregamefiles.gamefunctionclasses;
 
+import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
 import com.alienation.coregamefiles.parseinput.Input;
@@ -80,7 +81,7 @@ public class Menu {
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
                 "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + getAnsiBlue() +
-                getCurrentWeapon() + end  + "]");
+                getCurrentWeapon() + end  + "[Time passed: "+ Player.getTime() + "]");
         System.out.println(lines);
 
         boolean repeat = true;

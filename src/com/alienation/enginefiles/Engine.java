@@ -25,6 +25,7 @@ import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
+import com.alienation.tools.Time;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -142,7 +143,8 @@ public class Engine {
                 } else {
                     new CapsuleRoom().loadEnvironment();
                 }
-            } else {
+            } else {// new game case
+                Player.setTime(new Time());
                 new CapsuleRoom().loadEnvironment();
             }
         } else {
