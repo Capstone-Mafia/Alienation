@@ -35,6 +35,7 @@ public class Grab implements Action {
 
     private static Object targetValue;
 
+
     //try to read file, if not, print stack trace
     static {
         try {
@@ -53,10 +54,9 @@ public class Grab implements Action {
             //create list of the synonyms
             String[] allTheSynonyms = nextLine.split(", ");
 
-            for(String s : allTheSynonyms) {
-                if (s.equals(targetValue)) {
-                    String action = "GRAB";
-                    break;
+            for (String allTheSynonym : allTheSynonyms) {
+                if(allTheSynonym.equals(targetValue)) {
+                    //do th th9ing: if the word they typed equals one of the "grab" words, then grab
                 }
             }
 
