@@ -62,7 +62,17 @@ public class SupplyRoom extends Room {
         return getAnsiBlue() + "\n\nYou've entered a dim room with racks of common supplies. This must be the supply room.  There's a big metal\n" +
                 "cage where all the rare and expensive parts are kept, but it's locked. The only way to open it is at the computer terminal with\n" +
                 "an access code. Something is dripping onto your shoulder... some sort of slimey viscous substance. It looks like one computer still\n" +
-                "works, but you need an access code.\n" + getAnsiReset();
+                "works, but you need an access code.\n" +
+                "                  .----.\n" +
+                "      .---------. | == |\n" +
+                "      |.-\"\"\"\"\"-.| |----|\n" +
+                "      ||       || | == |\n" +
+                "      ||       || |----|\n" +
+                "      |'-.....-'| |::::|\n" +
+                "      `\"\")---(\"\"` |___.|\n" +
+                "     /:::::::::::\\\" _  \"\n" +
+                "    /:::=======:::\\`\\`\\\n" +
+                "    `\"\"\"\"\"\"\"\"\"\"\"\"\"`  '-'" + getAnsiReset();
     }
 
     public static String getUpdatedStory() {
