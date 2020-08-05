@@ -24,11 +24,16 @@ package com.alienation.coregamefiles.parseinput;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 
 public class Grab implements Action {
+
+    private static Object targetValue;
 
     //try to read file, if not, print stack trace
     static {
@@ -43,17 +48,22 @@ public class Grab implements Action {
             Scanner synonymScanner = new Scanner(synonyms);
 
             //read one line at a time from file
-            String nextLine = synonymScanner.nextLine();
+            String nextLine = synonymScanner.nextLine().toUpperCase();
 
             //create list of the synonyms
             String[] allTheSynonyms = nextLine.split(", ");
 
+            for(String s : allTheSynonyms) {
+                if (s.equals(targetValue)) {
+                    String action = "GRAB";
+                    break;
+                }
+            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void run(Scanner args) {

@@ -84,4 +84,13 @@ public class Input {
         return item2;
     }
 
+    //setters needed for testing purposes
+    public static void setItem1(String item1) {
+        Input.item1 = item1;
+    }
+
+    public static void setItem2(String item2) {
+        Input.item2 = item2;
+    }
+
 }
