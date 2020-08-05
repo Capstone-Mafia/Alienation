@@ -23,6 +23,7 @@
 package com.alienation.coregamefiles.charactersetc;
 
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.tools.Time;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +45,18 @@ public class Player {
     private static Rooms previousRoom;
     private static Rooms tempRoom;
     private static List<String> inventory = new ArrayList<>();
+    private static Time time;
 
 
     /*************** GETTER - SETTER METHODS  ******************/
+    public static void setTime(Time time) {
+        Player.time = time;
+    }
+
+    public static Time getTime() {
+        return time;
+    }
+
     public static int getHealth() {
         return health;
 
@@ -90,8 +100,15 @@ public class Player {
     }
 
     // set available items updated items if item moved to Inventory or Eat an item
-    public static void setInventory(List<String> newInventory) {
-        inventory = newInventory;
+    public static void setInventory(List<String> newInventoryList) {
+        inventory = newInventoryList;
+    }
+    public static void addToInventory(String newInventory) {
+        getInventory().add(newInventory);
+    }
+
+    public static void removeFromInventory(String newInventory) {
+        getInventory().remove(newInventory);
     }
 
     public static Rooms getPreviousRoom() {
