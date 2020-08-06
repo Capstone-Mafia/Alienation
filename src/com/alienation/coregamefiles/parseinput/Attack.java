@@ -40,7 +40,9 @@ public class Attack implements Action {
         try {
             Rooms currentRoom = getCurrentRoom();
             //locate the cvs txt file w/ synonyms
-            String fileLocation = "inputsynonyms" + File.separator + "attackSyns.txt";
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
+                    "inputsynonyms" + File.separator + "attackSyns.txt";
 
             //define the file by location
             File synonyms = new File(fileLocation);

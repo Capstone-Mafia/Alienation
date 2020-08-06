@@ -41,7 +41,9 @@ public class Grab implements Action {
         try {
             Rooms currentRoom = getCurrentRoom();
             //locate the cvs txt file w/ synonyms
-            String fileLocation = "inputsynonyms" + File.separator + "grabSyns.txt";
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
+                    "inputsynonyms" + File.separator + "grabSyns.txt";
 
             //define the file by location
             File synonyms = new File(fileLocation);
