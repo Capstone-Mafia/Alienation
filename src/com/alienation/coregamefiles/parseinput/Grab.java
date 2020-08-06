@@ -22,14 +22,14 @@
 
 package com.alienation.coregamefiles.parseinput;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import com.alienation.coregamefiles.enums.Rooms;
 
+import java.io.File;
+import java.util.Scanner;
+
+import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
+import static com.alienation.coregamefiles.gamefunctionclasses.GrabItems.grab;
 
 public class Grab implements Action {
 
@@ -37,8 +37,9 @@ public class Grab implements Action {
 
 
     //try to read file, if not, print stack trace
-    static {
+    public static Object performAction() {
         try {
+            Rooms currentRoom = getCurrentRoom();
             //locate the cvs txt file w/ synonyms
             String fileLocation = "inputsynonyms" + File.separator + "grabSyns.txt";
 
@@ -54,21 +55,25 @@ public class Grab implements Action {
             //create list of the synonyms
             String[] allTheSynonyms = nextLine.split(", ");
 
-            for (String allTheSynonym : allTheSynonyms) {
-                if(allTheSynonym.equals(targetValue)) {
-                    //do th th9ing: if the word they typed equals one of the "grab" words, then grab
+            //look for this synonym among all the synonyms
+            //if it's an approved synonym, do the thing. grab that thing.
+            for (String theSynonym : allTheSynonyms) {
+                if(theSynonym.equals(targetValue)) {
+                    //do the thing: if the word they typed equals one of the "grab" words, then grab
+                    grab(currentRoom);
                 }
             }
-
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        //return null;
+        return null;
     }
 
-    @Override
-    public void run(Scanner args) {
-        if (!args.hasNext())
-            throw new IllegalArgumentException(getAnsiRed() + "What do you want to grab?" + getAnsiReset());
-        System.out.println(getAnsiCyan() + "Grabbing " + args.next() + getAnsiReset());
-    }
+//    @Override
+//    public void run(Scanner args) {
+//        if (!args.hasNext())
+//            throw new IllegalArgumentException(getAnsiRed() + "What do you want to grab?" + getAnsiReset());
+//        System.out.println(getAnsiCyan() + "Grabbing " + args.next() + getAnsiReset());
+//    }
 }

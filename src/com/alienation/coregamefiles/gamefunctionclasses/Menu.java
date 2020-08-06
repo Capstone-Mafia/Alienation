@@ -25,14 +25,16 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
-import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.coregamefiles.parseinput.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.charactersetc.Player.*;
+import static com.alienation.coregamefiles.enums.Actions.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AttackAlien.attack;
 import static com.alienation.coregamefiles.gamefunctionclasses.CheckInventory.checkInventory;
@@ -46,6 +48,7 @@ import static com.alienation.coregamefiles.gamefunctionclasses.ReadThings.read;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SaveGame.saveGameDataToFile;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
+import static com.alienation.coregamefiles.parseinput.Input.*;
 
 /**
  * Menu For Console
@@ -81,15 +84,44 @@ public class Menu {
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
                 "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + getAnsiBlue() +
-                getCurrentWeapon() + end  + "[Time passed: "+ Player.getTime() + "]");
+                getCurrentWeapon() + end  + "[Time passed: "+ getTime() + "]");
         System.out.println(lines);
 
         boolean repeat = true;
 
         while (repeat) {
             try {
-                Input.getInput();
-                action = Actions.valueOf(Input.getActionInput());
+                String commandIn = (String) getInput();
+                assert commandIn != null;
+                if(commandIn.equals(Look.performAction())) {
+                    action = LOOK;
+                    repeat = false;
+                }
+                if(commandIn.equals(Open.performAction())) {
+                    action = OPEN;
+                    repeat = false;
+                }
+                if(commandIn.equals(Eat.performAction())) {
+                    action = EAT;
+                    repeat = false;
+                }
+                if(commandIn.equals(Grab.performAction())) {
+                    action = GRAB;
+                    repeat = false;
+                }
+                if(commandIn.equals(Attack.performAction())) {
+                    action = ATTACK;
+                    repeat = false;
+                }
+                if(commandIn.equals(Read.performAction())) {
+                    action = READ;
+                    repeat = false;
+                }
+                if(commandIn.equals(Swap.performAction())) {
+                    action = SWAP;
+                    repeat = false;
+                }
+                action = Actions.valueOf(getActionInput());
                 repeat = false;
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
@@ -102,8 +134,6 @@ public class Menu {
         /********* lots of unimplemented actions, could be simplified" *******/
         // Action verbs... things the character can do
         switch (action) {
-            case INVESTIGATE:
-            case SEE:
             case LOOK:
                 investigate(currentRoom);
                 break;
@@ -111,23 +141,17 @@ public class Menu {
                 open(currentRoom);
                 break;
             case EAT:
-            case DRINK:
                 eat(currentRoom);
                 break;
             case GRAB:
-            case GET:
-            case TAKE:
                 grab(currentRoom);
                 break;
-            case FIGHT:
             case ATTACK:
                 attack(currentRoom);
                 break;
             case READ:
                 read();
                 break;
-            case EQUIP:
-            case HOLD:
             case SWAP:
                 swap(currentRoom);
                 break;

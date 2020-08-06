@@ -25,7 +25,11 @@ package com.alienation.coregamefiles.parseinput;
 import java.util.Scanner;
 
 public interface Action {
-    void run(Scanner args);
+    //void run(Scanner args);
+
+    static Object performAction() {
+        return null;
+    }
 
     //TODO: implement ObjectInputStream, or some other method (check existing xml reader class for idea), to
     // use this in each implementing class to read from a related xml file for synonyms to implement

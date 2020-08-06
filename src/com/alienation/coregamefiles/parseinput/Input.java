@@ -34,7 +34,7 @@ public class Input {
     private static String item1;
     private static String item2;
 
-    public static void getInput(){
+    public static Object getInput(){
 
         item1 = null;
         item2 = null;
@@ -63,6 +63,7 @@ public class Input {
             item2 = item1 + " " + tokens[2];
         }
 
+        return null;
     }
 
     /**capitalized before usage in case someone forgets to
@@ -92,5 +93,10 @@ public class Input {
     public static void setItem2(String item2) {
         Input.item2 = item2;
     }
+
+    //TODO: try While loop that runs search with the desired word through each of the .txt files, one after the other
+    // put them all in a try catch, then nested If statements.
+    // set a boolean (condition for while loop), first search first txt, if found, reset bool to true
+    // if not the first one, then check if in next one, etc 
 
 }
