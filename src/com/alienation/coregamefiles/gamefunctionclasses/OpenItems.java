@@ -19,7 +19,6 @@ public class OpenItems {
     //Open something
     public static void open(Rooms currentRoom) throws Exception {
         setItem1(capitalizeAll(Input.getItem1())); // Chips
-        setItem2(capitalizeAll(Input.getItem2())); // Oxygen Tank
 
         List<String> items = getAvailableItemsMap().get(currentRoom);
 

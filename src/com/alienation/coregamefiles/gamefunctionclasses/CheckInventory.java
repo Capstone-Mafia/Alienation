@@ -16,7 +16,7 @@ public class CheckInventory {
         final String lines = "************";
         System.out.println(space + getAnsiYellow() + "Inventory\n");
         System.out.println(lines);
-        for (String item : inventory) {
+        for (Object item : inventory) {
             System.out.println(item);
         }
         System.out.println(lines + getAnsiReset());
