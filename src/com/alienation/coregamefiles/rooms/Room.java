@@ -24,6 +24,8 @@ package com.alienation.coregamefiles.rooms;
 
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.charactersetc.Oxygen;
+import com.alienation.coregamefiles.gameart.Death;
+import com.alienation.tools.Time;
 
 public abstract class Room {
     private int minusOxy = 10; // TODO: Make random number??
@@ -36,6 +38,9 @@ public abstract class Room {
         Player.checkHealth();
         Oxygen.minOxygen(minusOxy);
         Oxygen.checkOxy();
+        if (Player.getTime().secondsElapsed()>600){
+            Death.death();
+        };
         System.out.println(getStory());
     }
 }
