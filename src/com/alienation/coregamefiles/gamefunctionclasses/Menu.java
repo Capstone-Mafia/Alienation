@@ -50,7 +50,7 @@ import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
 public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
-    private static String actionQuestion = "What will you do? (o for options)";
+    private static String actionQuestion = "What will you do?";
     private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n";
     private static String directions = "Try : N, north, S, South, e, W, west to move around\n";
     private static String inv = "Check Inventory < i >";
@@ -172,19 +172,19 @@ public class Menu {
     }
 
     /*************** GETTER - SETTER METHODS  ******************/
-    private static String getActionQuestion() {
+    public static String getActionQuestion() {
         return actionQuestion;
     }
 
-    private static String getActions() {
+    public static String getActions() {
         return actions;
     }
 
-    private static String getDirections() {
+    public static String getDirections() {
         return directions;
     }
 
-    private static String getInv(){
+    public static String getInv(){
         return inv;
     }
 

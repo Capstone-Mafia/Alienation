@@ -1,5 +1,7 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
+import com.alienation.enginefiles.Game;
+
 import java.util.List;
 
 import static com.alienation.coregamefiles.charactersetc.Player.getInventory;
@@ -18,8 +20,11 @@ public class CheckInventory {
         System.out.println(lines);
         for (String item : inventory) {
             System.out.println(item);
+
         }
         System.out.println(lines + getAnsiReset());
         displayMenu();
+
+
     }
 }

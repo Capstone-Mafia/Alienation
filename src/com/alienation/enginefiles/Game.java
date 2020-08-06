@@ -12,6 +12,7 @@ import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.gameart.Banner;
+import com.alienation.coregamefiles.gamefunctionclasses.CheckInventory;
 import com.alienation.coregamefiles.gamefunctionclasses.ImageViewer;
 import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gamefunctionclasses.MoveRoom;
@@ -36,20 +37,20 @@ import static java.lang.System.getProperty;
 
 public class Game {
 
-    JFrame window;
+    public static JFrame window;
 //    Container con;
-    static JPanel titleNamePanel, infoPanel, mainMapPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    static JPanel secondTextpanel, inventoryButtonPanel, titleNamePanel, infoPanel, mainMapPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
     static JLabel titleNameLabel, carMapLabel, corMapLabel, arMapLabel, srMapLabel, kMapLabel, mainMapLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
     static Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
     static Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
-    static JButton startButton, choice1, choice2, choice3, choice4;
-    static JTextArea mainTextArea;
+    static JButton inv, startButton, choice1, choice2, choice3, choice4;
+    static JTextArea mainTextArea, secondTextArea;
     int playerHP, monsterHP, silverRing;
     String weapon;
     static String position;
 
-    TitleScreenHandler tsHandler = new TitleScreenHandler();
-    ChoiceHandler choiceHandler = new ChoiceHandler();
+    static TitleScreenHandler tsHandler = new TitleScreenHandler();
+    static ChoiceHandler choiceHandler = new ChoiceHandler();
 
 
 
@@ -62,7 +63,7 @@ public class Game {
 
         //Main Game window
         window = new JFrame();
-        window.setSize(800, 600);
+        window.setSize(810, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
@@ -126,7 +127,7 @@ public class Game {
 
     }
 
-    public void createGameScreen() throws Exception {
+    public static void createGameScreen() throws Exception {
 
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
@@ -152,27 +153,45 @@ public class Game {
 
         //Main text panel.
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(400, 50, 400, 350);
-        mainTextPanel.setBackground(Color.black);
+        mainTextPanel.setBounds(400, 50, 400, 175);
+        mainTextPanel.setBackground(Color.cyan);
         window.add(mainTextPanel);
 //        window.pack();
 
         // Adding text field to text panel.
         mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
-        mainTextArea.setBounds(400, 50, 395, 350);
+        mainTextArea.setBounds(400, 50, 380, 170);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
 //        mainTextArea.setFont(normalFont);
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
 
-        // Create button panel.
+        // Second text panel
+        secondTextpanel = new JPanel();
+        secondTextpanel.setBounds(400,250, 400, 150);
+        secondTextpanel.setBackground(Color.green);
+        window.add(secondTextpanel);
+
+        //Second text area
+        secondTextArea = new JTextArea("This is the secondary text area.");
+        secondTextArea.setBounds(400, 250, 380, 150);
+        secondTextArea.setBackground(Color.black);
+        secondTextArea.setForeground(Color.white);
+//        mainTextArea.setFont(normalFont);
+        secondTextArea.setLineWrap(true);
+        secondTextpanel.add(secondTextArea);
+
+
+
+        // Create direction button panel.
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(0, 500, 800, 50);
+        choiceButtonPanel.setBounds(0, 500, 600, 50);
         choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(1, 4));
         window.add(choiceButtonPanel);
 
+        // Button properties.
         choice1 = new JButton("Choice 1");
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
@@ -209,33 +228,24 @@ public class Game {
         choice4.setActionCommand("c4");
         choiceButtonPanel.add(choice4);
 
-        capsuleRoom();
-//        new CapsuleRoom().loadEnvironment();
+        // Create Inventory button panel.
+        inventoryButtonPanel = new JPanel();
+        inventoryButtonPanel.setBounds(600, 500, 150, 50);
+        inventoryButtonPanel.setBackground(Color.black);
+//        inventoryButtonPanel.setLayout(new GridLayout(1, 4));
+        window.add(inventoryButtonPanel);
 
-//        playerPanel = new JPanel();
-//        playerPanel.setBounds(100, 15, 600, 50);
-//        playerPanel.setBackground(Color.black);
-//        playerPanel.setLayout(new GridLayout(1,4));
-//        window.add(playerPanel);
-//        hpLabel = new JLabel("HP:");
-//        hpLabel.setFont(normalFont);
-//        hpLabel.setForeground(Color.white);
-//        playerPanel.add(hpLabel);
-//        hpLabelNumber = new JLabel();
-//        hpLabelNumber.setFont(normalFont);
-//        hpLabelNumber.setForeground(Color.white);
-//        playerPanel.add(hpLabelNumber);
-//        weaponLabel = new JLabel("Weapon:");
-//        weaponLabel.setFont(normalFont);
-//        weaponLabel.setForeground(Color.white);
-//        playerPanel.add(weaponLabel);
-//        weaponLabelName = new JLabel();
-//        weaponLabelName.setFont(normalFont);
-//        weaponLabelName.setForeground(Color.white);
-//        playerPanel.add(weaponLabelName);
-//
-//        playerSetup();
-//
+        inv = new JButton("Inventory");
+        inv.setBackground(Color.black);
+        inv.setForeground(Color.white);
+        inv.setFont(normalFont);
+        inv.setFocusPainted(false);
+        inv.addActionListener(choiceHandler);
+        inv.setActionCommand("inv");
+        inventoryButtonPanel.add(inv);
+
+        capsuleRoom();
+
     }
 //    public void playerSetup(){
 //        playerHP = 15;
@@ -246,20 +256,27 @@ public class Game {
 //
 //        townGate();
 //    }
-    public void capsuleRoom() throws Exception {
-//        new CapsuleRoom().loadEnvironment();
+    public static void capsuleRoom() throws Exception {
+        new CapsuleRoom().loadEnvironment();
         position = "CapsuleRoom";
         // Map Label
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "CapsuleRoom.png";
-        img = ImageIO.read(getClass().getResource(imgPath));
+        img = ImageIO.read(Game.class.getResource(imgPath));
         Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(dimg);
         carMapLabel = new JLabel();
         carMapLabel.setIcon(imgIcon);
         mainMapPanel.add(carMapLabel);
         mainTextArea.setText(getStory());
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n" + Menu.getDirections());
+
+//        // trying to display inventory to the second text area.
+//        String delim = "-";
+//        String res = String.join(delim, Player.getInventory());
+//        secondTextArea.setText(res);
+
         choice1.setText("North");
         choice2.setText("South");
         choice3.setText("East");
@@ -267,20 +284,27 @@ public class Game {
         choice2.setVisible(true);
         choice3.setVisible(true);
         choice4.setVisible(false);
+        inv.setVisible(true);
     }
-    public void supplyRoom() throws IOException {
+
+
+    public static void supplyRoom() throws Exception {
+
+        new SupplyRoom().loadEnvironment();
         position = "SupplyRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "SupplyRoom.png";
-        img = ImageIO.read(getClass().getResource(imgPath));
+        img = ImageIO.read(Game.class.getResource(imgPath));
         Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(dimg);
         srMapLabel = new JLabel();
         srMapLabel.setIcon(imgIcon);
         mainMapPanel.add(srMapLabel);
         srMapLabel.setVisible(true);
+        mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n" + Menu.getDirections());
 
         choice1.setText("South");
         choice2.setText("East");
@@ -289,14 +313,16 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void controlRoom() throws IOException {
+
+
+    public static void controlRoom() throws IOException {
         position = "ControlRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.ControlRoom.getStory());
         // Map Label
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "ControlRoom.png";
-        img = ImageIO.read(getClass().getResource(imgPath));
+        img = ImageIO.read(Game.class.getResource(imgPath));
         Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(dimg);
         corMapLabel = new JLabel();
@@ -311,13 +337,15 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void alienRoom() throws IOException {
+
+
+    public static void alienRoom() throws IOException {
         position = "AlienRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.AlienRoom.getStory());
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "AlienRoom.png";
-        img = ImageIO.read(getClass().getResource(imgPath));
+        img = ImageIO.read(Game.class.getResource(imgPath));
         Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(dimg);
         arMapLabel = new JLabel();
@@ -332,7 +360,9 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void kitchen() throws IOException {
+
+
+    public static void kitchen() throws IOException {
         position = "Kitchen";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
 //        playerHP = playerHP + 2;
@@ -340,7 +370,7 @@ public class Game {
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "Kitchen.png";
-        img = ImageIO.read(getClass().getResource(imgPath));
+        img = ImageIO.read(Game.class.getResource(imgPath));
         Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(dimg);
         kMapLabel = new JLabel();
@@ -464,7 +494,7 @@ public class Game {
 
 
 
-    public class TitleScreenHandler implements ActionListener{
+    public static class TitleScreenHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
 
@@ -477,7 +507,7 @@ public class Game {
             }
         }
     }
-    public class ChoiceHandler implements ActionListener{
+    public static class ChoiceHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
 
@@ -491,7 +521,9 @@ public class Game {
                             try {
 //                                MoveRoom.moveRoom("N", getCurrentRoom());
                                 carMapLabel.setVisible(false);
-                                supplyRoom();break;
+                                supplyRoom();
+//                                new SupplyRoom();
+                                break;
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -512,6 +544,15 @@ public class Game {
                                 e.printStackTrace();
                             }
                             break;
+                        case "inv":
+                            try {
+                                String delim = "-";
+                                String res = String.join(delim, Player.getInventory());
+                                secondTextArea.setText(res);
+//                                CheckInventory.checkInventory();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                     }
                     break;
                 case "SupplyRoom":

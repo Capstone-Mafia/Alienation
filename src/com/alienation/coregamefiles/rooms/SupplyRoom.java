@@ -40,8 +40,8 @@ public class SupplyRoom extends Room {
     // This method used to load Environment to user
     public void loadEnvironment() throws Exception {
         super.loadEnvironment();
-        System.out.println(RoomsMap.supplyRoom());
-        Menu.displayMenu();
+//        System.out.println(RoomsMap.supplyRoom());
+//        Menu.displayMenu();
     }
 
     // Get Story line while page loads
