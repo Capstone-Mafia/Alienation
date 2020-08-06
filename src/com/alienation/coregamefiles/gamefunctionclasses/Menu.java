@@ -91,38 +91,38 @@ public class Menu {
 
         while (repeat) {
             try {
-                String commandIn = (String) getInput();
-                assert commandIn != null;
-                if(commandIn.equals(Look.performAction())) {
+                Input.getInput();
+                setVerb(getActionInput());
+                if(Look.performAction()) {
                     action = LOOK;
                     repeat = false;
                 }
-                if(commandIn.equals(Open.performAction())) {
+                if(Open.performAction()) {
                     action = OPEN;
                     repeat = false;
                 }
-                if(commandIn.equals(Eat.performAction())) {
+                if(Eat.performAction()) {
                     action = EAT;
                     repeat = false;
                 }
-                if(commandIn.equals(Grab.performAction())) {
+                if(Grab.performAction()) {
                     action = GRAB;
                     repeat = false;
                 }
-                if(commandIn.equals(Attack.performAction())) {
+                if(Attack.performAction()) {
                     action = ATTACK;
                     repeat = false;
                 }
-                if(commandIn.equals(Read.performAction())) {
+                if(Read.performAction()) {
                     action = READ;
                     repeat = false;
                 }
-                if(commandIn.equals(Swap.performAction())) {
+                if(Swap.performAction()) {
                     action = SWAP;
                     repeat = false;
                 }
-                action = Actions.valueOf(getActionInput());
-                repeat = false;
+//                action = Actions.valueOf(getActionInput());
+//                repeat = false;
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
                 repeat = true;
