@@ -1,0 +1,11 @@
+read,
+interpret,
+know,
+learn,
+grok,
+study,
+translate,
+comprehend,
+decipher,
+peruse,
+skim

@@ -22,16 +22,57 @@
 
 package com.alienation.coregamefiles.parseinput;
 
+import com.alienation.coregamefiles.enums.Rooms;
+
+import java.io.File;
 import java.util.Scanner;
 
+import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
+import static com.alienation.coregamefiles.gamefunctionclasses.GrabItems.grab;
 
 public class Attack implements Action {
 
-    @Override
-    public void run(Scanner args) {
-        if (!args.hasNext())
-            throw new IllegalArgumentException(getAnsiRed() + "What do you want to attack?" + getAnsiReset());
-        System.out.println(getAnsiCyan() + "Attacking " + args.next() + getAnsiReset());
+    private static Object targetValue;
+
+    //try to read file, if not, print stack trace
+    public static Object performAction() {
+        try {
+            Rooms currentRoom = getCurrentRoom();
+            //locate the cvs txt file w/ synonyms
+            String fileLocation = "inputsynonyms" + File.separator + "attackSyns.txt";
+
+            //define the file by location
+            File synonyms = new File(fileLocation);
+
+            //instantiate scanner to read file
+            Scanner synonymScanner = new Scanner(synonyms);
+
+            //read one line at a time from file
+            String nextLine = synonymScanner.nextLine().toUpperCase();
+
+            //create list of the synonyms
+            String[] allTheSynonyms = nextLine.split(", ");
+
+            //look for this synonym among all the synonyms
+            //if it's an approved synonym, do the thing. grab that thing.
+            for (String theSynonym : allTheSynonyms) {
+                if(theSynonym.equals(targetValue)) {
+                    //do the thing: if the word they typed equals one of the "grab" words, then grab
+                    grab(currentRoom);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //return null;
+        return null;
     }
+
+//    @Override
+//    public void run(Scanner args) {
+//        if (!args.hasNext())
+//            throw new IllegalArgumentException(getAnsiRed() + "What do you want to attack?" + getAnsiReset());
+//        System.out.println(getAnsiCyan() + "Attacking " + args.next() + getAnsiReset());
+//    }
 }

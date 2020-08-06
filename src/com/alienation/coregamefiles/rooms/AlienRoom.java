@@ -63,7 +63,18 @@ public class AlienRoom extends Room {
     /*************** GETTER - SETTER METHODS  ******************/
     public static String getInitialStory() {
         return getAnsiBlue() + "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
-                    "Wait... you see something in the corner slumped over, moving back and forth.\n" + getAnsiReset();
+                    "Wait... you see something in the corner slumped over, moving back and forth.\n" +
+                "       .-\"\"\"\"-.        .-\"\"\"\"-.\n" +
+                "      /        \\      /        \\\n" +
+                "     /_        _\\    /_        _\\\n" +
+                "    // \\      / \\\\  // \\      / \\\\\n" +
+                "    |\\__\\    /__/|  |\\__\\    /__/|\n" +
+                "     \\    ||    /    \\    ||    /\n" +
+                "      \\        /      \\        /\n" +
+                "       \\  __  /        \\  __  / \n" +
+                "        '.__.'          '.__.'\n" +
+                "         |  |            |  |\n" +
+                "         |  |            |  |" + getAnsiReset();
     }
 
     public static String getUpdatedStory() {

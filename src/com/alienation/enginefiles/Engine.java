@@ -95,7 +95,7 @@ public class Engine {
 
                         Player.setHealth(currentHealth - Player.getHealth());
                         /**ideally Player is its own instance.
-                         * and each cahracter will have its own getHealth method, so it should have instance method not
+                         * and each character will have its own getHealth method, so it should have instance method not
                          class method
                          bc there's only one character it's ok now. still not ideal*/
 

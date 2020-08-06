@@ -1,8 +1,8 @@
+look,
 consider,
 glance,
 notice,
 peer,
-read,
 see,
 stare,
 study,
@@ -38,6 +38,7 @@ spot.
 spy,
 survey,
 tend,
+discover,
 take a gander,
 look about,
 get a load of

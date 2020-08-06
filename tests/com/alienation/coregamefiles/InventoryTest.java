@@ -28,8 +28,6 @@ public class InventoryTest extends TestCase {
         expectedList.add("apple");
         List<String> invetoryList = Player.getInventory();
         assertEquals(expectedList, invetoryList);
-
-
     }
 
     public void testRemoveItem() throws Exception {
