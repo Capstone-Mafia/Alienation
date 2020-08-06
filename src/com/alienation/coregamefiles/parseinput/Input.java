@@ -22,12 +22,17 @@
 
 package com.alienation.coregamefiles.parseinput;
 
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 /**
  * Receives all user Input
  */
 public class Input {
+
+    //create field for confirming verb synonym input with listed syns
+    private static String checkVerb;
+
 
 
     private static String verb;
@@ -85,18 +90,13 @@ public class Input {
         return item2;
     }
 
-    //setters needed for testing purposes
-    public static void setItem1(String item1) {
-        Input.item1 = item1;
-    }
-
-    public static void setItem2(String item2) {
-        Input.item2 = item2;
-    }
-
     //TODO: try While loop that runs search with the desired word through each of the .txt files, one after the other
     // put them all in a try catch, then nested If statements.
     // set a boolean (condition for while loop), first search first txt, if found, reset bool to true
-    // if not the first one, then check if in next one, etc 
+    // if not the first one, then check if in next one, etc
+
+    public static void setVerb(String verb) {
+        Input.verb = verb;
+    }
 
 }

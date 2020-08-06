@@ -27,8 +27,8 @@ import java.util.Scanner;
 public interface Action {
     //void run(Scanner args);
 
-    static Object performAction() {
-        return null;
+    static boolean performAction() {
+        return false;
     }
 
     //TODO: implement ObjectInputStream, or some other method (check existing xml reader class for idea), to
