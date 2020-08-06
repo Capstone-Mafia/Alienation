@@ -41,7 +41,9 @@ public class Open implements Action {
         try {
             Rooms currentRoom = getCurrentRoom();
             //locate the cvs txt file w/ synonyms
-            String fileLocation = "inputsynonyms" + File.separator + "openSyns.txt";
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
+                    "inputsynonyms" + File.separator + "openSyns.txt";
 
             //define the file by location
             File synonyms = new File(fileLocation);
