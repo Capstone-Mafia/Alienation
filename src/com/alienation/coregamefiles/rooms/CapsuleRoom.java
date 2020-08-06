@@ -24,6 +24,7 @@ package com.alienation.coregamefiles.rooms;
 
 import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gameart.RoomsMap;
+import com.alienation.enginefiles.Game;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 
@@ -34,19 +35,20 @@ import static com.alienation.coregamefiles.gameart.TextColors.*;
 public class CapsuleRoom extends Room {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
-    public int count = 0;
+    public static int count = 0;
 
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
     public void loadEnvironment() throws Exception {
         count++;
         super.loadEnvironment();
-        System.out.println(RoomsMap.capsuleRoom());
+        // Line below is not needed - Guru
+//        System.out.println(RoomsMap.capsuleRoom());
         Menu.displayMenu();
     }
 
     // Get Story line while page loads
-    public String getStory() {
+    public static String getStory() {
         if(count == 1){
             return getInitialStory();
         }
@@ -59,7 +61,7 @@ public class CapsuleRoom extends Room {
     }
 
     /*************** GETTER - SETTER METHODS  ******************/
-    public String getInitialStory() {
+    public static String getInitialStory() {
         return getAnsiBlue() + "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
                 "You can tell the oxygen levels are low as it seems harder to breathe.  As you look around you notice that there is one crew member\n" +
                 "missing and their sleeping capsule is shattered with blood splattered across the front. The ship seems to be drifting in\n" +
@@ -77,11 +79,11 @@ public class CapsuleRoom extends Room {
                 " `------'  "+ getAnsiReset();
     }
 
-    public String getUpdatedStory() {
+    public static String getUpdatedStory() {
         return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Another crew member is missing. There is a blood trail....\n"+ getAnsiReset();
     }
 
-    public String getLastStory() {
+    public static String getLastStory() {
         return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Nothing has changed. There are crew members missing and blood everywhere."+ getAnsiReset();
     }
 }

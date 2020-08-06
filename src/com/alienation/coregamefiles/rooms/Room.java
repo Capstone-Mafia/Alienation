@@ -30,7 +30,7 @@ import com.alienation.tools.Time;
 public abstract class Room {
     private int minusOxy = 10; // TODO: Make random number??
 
-    public String getStory() {
+    public static String getStory() {
         return null;
     }
 

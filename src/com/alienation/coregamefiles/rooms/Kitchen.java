@@ -44,7 +44,7 @@ public class Kitchen extends Room {
     }
 
     // Get Story line while page loads
-    public String getStory() {
+    public static String getStory() {
         if (!getAvailableItemsMap().get(Rooms.Kitchen).contains("Snickers")) {
             return getUpdatedStory();
         } else {
@@ -53,7 +53,7 @@ public class Kitchen extends Room {
     }
 
     /*************** GETTER - SETTER METHODS  ******************/
-    public String getInitialStory() {
+    public static String getInitialStory() {
         return getAnsiBlue() + "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
                 "types of nasty smells filling the air, but you are so hungry that the smells can't bother you at this point. There must be something\n" +
                 "that you can eat laying around here somewhere?\n" +
@@ -72,7 +72,7 @@ public class Kitchen extends Room {
                 "      |_____|=====|_____|"+ getAnsiReset();
     }
 
-    public String getUpdatedStory() {
+    public static String getUpdatedStory() {
         return getAnsiBlue() + "\n\nYou are back in the kitchen where you found that delicious snack. It looks like something's been through here\n" +
                 "again.\n"+ getAnsiReset();
     }

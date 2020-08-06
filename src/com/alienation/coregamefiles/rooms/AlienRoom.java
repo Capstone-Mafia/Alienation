@@ -49,7 +49,7 @@ public class AlienRoom extends Room {
     }
 
     // Get Story line while page loads
-    public String getStory() {
+    public static String getStory() {
         List<String> availableItems = getAvailableItemsMap().get(Rooms.AlienRoom);
         if (!availableItems.contains("Humanoid")) {
             return getLastStory();
@@ -61,7 +61,7 @@ public class AlienRoom extends Room {
     }
 
     /*************** GETTER - SETTER METHODS  ******************/
-    public String getInitialStory() {
+    public static String getInitialStory() {
         return getAnsiBlue() + "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
                     "Wait... you see something in the corner slumped over, moving back and forth.\n" +
                 "       .-\"\"\"\"-.        .-\"\"\"\"-.\n" +
@@ -77,11 +77,11 @@ public class AlienRoom extends Room {
                 "         |  |            |  |" + getAnsiReset();
     }
 
-    public String getUpdatedStory() {
+    public static String getUpdatedStory() {
         return getAnsiBlue() + "\n\nLast time you were here you fought the alien. It's still in here.... I can smell it.\n" + getAnsiReset();
     }
 
-    public String getLastStory() {
+    public static String getLastStory() {
         return getAnsiBlue() + "\n\nYou are back in the room where you killed your crew member.... I mean alien. Nothing has changed except the pools of your friends blood.\n" +
                     "OOPS... did it again." + getAnsiReset();
     }

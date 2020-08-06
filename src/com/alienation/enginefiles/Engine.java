@@ -167,5 +167,4 @@ public class Engine {
         //TODO store attackCount instead
         clearAvailableItemsMap();
     }
-
 }
