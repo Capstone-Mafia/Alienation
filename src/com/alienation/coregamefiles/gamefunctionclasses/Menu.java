@@ -58,7 +58,7 @@ public class Menu {
     private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
             "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
             "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
-            "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Flamethrower\"\n" +
+            "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
             "SupplyRoom started with: \"Computer\", \"Desk\", \"Sofa\", \"Racks\", \"Supplies\", \"Cage\"\n" +
             "ControlRoom started with: \"Monitor\", \"Control Panel\", \"Pilot Seats\", \"Laser\", \"Chips\"";
 
@@ -77,11 +77,11 @@ public class Menu {
         final String green = getAnsiGreen();
         final String end = getAnsiReset();
         final String lines = "---------------------------------------------------------------------------------------------------------------------------------";
-        final String space = "                                      ";
+        final String space = "         ";
 
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
                 "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + getAnsiBlue() +
-                getCurrentWeapon() + end  + "[Time passed: "+ Player.getTime() + "]");
+                getCurrentWeapon() + end  + "[Time passed: "+ Player.getTime().minutesElapsed() + "]");
         System.out.println(lines);
 
         boolean repeat = true;
@@ -226,7 +226,7 @@ public class Menu {
         return answer;
     }
 
-    public static void setAnswer(String answer) {
+    public static void setVerb(String answer) {
         Menu.answer = answer;
     }
 

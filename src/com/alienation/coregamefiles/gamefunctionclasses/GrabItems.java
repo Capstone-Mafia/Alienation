@@ -22,9 +22,9 @@ public class GrabItems {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
         setItem1(capitalizeAll(Input.getItem1()));
-        setItem2(capitalizeAll(Input.getItem2()));
 
-        if(items.contains(getItem2()) || items.contains(getItem1())){
+
+        if(items.contains(getItem1())){
             try {
                 if (getXItems().contains(getItem1())){
                     System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
@@ -37,7 +37,7 @@ public class GrabItems {
                 e.printStackTrace();
             }
 
-            if(getItem2().equals("Oxygen Tank")){
+            if(getItem1().equals("Oxygen Tank")){
                 Oxygen.incOxygen(100);
                 System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels to " + Oxygen.getOxygen() +
                         getAnsiReset());

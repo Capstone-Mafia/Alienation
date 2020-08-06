@@ -103,7 +103,7 @@ public class Game {
         weaponLabelName.setFont(normalFont);
         weaponLabelName.setForeground(Color.white);
         infoPanel.add(weaponLabelName);
-        weaponLabelName.setText(Player.getCurrentWeapon());
+        weaponLabelName.setText(Player.getCurrentWeapon().toString());
         hpLabelNumber.setText(Integer.toString(Player.getHealth()));
 
         //Start Button
