@@ -14,9 +14,16 @@ public class Time {
         Date date = new Date();
         startTime = date.getTime();
     }
-    public double elapsed(){
+    public int secondsElapsed(){
         Date date = new Date();
         nowTime = date.getTime();
-        return nowTime-startTime;
+        return (int)((nowTime-startTime)/1000);
+    }
+
+    public String minutesElapsed(){
+        int minutesElapsed = secondsElapsed()/60;
+        int seconds = secondsElapsed()-minutesElapsed*60;
+        String clock = minutesElapsed + " : " + seconds;
+        return clock;
     }
 }

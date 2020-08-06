@@ -22,7 +22,9 @@
 
 package com.alienation.coregamefiles.parseinput;
 
-import java.security.SecureRandom;
+import com.alienation.coregamefiles.enums.Weapons;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
+
 import java.util.Scanner;
 
 import static com.alienation.coregamefiles.enums.Actions.*;
@@ -40,11 +42,11 @@ public class Input {
     private static String verb;
     private static String item1;
     private static String item2;
+    private static Weapons weapon;
 
     public static Object getInput(){
 
         item1 = null;
-        item2 = null;
 
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
@@ -55,7 +57,6 @@ public class Input {
 
         if (tokens.length == 1){
             item1 = "empty";
-            item2 = "empty";
         }
 
         /**
@@ -63,12 +64,19 @@ public class Input {
          */
         if (tokens.length == 2){ // eat snickers
             item1 = tokens[1];
-            item2 = "empty";
+
 
         }if (tokens.length == 3){ // grab oxygen tank
             item1 = tokens[1];
-            item2 = item1 + " " + tokens[2];
+            item1 = item1 + " " + tokens[2];
         }
+        //item1 = Menu.capitalizeAll(tokens[1]);
+
+    }
+
+    public static Weapons getWeaponInput(){
+
+        return Weapons.valueOf(item1.toUpperCase());
 
         return null;
     }
@@ -88,9 +96,7 @@ public class Input {
         return item1;
     }
 
-    public static String getItem2() {
-        return item2;
-    }
+    //public static String getItem2() {return item2;`}
 
     public static void setVerb(String verb) {
         Input.verb = verb;

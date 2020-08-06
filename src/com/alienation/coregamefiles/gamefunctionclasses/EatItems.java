@@ -21,7 +21,6 @@ public class EatItems {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
         setItem1(capitalizeAll(Input.getItem1()));; // Chips
-        setItem2(capitalizeAll(Input.getItem2())); // Oxygen Tank
 
         if(items.contains(getItem2()) || items.contains(getItem1()) || getInventory().contains(getItem1())){
             try {
