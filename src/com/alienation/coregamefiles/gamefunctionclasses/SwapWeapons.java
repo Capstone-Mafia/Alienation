@@ -20,8 +20,8 @@ public class SwapWeapons {
 
         List<String> playerInventory = getInventory();
         System.out.println("inventory" + playerInventory.toString());
-        System.err.println(Input.getWeaponInput());
-        if(!Player.getWeaponsInventory().contains(Input.getWeaponInput())){
+        System.err.println(getWeaponInput());
+        if(!Player.getWeaponsInventory().contains(getWeaponInput())){
             System.out.println(getAnsiRed() + "\nYou don't have any weapons in your inventory. " +
                     "Grab some weapons to swap!!" + getAnsiReset());
             displayMenu();

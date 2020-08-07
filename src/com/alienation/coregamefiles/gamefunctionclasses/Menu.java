@@ -93,7 +93,7 @@ public class Menu {
         while (repeat) {
             try {
                 Input.getInput();
-                action = Actions.valueOf(getActionInput());
+                action = getParsedAction();
                 repeat = false;
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
@@ -235,5 +235,9 @@ public class Menu {
 
     public static String getOxygenString() {
         return oxygen;
+    }
+
+    public static Weapons getWeaponInput(){
+        return Weapons.valueOf(item1.toUpperCase());
     }
 }

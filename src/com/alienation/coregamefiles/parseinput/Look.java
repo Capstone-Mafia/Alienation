@@ -25,6 +25,7 @@ package com.alienation.coregamefiles.parseinput;
 import com.alienation.coregamefiles.enums.Rooms;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
@@ -32,8 +33,10 @@ import static com.alienation.coregamefiles.parseinput.Input.getActionInput;
 
 public class Look implements Action {
 
+    private static ArrayList<String> performAction = new ArrayList<>();
+
     //try to read file, if not, print stack trace
-    public static boolean performAction() {
+    static {
         try {
             Rooms currentRoom = getCurrentRoom();
             //locate the cvs txt file w/ synonyms
@@ -47,24 +50,25 @@ public class Look implements Action {
             //instantiate scanner to read file
             Scanner synonymScanner = new Scanner(synonyms);
 
-            //read one line at a time from file
-            String nextLine = synonymScanner.nextLine().toUpperCase();
+//            //read one line at a time from file
+//            String nextLine = synonymScanner.nextLine().toUpperCase();
 
-            //create list of the synonyms
-            String[] allTheSynonyms = nextLine.split(", ");
+            //add to arraylist
+            performAction.add(synonymScanner.nextLine().toUpperCase());
 
-            //look for this synonym among all the synonyms
-            //if it's an approved synonym, do the thing. grab that thing.
-            for (String theSynonym : allTheSynonyms) {
-                if(theSynonym.equals(getActionInput())) {
-                    //do the thing: if the word they typed equals one of the "grab" words, then grab
-                    return true;
-                }
-            }
+//            //look for this synonym among all the synonyms
+//            //if it's an approved synonym, do the thing. grab that thing.
+//            for (String theSynonym : allTheSynonyms) {
+//                if(theSynonym.equals(getActionInput())) {
+//                    //do the thing: if the word they typed equals one of the "grab" words, then grab
+//                }
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return null;
-        return false;
+    }
+
+    public static ArrayList<String> getPerformAction() {
+        return performAction;
     }
 }
