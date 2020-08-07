@@ -39,14 +39,15 @@ public class Game {
 
     public static JFrame window;
 //    Container con;
-    static JPanel secondTextpanel, inventoryButtonPanel, titleNamePanel, infoPanel, mainMapPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    static JPanel secondTextpanel, textInputPanel, inventoryButtonPanel, titleNamePanel, infoPanel, mainMapPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
     static JLabel titleNameLabel, carMapLabel, corMapLabel, arMapLabel, srMapLabel, kMapLabel, mainMapLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
     static Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
     static Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
-    static JButton inv, startButton, choice1, choice2, choice3, choice4;
+    static JButton okButton, inv, startButton, choice1, choice2, choice3, choice4;
     static JTextArea mainTextArea, secondTextArea;
-    int playerHP, monsterHP, silverRing;
-    String weapon;
+//    int playerHP, monsterHP, silverRing;
+//    String weapon;
+    static JTextField textInputField;
     static String position;
 
     static TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -182,6 +183,29 @@ public class Game {
         secondTextArea.setLineWrap(true);
         secondTextpanel.add(secondTextArea);
 
+        // Setting up text input panel.
+        textInputPanel = new JPanel();
+        textInputPanel.setBounds(0,450,400,50);
+        textInputPanel.setBackground(Color.blue);
+        textInputPanel.setLayout(new GridLayout(1, 2));
+        window.add(textInputPanel);
+
+        //Adding text input field to the panel
+        textInputField = new JTextField();
+        textInputField.setPreferredSize(new Dimension(200,50));
+        textInputPanel.add(textInputField);
+        textInputField.setVisible(true);
+
+
+        okButton = new JButton("OK");
+        okButton.setBackground(Color.black);
+        okButton.setForeground(Color.white);
+        okButton.setFont(normalFont);
+        okButton.setFocusPainted(false);
+        okButton.addActionListener(choiceHandler);
+        okButton.setActionCommand("ok");
+        textInputPanel.add(okButton);
+
 
 
         // Create direction button panel.
@@ -285,6 +309,9 @@ public class Game {
         choice3.setVisible(true);
         choice4.setVisible(false);
         inv.setVisible(true);
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
+
     }
 
 
@@ -553,6 +580,9 @@ public class Game {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+                        case "ok":
+//                            String input = textInputField.getText();
+
                     }
                     break;
                 case "SupplyRoom":
