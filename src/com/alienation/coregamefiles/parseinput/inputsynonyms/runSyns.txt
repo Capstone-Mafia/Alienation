@@ -1,0 +1,6 @@
+run,
+flee,
+escape,
+scatter,
+retreat,
+cower

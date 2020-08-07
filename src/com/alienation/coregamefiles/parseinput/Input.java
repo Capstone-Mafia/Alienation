@@ -94,6 +94,33 @@ public class Input {
         if (Swap.getPerformAction().contains((getActionInput()))) {
             setParsedAction(SWAP);
         }
+        if (North.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(NORTH);
+        }
+        if (South.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(SOUTH);
+        }
+        if (East.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(EAST);
+        }
+        if (West.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(WEST);
+        }
+        if (Options.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(OPTIONS);
+        }
+        if (Inventory.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(INVENTORY);
+        }
+        if (Run.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(RUN);
+        }
+        if (Save.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(SAVE);
+        }
+        if (Map.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(MAP);
+        }
     }
 
     public static String getActionInput(){

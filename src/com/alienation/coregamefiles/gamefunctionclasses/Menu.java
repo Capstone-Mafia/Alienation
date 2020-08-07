@@ -127,7 +127,6 @@ public class Menu {
                 swap(currentRoom);
                 break;
             case NORTH:
-            case N:
                 moveRoom("N", currentRoom);
                 break;
             case EAST:
@@ -145,11 +144,9 @@ public class Menu {
                 displayMenu();
                 break;
             case INVENTORY:
-            case I:
                 checkInventory();
                 break;
             case RUN:
-            case FLEE:
                 run(currentRoom);
                 break;
             case SAVE:
