@@ -16,5 +16,4 @@ snag,
 pluck,
 nab,
 rob,
-take hold of,
 commandeer

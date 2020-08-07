@@ -72,6 +72,7 @@ public class Input {
             item2 = item1 + " " + tokens[2];
         }
 
+        //TODO: fix this broken stuff
         //below if statements parse actionInput verbs for synonyms (once it's working)
         if (Look.getPerformAction().contains((getActionInput()))) {
             setParsedAction(LOOK);  //getParsedAction is called in Menu scanner
@@ -146,35 +147,5 @@ public class Input {
     public static void setParsedAction(Actions parsedAction) {
         Input.parsedAction = parsedAction;
     }
-
-
-    //TODO: try While loop that runs search with the desired word through each of the .txt files, one after the other
-    // put them all in a try catch, then nested If statements.
-    // set a boolean (condition for while loop), first search first txt, if found, reset bool to true
-    // if not the first one, then check if in next one, etc
-
-    //pulled the below out of Menu, because it has no place in menu.
-    //need to use some form of the below logic, fixed to repair broken shit, and use it to setVerb
-//    if(Look.performAction()) {
-//        setVerb(LOOK);
-//    }
-//    if(Open.performAction()) {
-//        setVerb(OPEN);
-//    }
-//    if(Eat.performAction()) {
-//        setVerb(EAT);
-//    }
-//    if(Grab.performAction()) {
-//        setVerb(GRAB);
-//    }
-//    if(Attack.performAction()) {
-//        setVerb(ATTACK);
-//    }
-//    if(Read.performAction()) {
-//        setVerb(READ);
-//    }
-//    if(Swap.performAction()) {
-//        setVerb(SWAP);
-//    }
 
 }
