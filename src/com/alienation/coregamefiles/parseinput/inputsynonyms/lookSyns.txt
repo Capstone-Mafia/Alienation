@@ -34,11 +34,8 @@ rubberneck,
 scan,
 scout,
 scrutinize,
-spot.
+spot,
 spy,
 survey,
 tend,
-discover,
-take a gander,
-look about,
-get a load of
+discover

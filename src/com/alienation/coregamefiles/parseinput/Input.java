@@ -26,7 +26,7 @@ import com.alienation.coregamefiles.enums.Actions;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static com.alienation.coregamefiles.enums.Actions.LOOK;
+import static com.alienation.coregamefiles.enums.Actions.*;
 
 /**
  * Receives all user Input
@@ -72,16 +72,30 @@ public class Input {
             item2 = item1 + " " + tokens[2];
         }
 
+        //below if statements parse actionInput verbs for synonyms (once it's working)
         if (Look.getPerformAction().contains((getActionInput()))) {
-            setParsedAction(LOOK);
+            setParsedAction(LOOK);  //getParsedAction is called in Menu scanner
+        }
+        if (Open.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(OPEN);
+        }
+        if (Eat.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(EAT);
+        }
+        if (Grab.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(GRAB);
+        }
+        if (Attack.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(ATTACK);
+        }
+        if (Read.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(READ);
+        }
+        if (Swap.getPerformAction().contains((getActionInput()))) {
+            setParsedAction(SWAP);
         }
     }
 
-
-
-    /**capitalized before usage in case someone forgets to
-     * and getUserResponse doesn't have to be capitalized, general input
-     */
     public static String getActionInput(){
         return actionInput.toUpperCase();
     }
@@ -93,8 +107,6 @@ public class Input {
     public static String getItem2() {
         return item2;
     }
-
-    //public static String getItem2() {return item2;`}
 
     public static void setActionInput(String actionInput) {
         Input.actionInput = actionInput;

@@ -131,19 +131,15 @@ public class Menu {
                 moveRoom("N", currentRoom);
                 break;
             case EAST:
-            case E:
                 moveRoom("E", currentRoom);
                 break;
             case SOUTH:
-            case S:
                 moveRoom("S", currentRoom);
                 break;
             case WEST:
-            case W:
                 moveRoom("W", currentRoom);
                 break;
             case OPTIONS:
-            case O:
                 System.out.println("\n" + getAnsiBlue() + getActions() + "\n\n" + "Now you have: \n" + AvailableItemsHashMap.getAvailableItemsMap() + "\n\n" + getDirections() + "\n" + getInv() +
                         "\n" + getSaveGame() + getAnsiReset());
                 displayMenu();
