@@ -45,8 +45,9 @@ public class Grab implements Action {//try to read file, if not, print stack tra
             Scanner synonymScanner = new Scanner(synonyms);
 
             //add to arraylist
-            performAction.add(synonymScanner.nextLine().toUpperCase());
-
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

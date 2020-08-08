@@ -4,9 +4,9 @@ import junit.framework.TestCase;
 
 import java.util.List;
 
-public class LookTest extends TestCase {
+public class WestTest extends TestCase {
 
-    private final List<String> testArray = Look.getPerformAction();
+    List<String> testArray = West.getPerformAction();
 
     public void testPrintGetPerformAction() {
         System.out.println(testArray);
@@ -14,28 +14,28 @@ public class LookTest extends TestCase {
 
     public void testPrintGetPerformActionPositionOne() {
         String testArrayGet = testArray.get(0);
-        String expectedOutput = "LOOK";
+        String expectedOutput = "WEST";
         assertEquals(expectedOutput, testArrayGet);
         System.out.println(testArrayGet);
     }
 
     public void testPrintGetPerformActionPositionTwo() {
         String testArrayGet = testArray.get(1);
-        String expectedOutput = "CONSIDER";
+        String expectedOutput = "W";
         assertEquals(expectedOutput, testArrayGet);
         System.out.println(testArrayGet);
     }
 
     public void testPrintGetPerformActionPositionLast() {
         String testArrayGet = testArray.get(testArray.size() - 1);
-        String expectedOutput = "DISCOVER";
+        String expectedOutput = "LEFT";
         assertEquals(expectedOutput, testArrayGet);
         System.out.println(testArrayGet);
     }
 
     public void testPrintGetPerformActionPositionNextToLast() {
         String testArrayGet = testArray.get(testArray.size() - 2);
-        String expectedOutput = "SURVEY";
+        String expectedOutput = "W";
         assertEquals(expectedOutput, testArrayGet);
         System.out.println(testArrayGet);
     }

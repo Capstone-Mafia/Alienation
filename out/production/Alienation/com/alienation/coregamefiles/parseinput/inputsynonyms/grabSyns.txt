@@ -1,19 +1,19 @@
-grab,
-get,
-retrieve,
-pick up,
-take,
-lift,
-snatch,
-steal,
-seize,
-capture,
-clutch,
-grip,
-snag,
-plunder,
-snag,
-pluck,
-nab,
-rob,
+grab
+get
+retrieve
+pick up
+take
+lift
+snatch
+steal
+seize
+capture
+clutch
+grip
+snag
+plunder
+snag
+pluck
+nab
+rob
 commandeer

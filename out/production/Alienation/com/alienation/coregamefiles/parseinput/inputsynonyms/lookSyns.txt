@@ -1,8 +1,12 @@
-look, consider, glance, notice
+look
+consider
+glance
+notice
+looksy
+looksee
 peer
 see
 stare
-study
 view
 watch
 admire
@@ -34,5 +38,4 @@ scrutinize
 spot
 spy
 survey
-tend
 discover

@@ -1,9 +1,6 @@
-open,
-commence,
-convene,
-initiate,
-launch,
-unfurl,
-unshut,
-unlatch,
+open
+initiate
+unfurl
+unshut
+unlatch
 unlock

@@ -1,3 +1,3 @@
-east,
-e,
+east
+e
 right

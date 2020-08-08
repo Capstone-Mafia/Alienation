@@ -22,10 +22,8 @@
 
 package com.alienation.coregamefiles.parseinput;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
-
+import java.io.*;
+import java.util.*;
 
 public class Look implements Action {
 
@@ -46,8 +44,9 @@ public class Look implements Action {
             Scanner synonymScanner = new Scanner(synonyms);
 
             //add to arraylist
-            performAction.add(synonymScanner.nextLine().toUpperCase());
-
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

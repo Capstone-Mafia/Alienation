@@ -1,6 +1,6 @@
-run,
-flee,
-escape,
-scatter,
-retreat,
+run
+flee
+escape
+scatter
+retreat
 cower
