@@ -39,15 +39,17 @@ public class CapsuleRoom extends Room {
 
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
+    public static void loadEnvironment() throws Exception {
         count++;
-        super.loadEnvironment();
+        Room.loadEnvironment();
+        System.out.println(getStory());
         // Line below is not needed - Guru
 //        System.out.println(RoomsMap.capsuleRoom());
         Menu.displayMenu();
     }
 
     // Get Story line while page loads
+
     public static String getStory() {
         if(count == 1){
             return getInitialStory();

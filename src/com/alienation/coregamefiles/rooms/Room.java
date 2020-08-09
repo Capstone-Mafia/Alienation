@@ -28,20 +28,24 @@ import com.alienation.coregamefiles.gameart.Death;
 import com.alienation.tools.Time;
 
 public abstract class Room {
-    private int minusOxy = 10; // TODO: Make random number??
+    private static int minusOxy = 10; // TODO: Make random number??
+
 
     static String getStory() {
         return null;
     }
 
-    public void loadEnvironment() throws Exception {
+
+    public static void loadEnvironment() throws Exception {
         Player.checkHealth();
         Oxygen.minOxygen(minusOxy);
         Oxygen.checkOxy();
-        if (Player.getTime().secondsElapsed()>600){
-            Death.death();
-        };
-        System.out.println(getStory());
+
+//        System.out.println(getStory());
+//        if (Player.getTime().secondsElapsed()>600){
+//            Death.death();
+//        };
+
     }
 }
 
