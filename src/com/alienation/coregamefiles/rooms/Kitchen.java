@@ -37,9 +37,10 @@ import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAva
 public class Kitchen extends Room {
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
-        super.loadEnvironment();
+    public static void loadEnvironment() throws Exception {
+        Room.loadEnvironment();
         System.out.println(RoomsMap.kitchenRoom());
+        System.out.println(getStory());
         Menu.displayMenu();
     }
 
@@ -56,7 +57,20 @@ public class Kitchen extends Room {
     public static String getInitialStory() {
         return getAnsiBlue() + "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
                 "types of nasty smells filling the air, but you are so hungry that the smells can't bother you at this point. There must be something\n" +
-                "that you can eat laying around here somewhere?\n"+ getAnsiReset();
+                "that you can eat laying around here somewhere?\n" +
+                "       ___________,_____\n" +
+                "      |     |  #  |=====|\n" +
+                "      |     | (_) |=====|\n" +
+                "      |> _  |_____|=====|\n" +
+                "      | [_] |     |     |\n" +
+                "      |     |_____|=====|\n" +
+                "      |     |     |_____|\n" +
+                "      |   ] |_____|     |\n" +
+                "      |     |_____|=====|\n" +
+                "      |     | ___ |_____|\n" +
+                "      |>    |[___]|     |\n" +
+                "      |     |[___]|=====|\n" +
+                "      |_____|=====|_____|"+ getAnsiReset();
     }
 
     public static String getUpdatedStory() {

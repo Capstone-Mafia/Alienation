@@ -13,8 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
-import static com.alienation.coregamefiles.charactersetc.Player.getCurrentWeapon;
-import static com.alienation.coregamefiles.charactersetc.Player.getHealth;
+import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AlienAttack.alienAttack;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
@@ -28,8 +27,7 @@ public class AttackAlien {
         List<String> roomItems = getAvailableItemsMap().get(currentRoom);
         Set<String> aliens = new HashSet<>(Alien.getAlienNameList());
 
-        setItem1(capitalizeAll(Input.getItem1()));
-        setItem2(capitalizeAll(Input.getItem2()));
+        setItem1(Input.getItem1());
 
         if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
             try {
@@ -40,8 +38,10 @@ public class AttackAlien {
                     if(getHealth() == 0 || getOxygen() == 0) {
                         Death.death();
                     }
+
+
                     else {
-                        System.out.println();
+                        /**
                         boolean hasWeapon = false;
                         for(Weapons weapon : Weapons.values()){
                             if(weapon.getName().equals(getCurrentWeapon())){
@@ -49,16 +49,10 @@ public class AttackAlien {
                                 break;
                             }
                         }
+                        */
 
-                        if(hasWeapon) {
+                        alienAttack(currentRoom, alien);
 
-                            alienAttack(currentRoom, alien);
-                        }
-                        else {
-                            System.out.println(getAnsiRed() + "You don't have a weapon equipped to fight with. " +
-                                    "Bad breath won't do!" + getAnsiReset());
-                            displayMenu();
-                        }
                     }
                 }
                 else {
@@ -69,7 +63,7 @@ public class AttackAlien {
                 System.out.println();
             }
         }else if(Input.getItem1().equals("empty")){
-            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+            System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
         else {

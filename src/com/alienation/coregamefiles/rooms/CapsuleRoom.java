@@ -39,9 +39,11 @@ public class CapsuleRoom extends Room {
 
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
+    public static void loadEnvironment() throws Exception {
         count++;
-        super.loadEnvironment();
+        Room.loadEnvironment();
+        System.out.println(getStory());
+
         // Line below is not needed - Guru
 //        System.out.println(RoomsMap.capsuleRoom());
         Menu.displayMenu();
@@ -49,6 +51,7 @@ public class CapsuleRoom extends Room {
     }
 
     // Get Story line while page loads
+
     public static String getStory() {
         if(count == 1){
             return getInitialStory();
@@ -66,7 +69,18 @@ public class CapsuleRoom extends Room {
         return getAnsiBlue() + "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
                 "You can tell the oxygen levels are low as it seems harder to breathe.  As you look around you notice that there is one crew member\n" +
                 "missing and their sleeping capsule is shattered with blood splattered across the front. The ship seems to be drifting in\n" +
-                "space and the lights are dim, most likely on some sort of backup system. You notice a Taser on the floor.\n"+ getAnsiReset();
+                "space and the lights are dim, most likely on some sort of backup system. You notice a Taser on the floor.\n" +
+                " +--^----------,--------,-----,--------^-,\n" +
+                " | |||||||||   `--------'     |          O\n" +
+                " `+---------------------------^----------|\n" +
+                "   `\\_,---------,---------,--------------'\n" +
+                "     / XXXXXX /'|       /'\n" +
+                "    / XXXXXX /  `\\    /'\n" +
+                "   / XXXXXX /`-------'\n" +
+                "  / XXXXXX /\n" +
+                " / XXXXXX /\n" +
+                "(________(                \n" +
+                " `------'  "+ getAnsiReset();
     }
 
     public static String getUpdatedStory() {

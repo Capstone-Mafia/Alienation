@@ -20,12 +20,13 @@ public class EatItems {
     public static void eat(Rooms currentRoom) throws Exception {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        setItem1(capitalizeAll(Input.getItem1()));; // Chips
-        setItem2(capitalizeAll(Input.getItem2())); // Oxygen Tank
+        setItem1(Input.getItem1());; // Chips
 
-        if(items.contains(getItem2()) || items.contains(getItem1()) || getInventory().contains(getItem1())){
+            //old logic, saving but revising
+//        if(items.contains(getItem2()) || items.contains(getItem1()) || getInventory().contains(getItem1())){
+        if(items.contains(getItem1()) || getInventory().contains(getItem1())){
             try {
-                edible = Edibles.valueOf(getItem1().toUpperCase());
+                //edible = Edibles.valueOf(getItem1().toUpperCase());
                 int edibleItems = 0;
 
                 for(Edibles edible : Edibles.values()){
@@ -55,7 +56,7 @@ public class EatItems {
                 System.out.println(getAnsiRed() + "\nYou can't eat that." + getAnsiReset());
             }
         } else if(Input.getItem1().equals("empty")){
-            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+            System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
         else {

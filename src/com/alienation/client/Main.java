@@ -36,6 +36,7 @@ public class Main {
             System.out.println(getBanner());
             start();
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Something wrong with the Game!!!");
         }
     }

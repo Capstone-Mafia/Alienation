@@ -23,8 +23,11 @@
 package com.alienation.coregamefiles.charactersetc;
 
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.enums.Weapons;
+import com.alienation.tools.Time;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -39,14 +42,24 @@ public class Player {
     public static final int MAX_HEALTH = 100;
     public static final int MIN_HEALTH = 0;
     private static int health = 5;
-    private static String currentWeapon = "Bad breath";
+    private static Weapons currentWeapon = Weapons.FLAMETHROWER;
     private static Rooms currentRoom = Rooms.CapsuleRoom; // as initial default
     private static Rooms previousRoom;
     private static Rooms tempRoom;
     private static List<String> inventory = new ArrayList<>();
+    private static List<Weapons> weaponsInventory = new ArrayList<>();
+    private static Time time = new Time();
 
 
     /*************** GETTER - SETTER METHODS  ******************/
+    public static void setTime(Time time) {
+        Player.time = time;
+    }
+
+    public static Time getTime() {
+        return time;
+    }
+
     public static int getHealth() {
         return health;
 
@@ -68,12 +81,12 @@ public class Player {
         }
     }
 
-    public static String getCurrentWeapon() {
+    public static Weapons getCurrentWeapon() {
         return currentWeapon;
     }
 
-    public static void  setCurrentWeapon(String newCurrentWeapon) {
-        currentWeapon = newCurrentWeapon;
+    public static void setCurrentWeapon(String newCurrentWeapon) {
+        currentWeapon = Weapons.valueOf(newCurrentWeapon);
     }
 
     public static Rooms getCurrentRoom() {
@@ -89,9 +102,31 @@ public class Player {
         return inventory;
     }
 
+    public static List<Weapons> getWeaponsInventory(){
+        return weaponsInventory;
+    }
+
     // set available items updated items if item moved to Inventory or Eat an item
-    public static void setInventory(List<String> newInventory) {
-        inventory = newInventory;
+    public static void setInventory(List<String> newInventoryList) {
+        inventory = newInventoryList;
+    }
+    public static void addToInventory(String newInventory) {
+        getInventory().add(newInventory);
+    }
+
+    public static void addToWeaponsInventory(Weapons weaponsInventory) {
+        getWeaponsInventory().add(weaponsInventory);
+    }
+
+    public static void removeFromWeaponsInventory(Weapons newInventory) {
+        getWeaponsInventory().remove(newInventory);
+    }
+
+    public static void removeFromInventory(String newInventory) {
+        getInventory().remove(newInventory);
+    }
+    public static void removeFromInventory(Object newInventory) {
+        getInventory().remove(newInventory);
     }
 
     public static Rooms getPreviousRoom() {
@@ -109,4 +144,7 @@ public class Player {
     public static void setTempRoom(Rooms currentRoom) {
         tempRoom = currentRoom;
     }
+
+
+
 }

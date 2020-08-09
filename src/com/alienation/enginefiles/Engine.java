@@ -25,6 +25,8 @@ import com.alienation.coregamefiles.charactersetc.Oxygen;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
+import com.alienation.tools.Time;
+import com.alienation.tools.TimerThread;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -94,7 +96,7 @@ public class Engine {
 
                         Player.setHealth(currentHealth - Player.getHealth());
                         /**ideally Player is its own instance.
-                         * and each cahracter will have its own getHealth method, so it should have instance method not
+                         * and each character will have its own getHealth method, so it should have instance method not
                          class method
                          bc there's only one character it's ok now. still not ideal*/
 
@@ -140,13 +142,16 @@ public class Engine {
                         e.printStackTrace();
                     }
                 } else {
+                    new TimerThread().runTimer();
                     new CapsuleRoom().loadEnvironment();
                 }
-            } else {
+            } else {// new game case
+                new TimerThread().runTimer();
                 new CapsuleRoom().loadEnvironment();
             }
         } else {
             initResetData();
+            new TimerThread().runTimer();
             new CapsuleRoom().loadEnvironment();
         }
     }

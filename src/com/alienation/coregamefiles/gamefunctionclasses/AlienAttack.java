@@ -30,17 +30,24 @@ public class AlienAttack {
             if(getHealth() != 0) {
                 int alienHealthPoints = alien.getHealthPoints();
                 int alienDamagePoints = alien.getAlienDP();
-                int weaponDamagePoints = Weapons.findWeaponsByName(getCurrentWeapon()).getDamagePoints();
+                //int weaponDamagePoints = Player.getCurrentWeapon().getDamagePoints();
                 /**
                  * Weapon's damage points are adjusted
                  */
-                int newWeaponDamagePoints = alien.getNewWeaponDamagePoints(Weapons.valueOf(getCurrentWeapon()));
+                int newWeaponDamagePoints = alien.getNewWeaponDamagePoints(getCurrentWeapon());
 
-                int alienNewHealthPoints = ((alienHealthPoints - weaponDamagePoints) < 0 ? 0 : (alienHealthPoints - weaponDamagePoints));
+                int alienNewHealthPoints = ((alienHealthPoints - newWeaponDamagePoints) < 0 ? 0 :
+                        (alienHealthPoints - newWeaponDamagePoints));
 
                 alien.setHealthPoints(alienNewHealthPoints);
 
-                System.out.println(getAnsiRed() + "\n-" + weaponDamagePoints + " dmg");
+                if (alienNewHealthPoints <= 0){
+                    List<String> items = getAvailableItemsMap().get(currentRoom);
+                    items.remove(alien.getAlienName());
+                    setAvailableItemsMap(currentRoom, items);
+                }
+
+                System.out.println(getAnsiRed() + "\n-" + newWeaponDamagePoints + " dmg");
                 System.out.println(getAnsiBlue() + "\nAlien HP: " + getAnsiGreen() + alienNewHealthPoints +
                         getAnsiReset());
                 TimeUnit.SECONDS.sleep(2);
@@ -51,8 +58,10 @@ public class AlienAttack {
                 if(alienNewHealthPoints > 0){
                     TimeUnit.SECONDS.sleep(2);
 
-                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back...");
-                    int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 : (getHealth() - alienDamagePoints));
+                    System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back..." + getAnsiReset());
+                    int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 :
+                            (getHealth() - alienDamagePoints));
+
 
                     setHealth(characterFinalHealth);
                     System.out.println("\n-" + alienDamagePoints + " dmg" + getAnsiReset());
