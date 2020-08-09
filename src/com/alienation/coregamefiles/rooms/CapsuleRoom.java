@@ -43,6 +43,7 @@ public class CapsuleRoom extends Room {
         count++;
         Room.loadEnvironment();
         System.out.println(getStory());
+
         // Line below is not needed - Guru
 //        System.out.println(RoomsMap.capsuleRoom());
         Menu.displayMenu();

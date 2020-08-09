@@ -1,15 +1,16 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Oxygen;
+import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.parseinput.Input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.alienation.coregamefiles.charactersetc.Player.getInventory;
-import static com.alienation.coregamefiles.charactersetc.Player.setInventory;
+import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
@@ -23,8 +24,16 @@ public class GrabItems {
 
         setItem1(capitalizeAll(Input.getItem1()));
 
+        boolean addToInventory = true;
 
-        if(items.contains(getItem1())){
+        for (Weapons weapon : Weapons.values()){
+            if (weapon.getName().equals(getItem1()) && getAvailableItemsMap().get(currentRoom).contains(getItem1())){
+                addToInventory = false;
+                addToWeaponsInventory(weapon);
+            }
+        }
+
+        if(addToInventory && items.contains(getItem1())){
             try {
                 if (getXItems().contains(getItem1())){
                     System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
@@ -59,7 +68,7 @@ public class GrabItems {
             System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
                     " what?" + getAnsiReset());
         }
-        else {
+        else if(addToInventory) {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
         }
         displayMenu();

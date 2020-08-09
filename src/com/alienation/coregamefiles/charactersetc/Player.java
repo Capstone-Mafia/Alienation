@@ -47,7 +47,7 @@ public class Player {
     private static Rooms previousRoom;
     private static Rooms tempRoom;
     private static List<String> inventory = new ArrayList<>();
-    private static List<Weapons> weaponsInventory = new ArrayList<>(Arrays.asList(currentWeapon));
+    private static List<Weapons> weaponsInventory = new ArrayList<>();
     private static Time time = new Time();
 
 
@@ -86,7 +86,7 @@ public class Player {
     }
 
     public static void setCurrentWeapon(String newCurrentWeapon) {
-        Weapons currentWeapon = Weapons.valueOf(newCurrentWeapon);
+        currentWeapon = Weapons.valueOf(newCurrentWeapon);
     }
 
     public static Rooms getCurrentRoom() {
@@ -118,6 +118,9 @@ public class Player {
         getWeaponsInventory().add(weaponsInventory);
     }
 
+    public static void removeFromWeaponsInventory(Weapons newInventory) {
+        getWeaponsInventory().remove(newInventory);
+    }
 
     public static void removeFromInventory(String newInventory) {
         getInventory().remove(newInventory);

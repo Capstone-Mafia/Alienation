@@ -41,6 +41,7 @@ public class ControlRoom extends Room {
     public static void loadEnvironment() throws Exception {
         Room.loadEnvironment();
         System.out.println(RoomsMap.controlRoom());
+        System.out.println(getStory());
         if (!Player.getInventory().contains("Ignition Switch")){
             Menu.displayMenu();
         } else {
