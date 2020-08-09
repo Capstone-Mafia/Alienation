@@ -68,8 +68,11 @@ public class Input {
 
     }
 
-    public static Weapons getWeaponInput(){
+    public static void setItem1AsVerb(){
+        item1 = verb;
+    }
 
+    public static Weapons getWeaponInput(){
         return Weapons.valueOf(item1.toUpperCase());
 
     }

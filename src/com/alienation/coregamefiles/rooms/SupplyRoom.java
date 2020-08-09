@@ -41,6 +41,7 @@ public class SupplyRoom extends Room {
     public static void loadEnvironment() throws Exception {
         Room.loadEnvironment();
         System.out.println(RoomsMap.supplyRoom());
+        System.out.println(getStory());
         Menu.displayMenu();
     }
 

@@ -45,6 +45,7 @@ public class AlienRoom extends Room {
     public static void loadEnvironment() throws Exception {
         Room.loadEnvironment();
         System.out.println(RoomsMap.alienRoom());
+        System.out.println(getStory());
         Menu.displayMenu();
     }
 
