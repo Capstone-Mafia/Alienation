@@ -28,11 +28,11 @@ public class SwapWeapons {
 
         System.out.println(lines + getAnsiReset());
         Input.getInput();
-        Input.setItem1AsVerb();
+        //Input.setItem1AsVerb();
 
 
 
-        if(!Player.getWeaponsInventory().contains(Input.getWeaponInput())) {
+        if(!Player.getWeaponsInventory().contains(getWeaponInput())) {
 
             System.out.println(getAnsiRed() + "\nYou don't have any weapons in your inventory. " +
                     "Grab some weapons to swap!!" + getAnsiReset());
