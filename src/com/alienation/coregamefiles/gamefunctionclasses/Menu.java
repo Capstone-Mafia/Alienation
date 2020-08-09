@@ -24,6 +24,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.regex.Pattern;
 
@@ -51,8 +52,8 @@ public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     private static String actionQuestion = "What will you do?";
-    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n";
-    private static String directions = "Try : N, north, S, South, e, W, west to move around\n";
+    private static String actions = "Type : look, open item , eat item, grab item, attack, read, swap, run \n";
+    private static String directions = "Or try going in different direction : N, north, S, South, e, W, west to move around\n";
     private static String inv = "Check Inventory < i >";
     public static Actions action;
     private static String saveGame = "Save the Game < save >";
@@ -78,9 +79,12 @@ public class Menu {
 
         while (repeat) {
             try {
+                System.out.println("We made it inside the while loop of MENU");
                 Input.getInput();
                 action = Actions.valueOf(Input.getActionInput());
                 repeat = false;
+//                Game.input = "";
+//                break;
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
                 repeat = true;
@@ -89,7 +93,6 @@ public class Menu {
         Rooms currentRoom = getCurrentRoom();
         Rooms nextRoom = null;
 
-        /********* lots of unimplemented actions, could be simplified" *******/
         // Action verbs... things the character can do
         switch (action) {
             case INVESTIGATE:

@@ -44,7 +44,7 @@ public class CapsuleRoom extends Room {
         super.loadEnvironment();
         // Line below is not needed - Guru
 //        System.out.println(RoomsMap.capsuleRoom());
-//        Menu.displayMenu();
+        Menu.displayMenu();
 
     }
 

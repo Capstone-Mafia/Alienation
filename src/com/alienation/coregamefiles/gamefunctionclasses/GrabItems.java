@@ -28,7 +28,7 @@ public class GrabItems {
             try {
                 if (getXItems().contains(getItem1())){
                     System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
-                    displayMenu();
+//                    displayMenu();
                 }
             }
             catch(IllegalArgumentException e){
@@ -43,7 +43,7 @@ public class GrabItems {
                         getAnsiReset());
                 items.remove(getItem2());
                 setAvailableItemsMap(currentRoom, items);
-                displayMenu();
+//                displayMenu();
             }
 
             System.out.println(getAnsiYellow() + "\n" + getItem1() + " added to Inventory." + getAnsiReset());
@@ -62,7 +62,7 @@ public class GrabItems {
         else {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
         }
-        displayMenu();
+//        displayMenu();
     }
 
 

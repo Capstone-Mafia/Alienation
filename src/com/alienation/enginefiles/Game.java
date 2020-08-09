@@ -16,6 +16,7 @@ import com.alienation.coregamefiles.gamefunctionclasses.CheckInventory;
 import com.alienation.coregamefiles.gamefunctionclasses.ImageViewer;
 import com.alienation.coregamefiles.gamefunctionclasses.Menu;
 import com.alienation.coregamefiles.gamefunctionclasses.MoveRoom;
+import com.alienation.coregamefiles.parseinput.Input;
 import com.alienation.coregamefiles.rooms.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,6 +33,7 @@ import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
 import static com.alienation.coregamefiles.enums.Rooms.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
+import static com.alienation.coregamefiles.rooms.CapsuleRoom.getInitialStory;
 import static com.alienation.coregamefiles.rooms.CapsuleRoom.getStory;
 import static java.lang.System.getProperty;
 
@@ -44,11 +46,11 @@ public class Game {
     static Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
     static Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
     static JButton okButton, inv, startButton, choice1, choice2, choice3, choice4;
-    static JTextArea mainTextArea, secondTextArea;
+    public static JTextArea mainTextArea, secondTextArea;
 //    int playerHP, monsterHP, silverRing;
 //    String weapon;
     static JTextField textInputField;
-    static String position;
+    public static String position, input;
 
     static TitleScreenHandler tsHandler = new TitleScreenHandler();
     static ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -97,6 +99,7 @@ public class Game {
         hpLabelNumber.setFont(normalFont);
         hpLabelNumber.setForeground(Color.white);
         infoPanel.add(hpLabelNumber);
+
         weaponLabel = new JLabel("Weapon:");
         weaponLabel.setFont(normalFont);
         weaponLabel.setForeground(Color.white);
@@ -105,6 +108,7 @@ public class Game {
         weaponLabelName.setFont(normalFont);
         weaponLabelName.setForeground(Color.white);
         infoPanel.add(weaponLabelName);
+
         weaponLabelName.setText(Player.getCurrentWeapon());
         hpLabelNumber.setText(Integer.toString(Player.getHealth()));
 
@@ -281,7 +285,7 @@ public class Game {
 //        townGate();
 //    }
     public static void capsuleRoom() throws Exception {
-        new CapsuleRoom().loadEnvironment();
+//        new CapsuleRoom().loadEnvironment();
         position = "CapsuleRoom";
         // Map Label
         BufferedImage img = null;
@@ -293,8 +297,8 @@ public class Game {
         carMapLabel = new JLabel();
         carMapLabel.setIcon(imgIcon);
         mainMapPanel.add(carMapLabel);
-        mainTextArea.setText(getStory());
-        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n" + Menu.getDirections());
+        mainTextArea.setText(getInitialStory());
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
 
 //        // trying to display inventory to the second text area.
 //        String delim = "-";
@@ -312,12 +316,14 @@ public class Game {
         okButton.setVisible(true);
         textInputField.setVisible(true);
 
+//        new CapsuleRoom().loadEnvironment();
+
     }
 
 
     public static void supplyRoom() throws Exception {
 
-        new SupplyRoom().loadEnvironment();
+//        new SupplyRoom().loadEnvironment();
         position = "SupplyRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
         BufferedImage img = null;
@@ -331,7 +337,9 @@ public class Game {
         mainMapPanel.add(srMapLabel);
         srMapLabel.setVisible(true);
         mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
-        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n" + Menu.getDirections());
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
 
         choice1.setText("South");
         choice2.setText("East");
@@ -412,113 +420,6 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-//    public void east(){
-//        position = "east";
-//        mainTextArea.setText("You walked into a forest and found a Long Sword!\n\n(You obtained a Long Sword)");
-//        weapon = "Long Sword";
-//        weaponLabelName.setText(weapon);
-//        choice1.setText("Go west");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//
-//    }
-//    public void west(){
-//        position = "west";
-//        mainTextArea.setText("You encounter a goblin!");
-//        choice1.setText("Fight");
-//        choice2.setText("Run");
-//        choice3.setText("");
-//        choice4.setText("");
-//    }
-//    public void fight(){
-//        position = "fight";
-//        mainTextArea.setText("Monter HP: " + monsterHP + "\n\nWhat do you do?");
-//        choice1.setText("Attack");
-//        choice2.setText("Run");
-//        choice3.setText("");
-//        choice4.setText("");
-//    }
-//    public void playerAttack(){
-//        position = "playerAttack";
-//
-//        int playerDamage = 0;
-//
-//        if(weapon.equals("Knife")){
-//            playerDamage = new java.util.Random().nextInt(3);
-//        }
-//        else if(weapon.equals("Long Sword")){
-//            playerDamage = new java.util.Random().nextInt(12);
-//        }
-//
-//        mainTextArea.setText("You attacked the monster and gave " + playerDamage + " damage!");
-//
-//        monsterHP = monsterHP - playerDamage;
-//
-//        choice1.setText(">");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//    }
-//    public void monsterAttack(){
-//        position = "monsterAttack";
-//
-//        int monsterDamage = 0;
-//
-//        monsterDamage = new java.util.Random().nextInt(6);
-//
-//        mainTextArea.setText("The monster attacked you and gave " + monsterDamage + " damage!");
-//
-//        playerHP = playerHP - monsterDamage;
-//        hpLabelNumber.setText(""+playerHP);
-//
-//        choice1.setText(">");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//    }
-//    public void win(){
-//        position = "win";
-//
-//        mainTextArea.setText("You defeated the monster!\nThe monster dropped a ring!\n\n(You obtained a Silver Ring)");
-//
-//        silverRing = 1;
-//
-//        choice1.setText("Go east");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//
-//    }
-//    public void lose(){
-//        position = "lose";
-//
-//        mainTextArea.setText("You are dead!\n\n");
-//
-//        choice1.setText("");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//        choice1.setVisible(false);
-//        choice2.setVisible(false);
-//        choice3.setVisible(false);
-//        choice4.setVisible(false);
-//    }
-//    public void ending(){
-//        position = "ending";
-//
-//        mainTextArea.setText("Guard: Oh you killed that goblin!?\nThank you so much. You are true hero!\nWelcome to our town!\n\n");
-//
-//        choice1.setText("");
-//        choice2.setText("");
-//        choice3.setText("");
-//        choice4.setText("");
-//        choice1.setVisible(false);
-//        choice2.setVisible(false);
-//        choice3.setVisible(false);
-//        choice4.setVisible(false);
-//    }
-
 
 
     public static class TitleScreenHandler implements ActionListener{
@@ -546,10 +447,13 @@ public class Game {
 
                         case "c1":
                             try {
-//                                MoveRoom.moveRoom("N", getCurrentRoom());
                                 carMapLabel.setVisible(false);
+                                mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
+
+                                //Todo: add move room to other room(cases).
+                                MoveRoom.moveRoom("N", getCurrentRoom());
+                                System.out.println("Test for room location from game engine capsuleroom switch statement " + getCurrentRoom());
                                 supplyRoom();
-//                                new SupplyRoom();
                                 break;
 
                             } catch (Exception e) {
@@ -558,16 +462,22 @@ public class Game {
                         case "c2":
                             try {
                                 carMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("S", getCurrentRoom());
+                                System.out.println("Test for room location from game engine capsuleroom switch statement " + getCurrentRoom());
                                 controlRoom();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
                         case "c3":
                             try {
                                 carMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("W", getCurrentRoom());
+                                System.out.println("Test for room location from game engine capsuleroom switch statement " + getCurrentRoom());
                                 alienRoom();
                             } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
@@ -580,30 +490,71 @@ public class Game {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+                            break;
                         case "ok":
-//                            String input = textInputField.getText();
+                            input = textInputField.getText();
+
+                            try {
+                                new CapsuleRoom().loadEnvironment();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
 
                     }
                     break;
+
                 case "SupplyRoom":
                     switch(yourChoice){
                         case "c1":
+
+                            srMapLabel.setVisible(false);
+                            mainTextArea.setText(com.alienation.coregamefiles.rooms.CapsuleRoom.getStory());
                             try {
-                                srMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("S", getCurrentRoom());
+                                System.out.println("Test for room location from game engine Supplyroom switch statement " + getCurrentRoom());
                                 capsuleRoom();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
                         case "c2":
+                            mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
                             try {
                                 srMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("E", getCurrentRoom());
+                                System.out.println("Test for room location from game engine Supplyroom switch statement " + getCurrentRoom());
                                 kitchen();
                             } catch (IOException e) {
                                 e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
+                            break;
+
+                        case "inv":
+                            try {
+                                String delim = "-";
+                                String res = String.join(delim, Player.getInventory());
+                                secondTextArea.setText(res);
+//                                CheckInventory.checkInventory();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "ok":
+                            input = textInputField.getText();
+                            try {
+                                Menu.displayMenu();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+//                            Input.getInput();
+
                     }
                     break;
+
                 case "Kitchen":
                     switch(yourChoice){
                         case "c1":
@@ -663,59 +614,7 @@ public class Game {
                             break;
                     }
                     break;
-//                case "east":
-//                    switch(yourChoice){
-//                        case "c1": crossRoad(); break;
-//                    }
-//                    break;
-//                case "west":
-//                    switch(yourChoice){
-//                        case "c1": fight(); break;
-//                        case "c2": crossRoad(); break;
-//                    }
-//                    break;
-//                case "fight":
-//                    switch(yourChoice){
-//                        case "c1": playerAttack();break;
-//                        case "c2": crossRoad(); break;
-//                    }
-//                    break;
-//                case "playerAttack":
-//                    switch(yourChoice){
-//                        case "c1":
-//                            if(monsterHP<1){
-//                                win();
-//                            }
-//                            else{
-//                                monsterAttack();
-//                            }
-//                            break;
-//                    }
-//                    break;
-//                case "monsterAttack":
-//                    switch(yourChoice){
-//                        case "c1":
-//                            if(playerHP<1){
-//                                lose();
-//                            }
-//                            else{
-//                                fight();
-//                            }
-//                            break;
-//                    }
-//                    break;
-//                case "win":
-//                    switch(yourChoice){
-//                        case "c1": crossRoad();
-//                    }
-//                    break;
-
             }
-
-
         }
     }
-
-
-
 }

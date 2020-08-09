@@ -2,6 +2,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.enginefiles.Game;
 
 import java.util.List;
 
@@ -19,8 +20,10 @@ public class InvestigateRoom {
         System.out.println(lines);
 
         List<String> keys = getAvailableItemsMap().get(currentRoom);
+        Game.secondTextArea.append((String.valueOf(keys)));
         for (String key : keys) {
             System.out.println(key);
+
         }
         System.out.println(lines + getAnsiReset());
         for (String key : keys) {
@@ -43,6 +46,6 @@ public class InvestigateRoom {
                 }
             }
         }
-        displayMenu();
+//        displayMenu();
     }
 }
