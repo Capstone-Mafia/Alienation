@@ -38,8 +38,8 @@ import static com.alienation.coregamefiles.gameart.TextColors.*;
 public class ControlRoom extends Room {
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
-        super.loadEnvironment();
+    public static void loadEnvironment() throws Exception {
+        Room.loadEnvironment();
         System.out.println(RoomsMap.controlRoom());
         if (!Player.getInventory().contains("Ignition Switch")){
             Menu.displayMenu();

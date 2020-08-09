@@ -26,6 +26,7 @@ import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.rooms.CapsuleRoom;
 import com.alienation.tools.Time;
+import com.alienation.tools.TimerThread;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -141,14 +142,16 @@ public class Engine {
                         e.printStackTrace();
                     }
                 } else {
+                    new TimerThread().runTimer();
                     new CapsuleRoom().loadEnvironment();
                 }
             } else {// new game case
-                Player.setTime(new Time());
+                new TimerThread().runTimer();
                 new CapsuleRoom().loadEnvironment();
             }
         } else {
             initResetData();
+            new TimerThread().runTimer();
             new CapsuleRoom().loadEnvironment();
         }
     }

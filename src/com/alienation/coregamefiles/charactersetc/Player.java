@@ -48,7 +48,7 @@ public class Player {
     private static Rooms tempRoom;
     private static List<String> inventory = new ArrayList<>();
     private static List<Weapons> weaponsInventory = new ArrayList<>(Arrays.asList(currentWeapon));
-    private static Time time;
+    private static Time time = new Time();
 
 
     /*************** GETTER - SETTER METHODS  ******************/

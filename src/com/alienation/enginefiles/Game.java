@@ -31,7 +31,6 @@ import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
 import static com.alienation.coregamefiles.enums.Rooms.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
-import static com.alienation.coregamefiles.rooms.CapsuleRoom.getStory;
 import static java.lang.System.getProperty;
 
 public class Game {
@@ -51,6 +50,11 @@ public class Game {
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
 
+    CapsuleRoom capsuleRoom = new CapsuleRoom();
+    AlienRoom alienRoom = new AlienRoom();
+    ControlRoom controlRoom = new ControlRoom();
+    SupplyRoom supplyRoom = new SupplyRoom();
+    Kitchen kitchenRoom = new Kitchen();
 
 
     public static void main(String[] args) {
@@ -247,7 +251,7 @@ public class Game {
 //        townGate();
 //    }
     public void capsuleRoom() throws Exception {
-//        new CapsuleRoom().loadEnvironment();
+        capsuleRoom.loadEnvironment();
         position = "CapsuleRoom";
         // Map Label
         BufferedImage img = null;
@@ -259,7 +263,7 @@ public class Game {
         carMapLabel = new JLabel();
         carMapLabel.setIcon(imgIcon);
         mainMapPanel.add(carMapLabel);
-        mainTextArea.setText(getStory());
+        mainTextArea.setText(capsuleRoom.getStory());
         choice1.setText("North");
         choice2.setText("South");
         choice3.setText("East");
@@ -268,7 +272,8 @@ public class Game {
         choice3.setVisible(true);
         choice4.setVisible(false);
     }
-    public void supplyRoom() throws IOException {
+    public void supplyRoom() throws Exception {
+        supplyRoom.loadEnvironment();
         position = "SupplyRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
         BufferedImage img = null;
@@ -281,6 +286,7 @@ public class Game {
         srMapLabel.setIcon(imgIcon);
         mainMapPanel.add(srMapLabel);
         srMapLabel.setVisible(true);
+        mainTextArea.setText(supplyRoom.getStory());
 
         choice1.setText("South");
         choice2.setText("East");
@@ -289,7 +295,8 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void controlRoom() throws IOException {
+    public void controlRoom() throws Exception {
+        controlRoom.loadEnvironment();
         position = "ControlRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.ControlRoom.getStory());
         // Map Label
@@ -303,6 +310,7 @@ public class Game {
         corMapLabel.setIcon(imgIcon);
         mainMapPanel.add(corMapLabel);
         corMapLabel.setVisible(true);
+        mainTextArea.setText(controlRoom.getStory());
 //        playerHP = playerHP -3;
 //        hpLabelNumber.setText(""+playerHP);
         choice1.setText("North");
@@ -311,7 +319,8 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void alienRoom() throws IOException {
+    public void alienRoom() throws Exception {
+        alienRoom.loadEnvironment();
         position = "AlienRoom";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.AlienRoom.getStory());
         BufferedImage img = null;
@@ -324,6 +333,7 @@ public class Game {
         arMapLabel.setIcon(imgIcon);
         mainMapPanel.add(arMapLabel);
         arMapLabel.setVisible(true);
+        mainTextArea.setText(alienRoom.getStory());
 
         choice1.setText("North");
         choice2.setText("West");
@@ -332,7 +342,8 @@ public class Game {
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
-    public void kitchen() throws IOException {
+    public void kitchen() throws Exception {
+        kitchenRoom.loadEnvironment();
         position = "Kitchen";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
 //        playerHP = playerHP + 2;
@@ -347,6 +358,7 @@ public class Game {
         kMapLabel.setIcon(imgIcon);
         mainMapPanel.add(kMapLabel);
         kMapLabel.setVisible(true);
+        mainTextArea.setText(kitchenRoom.getStory());
 
         choice1.setText("West");
         choice2.setText("South");
@@ -500,7 +512,7 @@ public class Game {
                             try {
                                 carMapLabel.setVisible(false);
                                 controlRoom();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
@@ -508,7 +520,7 @@ public class Game {
                             try {
                                 carMapLabel.setVisible(false);
                                 alienRoom();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
@@ -528,7 +540,7 @@ public class Game {
                             try {
                                 srMapLabel.setVisible(false);
                                 kitchen();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                     }
@@ -547,7 +559,7 @@ public class Game {
                             try {
                                 kMapLabel.setVisible(false);
                                 alienRoom();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                     }
@@ -558,7 +570,7 @@ public class Game {
                             try {
                                 arMapLabel.setVisible(false);
                                 kitchen();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;

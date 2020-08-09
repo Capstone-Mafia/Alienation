@@ -37,8 +37,8 @@ import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAva
 public class Kitchen extends Room {
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
-        super.loadEnvironment();
+    public static void loadEnvironment() throws Exception {
+        Room.loadEnvironment();
         System.out.println(RoomsMap.kitchenRoom());
         Menu.displayMenu();
     }
