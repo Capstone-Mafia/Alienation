@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.alienation.coregamefiles.charactersetc.Player.*;
+import static com.alienation.coregamefiles.enums.Items.OXYGEN;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
@@ -22,13 +23,13 @@ public class GrabItems {
     public static void grab(Rooms currentRoom) throws Exception {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        setItem1(capitalizeAll(Input.getItem1()));
+        setItem1(Input.getItem1());
 
         boolean addToInventory = true;
 
         for (Weapons weapon : Weapons.values()){
             if (weapon.getName().equals(getItem1()) && getAvailableItemsMap().get(currentRoom).contains(getItem1())){
-                addToInventory = false;
+                addToInventory = true;
                 addToWeaponsInventory(weapon);
             }
         }
@@ -46,11 +47,11 @@ public class GrabItems {
                 e.printStackTrace();
             }
 
-            if(getItem1().equals("Oxygen Tank")){
+            if(getItem1().equals("oxygen")){
                 Oxygen.incOxygen(100);
                 System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels to " + Oxygen.getOxygen() +
                         getAnsiReset());
-                items.remove(getItem2());
+                items.remove(getItem1());
                 setAvailableItemsMap(currentRoom, items);
                 displayMenu();
             }
@@ -64,8 +65,8 @@ public class GrabItems {
             items.remove(getItem1());
             setAvailableItemsMap(currentRoom, items);
 
-        }else if(Input.getItem1().equals("empty")){
-            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+        }else if(Input.getItem1().equals("")){
+            System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
         else if(addToInventory) {

@@ -20,17 +20,13 @@ public class SwapWeapons {
 
         List<Weapons> playerInventory = getWeaponsInventory();
 
-        System.out.println(space + getAnsiYellow() + "Which weapon would you like to hold?\n");
-        System.out.println(lines);
+        System.out.println(space + getAnsiYellow() + "Which weapon would you like to hold?\n" + getAnsiReset());
+        System.out.println(getAnsiYellow() + lines + getAnsiReset());
         for (Weapons key : playerInventory) {
-            System.out.println(key);
+            System.out.println(getAnsiYellow() + key + getAnsiReset());
         }
 
-        System.out.println(lines + getAnsiReset());
-        Input.getInput();
-        //Input.setItem1AsVerb();
-
-
+        System.out.println(getAnsiYellow() + lines + getAnsiReset());
 
         if(!Player.getWeaponsInventory().contains(getWeaponInput())) {
 
@@ -41,7 +37,7 @@ public class SwapWeapons {
         }
 
         try {
-            setItem1(capitalizeAll(Input.getItem1()));
+            setItem1(Input.getItem1());
             removeFromWeaponsInventory(Weapons.valueOf(Input.getItem1().toUpperCase()));
             addToWeaponsInventory(getCurrentWeapon());
 
@@ -58,8 +54,7 @@ public class SwapWeapons {
         } catch (Exception e) {
             System.out.println(getAnsiRed() + "\nYou can't swap with that." + getAnsiReset());
         } finally {
-            displayMenu();}
-
-
+            displayMenu();
+        }
     }
 }

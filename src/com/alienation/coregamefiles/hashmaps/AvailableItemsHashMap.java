@@ -28,11 +28,11 @@ public class AvailableItemsHashMap {
     // Get Available Items Map
     public static Map<Rooms, List<String>> getAvailableItemsMap() {
         if(availableItemsMap.size() == 0) {
-            availableItemsMap.put(Rooms.CapsuleRoom, new ArrayList<String>(Arrays.asList("Pods", "Oxygen Tank", "Racks", "Lockers")));
-            availableItemsMap.put(Rooms.AlienRoom, new ArrayList<String>(Arrays.asList("Humanoid", "Bed", "Mirror", "Old Box")));
-            availableItemsMap.put(Rooms.Kitchen, new ArrayList<String>(Arrays.asList("Refrigerator", "Microwave", "Cabinets", "Dustbin", "Snickers", "Flamethrower")));
-            availableItemsMap.put(Rooms.SupplyRoom, new ArrayList<String>(Arrays.asList("Computer", "Desk", "Sofa", "Racks", "Supplies", "Cage")));
-            availableItemsMap.put(Rooms.ControlRoom, new ArrayList<String>(Arrays.asList("Monitor", "Control Panel", "Pilot Seats", "Laser", "Chips")));
+            availableItemsMap.put(Rooms.CapsuleRoom, new ArrayList<String>(Arrays.asList("pods", "oxygen", "racks", "lockers")));
+            availableItemsMap.put(Rooms.AlienRoom, new ArrayList<String>(Arrays.asList("humanoid", "bed", "mirror", "old box")));
+            availableItemsMap.put(Rooms.Kitchen, new ArrayList<String>(Arrays.asList("refrigerator", "microwave", "cabinets", "dustbin", "snickers", "flamethrower")));
+            availableItemsMap.put(Rooms.SupplyRoom, new ArrayList<String>(Arrays.asList("computer", "desk", "sofa", "racks", "supplies", "cage")));
+            availableItemsMap.put(Rooms.ControlRoom, new ArrayList<String>(Arrays.asList("monitor", "control panel", "pilot seats", "laser", "chips")));
         }
         return availableItemsMap;
     }

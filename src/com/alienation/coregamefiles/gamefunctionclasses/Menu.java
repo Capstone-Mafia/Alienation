@@ -158,16 +158,16 @@ public class Menu {
         }
     }
 
-    // utility function to capitalize first letter of each word
-    public static String capitalizeAll(String str) {
-        if (str == null || str.isEmpty()) {
-            return str;
-        }
-
-        return Pattern.compile("\\b(.)(.*?)\\b")
-                .matcher(str)
-                .replaceAll(match -> match.group(1).toUpperCase() + match.group(2));
-    }
+//    // utility function to capitalize first letter of each word
+//    public static String capitalizeAll(String str) {
+//        if (str == null || str.isEmpty()) {
+//            return str;
+//        }
+//
+//        return Pattern.compile("\\b(.)(.*?)\\b")
+//                .matcher(str)
+//                .replaceAll(match -> match.group(1).toUpperCase() + match.group(2));
+//    }
 
     /*************** GETTER - SETTER METHODS  ******************/
     private static String getActionQuestion() {
