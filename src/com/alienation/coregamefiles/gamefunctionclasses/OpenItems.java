@@ -18,7 +18,7 @@ public class OpenItems {
 
     //Open something
     public static void open(Rooms currentRoom) throws Exception {
-        setItem1(capitalizeAll(Input.getItem1())); // Chips
+        setItem1(Input.getItem1()); // Chips
 
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
@@ -47,7 +47,7 @@ public class OpenItems {
                 e.printStackTrace();
             }
         }else if(Input.getItem1().equals("empty")){
-            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+            System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
         else {

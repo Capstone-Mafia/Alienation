@@ -26,8 +26,8 @@ package com.alienation.coregamefiles.enums;
  * Edibles Enum
  */
 public enum Edibles{
-    SNICKERS("Snickers",20),
-    CHIPS("Chips",20);
+    SNICKERS("snickers",20),
+    CHIPS("chips",20);
 
     private String name;
     private int healthPoints;

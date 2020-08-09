@@ -35,42 +35,43 @@ public class Input {
 
     private static String actionInput;
     private static String item1;
-    private static String item2;
+    //private static String item2;
 
     private static Actions parsedAction;
 
     public static void getInput(){
 
-        item1 = null;
-        item2 = null;
+        //item2 = null;
 
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         String delims = "[ ]+";
         String[] tokens = s.split(delims);
 
-        //first word, verb or direction, is 0th place in tokens string array
-        actionInput = tokens[0];
-
         //don't accept empty input
         assert Objects.requireNonNull(tokens)[0] != null;
 
+        //first word, verb or direction, is 0th place in tokens string array
+        actionInput = tokens[0];
+        item1 = tokens.length > 1 ? tokens[1] : " ";;
 
+//        // item 1 and two are obs empty if there is only one item in the tokens array
+//        if (tokens.length == 1){
+//            item1 = "empty";
+//            //item2 = "empty";
+//        }
 
-        if (tokens.length == 1){
-            item1 = "empty";
-            item2 = "empty";
-        }
-
-        if (tokens.length == 2){ // eat snickers
-            item1 = tokens[1];
-            item2 = "empty";
-        }
-
-        if (tokens.length == 3){ // grab oxygen tank
-            item1 = tokens[1];
-            item2 = item1 + " " + tokens[2];
-        }
+//        // if tokens array is two items, position 0 & 1
+//        if (tokens.length == 2){ // eat snickers
+//            item1 = tokens[1];
+//            //item2 = "empty";
+//        }
+//
+//        //if tokens array has three items, three words, positions 0,1, & 2
+////        if (tokens.length == 3){ // grab oxygen tank
+////            item1 = tokens[1];
+////            item2 = item1 + " " + tokens[2];
+////        }
 
         //TODO: fix this broken stuff
         //below if statements parse actionInput verbs for synonyms (once it's working)
@@ -128,14 +129,13 @@ public class Input {
         return actionInput.toUpperCase();
     }
 
-
     public static String getItem1() {
-        return item1;
+        return item1.toLowerCase();
     }
 
-    public static String getItem2() {
-        return item2;
-    }
+//    public static String getItem2() {
+//        return item2;
+//    }
 
     public static void setActionInput(String actionInput) {
         Input.actionInput = actionInput;

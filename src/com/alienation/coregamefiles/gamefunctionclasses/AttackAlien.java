@@ -27,7 +27,7 @@ public class AttackAlien {
         List<String> roomItems = getAvailableItemsMap().get(currentRoom);
         Set<String> aliens = new HashSet<>(Alien.getAlienNameList());
 
-        setItem1(capitalizeAll(Input.getItem1()));
+        setItem1(Input.getItem1());
 
         if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
             try {
@@ -63,7 +63,7 @@ public class AttackAlien {
                 System.out.println();
             }
         }else if(Input.getItem1().equals("empty")){
-            System.out.println(getAnsiRed() + "\n" + capitalizeAll(action.toString().toLowerCase()) +
+            System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
         else {
