@@ -25,14 +25,16 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
-import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.coregamefiles.parseinput.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.charactersetc.Player.*;
+import static com.alienation.coregamefiles.enums.Actions.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AttackAlien.attack;
 import static com.alienation.coregamefiles.gamefunctionclasses.CheckInventory.checkInventory;
@@ -46,6 +48,7 @@ import static com.alienation.coregamefiles.gamefunctionclasses.ReadThings.read;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SaveGame.saveGameDataToFile;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
+import static com.alienation.coregamefiles.parseinput.Input.*;
 
 /**
  * Menu For Console
@@ -82,6 +85,7 @@ public class Menu {
         System.out.println("\n" + getActionQuestion() + "   " + space + "[HP " + green + getHealth() + end +
                 "   " + getOxygenString() + " " + green  + getOxygen() + end + "   Wpn: " + getAnsiBlue() +
                 getCurrentWeapon() + end  + "[Time passed: "+ Player.getTime().minutesElapsed() + "]");
+
         System.out.println(lines);
 
         boolean repeat = true;
@@ -89,7 +93,7 @@ public class Menu {
         while (repeat) {
             try {
                 Input.getInput();
-                action = Actions.valueOf(Input.getActionInput());
+                action = getParsedAction();
                 repeat = false;
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "Enter something." + getAnsiReset());
@@ -99,11 +103,8 @@ public class Menu {
         Rooms currentRoom = getCurrentRoom();
         Rooms nextRoom = null;
 
-        /********* lots of unimplemented actions, could be simplified" *******/
         // Action verbs... things the character can do
         switch (action) {
-            case INVESTIGATE:
-            case SEE:
             case LOOK:
                 investigate(currentRoom);
                 break;
@@ -111,54 +112,41 @@ public class Menu {
                 open(currentRoom);
                 break;
             case EAT:
-            case DRINK:
                 eat(currentRoom);
                 break;
             case GRAB:
-            case GET:
-            case TAKE:
                 grab(currentRoom);
                 break;
-            case FIGHT:
             case ATTACK:
                 attack(currentRoom);
                 break;
             case READ:
                 read();
                 break;
-            case EQUIP:
-            case HOLD:
             case SWAP:
                 swap(currentRoom);
                 break;
             case NORTH:
-            case N:
                 moveRoom("N", currentRoom);
                 break;
             case EAST:
-            case E:
                 moveRoom("E", currentRoom);
                 break;
             case SOUTH:
-            case S:
                 moveRoom("S", currentRoom);
                 break;
             case WEST:
-            case W:
                 moveRoom("W", currentRoom);
                 break;
             case OPTIONS:
-            case O:
                 System.out.println("\n" + getAnsiBlue() + getActions() + "\n\n" + "Now you have: \n" + AvailableItemsHashMap.getAvailableItemsMap() + "\n\n" + getDirections() + "\n" + getInv() +
                         "\n" + getSaveGame() + getAnsiReset());
                 displayMenu();
                 break;
             case INVENTORY:
-            case I:
                 checkInventory();
                 break;
             case RUN:
-            case FLEE:
                 run(currentRoom);
                 break;
             case SAVE:
@@ -240,5 +228,9 @@ public class Menu {
 
     public static String getOxygenString() {
         return oxygen;
+    }
+
+    public static Weapons getWeaponInput(){
+        return Weapons.valueOf(item1.toUpperCase());
     }
 }

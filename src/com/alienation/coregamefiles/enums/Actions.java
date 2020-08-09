@@ -25,4 +25,4 @@ package com.alienation.coregamefiles.enums;
 /**
  * Action Enums
  */
-public enum Actions {GET, EQUIP, FLEE, SEE, LOOK, O, OPTIONS, I, INVENTORY, INVESTIGATE, OPEN, EAT, DRINK, GRAB, TAKE, FIGHT, ATTACK, READ, SWAP, HOLD, RUN, NORTH, N, EAST, E, SOUTH, S, WEST, W, SAVE, MAP};
+public enum Actions {EQUIP, FLEE, LOOK, O, OPTIONS, I, INVENTORY, OPEN, EAT, GRAB, FIGHT, ATTACK, READ, SWAP, RUN, NORTH, N, EAST, E, SOUTH, S, WEST, W, SAVE, MAP};

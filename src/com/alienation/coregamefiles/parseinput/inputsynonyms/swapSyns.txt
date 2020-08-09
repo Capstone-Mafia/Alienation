@@ -1,0 +1,8 @@
+swap
+hold
+equip
+trade
+substitute
+swop
+switch
+replace

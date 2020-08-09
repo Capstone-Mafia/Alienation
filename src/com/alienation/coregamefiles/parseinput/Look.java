@@ -22,17 +22,20 @@
 
 package com.alienation.coregamefiles.parseinput;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Look implements Action {
+
+    private static final ArrayList<String> performAction = new ArrayList<>();
 
     //try to read file, if not, print stack trace
     static {
         try {
             //locate the cvs txt file w/ synonyms
-            String fileLocation = "inputsynonyms" + File.separator + "lookSyns.txt";
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
+                    "inputsynonyms" + File.separator + "lookSyns.txt";
 
             //define the file by location
             File synonyms = new File(fileLocation);
@@ -40,19 +43,16 @@ public class Look implements Action {
             //instantiate scanner to read file
             Scanner synonymScanner = new Scanner(synonyms);
 
-            //read one line at a time from file
-            String nextLine = synonymScanner.nextLine();
-
-            //create list of the synonyms
-            String[] allTheSynonyms = nextLine.split(", ");
-
-
-        } catch (FileNotFoundException e) {
+            //add to arraylist
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    @Override
-    public void run(Scanner args) {
 
+    public static ArrayList<String> getPerformAction() {
+        return performAction;
     }
 }

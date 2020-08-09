@@ -23,18 +23,20 @@
 package com.alienation.coregamefiles.parseinput;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.alienation.coregamefiles.gameart.TextColors.*;
+public class Grab implements Action {//try to read file, if not, print stack trace
 
-public class Grab implements Action {
+    private static final ArrayList<String> performAction = new ArrayList<>();
 
     //try to read file, if not, print stack trace
     static {
         try {
             //locate the cvs txt file w/ synonyms
-            String fileLocation = "inputsynonyms" + File.separator + "grabSyns.txt";
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
+                    "inputsynonyms" + File.separator + "grabSyns.txt";
 
             //define the file by location
             File synonyms = new File(fileLocation);
@@ -42,23 +44,16 @@ public class Grab implements Action {
             //instantiate scanner to read file
             Scanner synonymScanner = new Scanner(synonyms);
 
-            //read one line at a time from file
-            String nextLine = synonymScanner.nextLine();
-
-            //create list of the synonyms
-            String[] allTheSynonyms = nextLine.split(", ");
-
-
-        } catch (FileNotFoundException e) {
+            //add to arraylist
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    @Override
-    public void run(Scanner args) {
-        if (!args.hasNext())
-            throw new IllegalArgumentException(getAnsiRed() + "What do you want to grab?" + getAnsiReset());
-        System.out.println(getAnsiCyan() + "Grabbing " + args.next() + getAnsiReset());
+    public static ArrayList<String> getPerformAction() {
+        return performAction;
     }
 }

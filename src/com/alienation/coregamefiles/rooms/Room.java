@@ -30,9 +30,11 @@ import com.alienation.tools.Time;
 public abstract class Room {
     private static int minusOxy = 10; // TODO: Make random number??
 
-//    public String getStory() {
-//        return null;
-//    }
+
+    static String getStory() {
+        return null;
+    }
+
 
     public static void loadEnvironment() throws Exception {
         Player.checkHealth();
