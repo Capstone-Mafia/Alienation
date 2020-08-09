@@ -10,21 +10,23 @@ public class LoadRoom {
     // Load the next room
     public static void loadRoom(Rooms newRoom) throws Exception {
         setCurrentRoom(newRoom);
-        Room r = new CapsuleRoom();
         switch (newRoom){
             case AlienRoom:
-                r = new AlienRoom();
+                AlienRoom.loadEnvironment();
                 break;
             case Kitchen:
-                r = new Kitchen();
+                Kitchen.loadEnvironment();
                 break;
             case SupplyRoom:
-                r = new SupplyRoom();
+                SupplyRoom.loadEnvironment();
                 break;
             case ControlRoom:
-                r = new ControlRoom();
+                ControlRoom.loadEnvironment();
                 break;
+            default:
+                CapsuleRoom.loadEnvironment();
+
         }
-        r.loadEnvironment();
+
     }
 }

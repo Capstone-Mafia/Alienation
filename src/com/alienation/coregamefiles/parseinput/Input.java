@@ -128,6 +128,7 @@ public class Input {
         return actionInput.toUpperCase();
     }
 
+
     public static String getItem1() {
         return item1;
     }

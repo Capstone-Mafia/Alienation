@@ -9,9 +9,9 @@ public class AlienObjects {
     static {
     alienObjs = new ArrayList<>();
     Alien obj1 = new AlienSuperhumanoid(50);
-    Alien obj2 = new AlienSuperhumanoid(10);
-    Alien obj3 = new AlienSuperhumanoid(6);
-    Alien obj4 = new AlienSuperhumanoid(4);
+    Alien obj2 = new AlienHumanoid(10);
+    Alien obj3 = new AlienCanine(6);
+    Alien obj4 = new AlienVermin(4);
 
         alienObjs.add(obj1);
         alienObjs.add(obj2);
@@ -21,7 +21,7 @@ public class AlienObjects {
     public static Optional<Alien> getAlien(String alienName){
 
         for (Alien alien : alienObjs){
-            if (alien.getAlienName().equals(alienName)){
+            if (alien.getAlienName().toUpperCase().equals(alienName.toUpperCase())){
                 return Optional.of(alien);
             }
         }
