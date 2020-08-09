@@ -90,9 +90,9 @@ public class Input {
         if (Attack.getPerformAction().contains((getActionInput()))) {
             setParsedAction(ATTACK);
         }
-        if (Read.getPerformAction().contains((getActionInput()))) {
-            setParsedAction(READ);
-        }
+//        if (Read.getPerformAction().contains((getActionInput()))) {     //currently no logic for reading
+//            setParsedAction(READ);
+//        }
         if (Swap.getPerformAction().contains((getActionInput()))) {
             setParsedAction(SWAP);
         }

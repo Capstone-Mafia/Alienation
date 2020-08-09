@@ -29,7 +29,7 @@ public class AttackAlien {
 
         setItem1(Input.getItem1());
 
-        if(roomItems.contains(getItem2()) || roomItems.contains(getItem1())) {
+        if(roomItems.contains(getItem1())) {
             try {
                 Optional<Alien> maybeAlien = AlienObjects.getAlien(getItem1());
 

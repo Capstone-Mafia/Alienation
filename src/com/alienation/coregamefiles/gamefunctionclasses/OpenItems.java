@@ -22,7 +22,7 @@ public class OpenItems {
 
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        if(items.contains(getItem2()) || items.contains(getItem1())) {
+        if(items.contains(getItem1())) {
             try {
                 CanOpen itemToOpen = CanOpen.valueOf(getItem1().toUpperCase()); // cage
                 //String upperAnswer = getItem1().toUpperCase();
