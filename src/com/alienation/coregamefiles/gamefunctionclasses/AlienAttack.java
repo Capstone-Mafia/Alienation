@@ -41,6 +41,12 @@ public class AlienAttack {
 
                 alien.setHealthPoints(alienNewHealthPoints);
 
+                if (alienNewHealthPoints <= 0){
+                    List<String> items = getAvailableItemsMap().get(currentRoom);
+                    items.remove(alien.getAlienName());
+                    setAvailableItemsMap(currentRoom, items);
+                }
+
                 System.out.println(getAnsiRed() + "\n-" + newWeaponDamagePoints + " dmg");
                 System.out.println(getAnsiBlue() + "\nAlien HP: " + getAnsiGreen() + alienNewHealthPoints +
                         getAnsiReset());

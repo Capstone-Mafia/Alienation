@@ -42,8 +42,8 @@ public class AlienRoom extends Room {
 
     /*************** PUBLIC METHODS  ******************/
     // This method used to load Environment to user
-    public void loadEnvironment() throws Exception {
-        super.loadEnvironment();
+    public static void loadEnvironment() throws Exception {
+        Room.loadEnvironment();
         System.out.println(RoomsMap.alienRoom());
         Menu.displayMenu();
     }
