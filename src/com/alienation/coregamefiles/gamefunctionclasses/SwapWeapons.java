@@ -26,6 +26,9 @@ public class SwapWeapons {
             System.out.println(getAnsiYellow() + key + getAnsiReset());
         }
 
+        Input.getInput();
+        //setItem1();
+
         System.out.println(getAnsiYellow() + lines + getAnsiReset());
 
         if(!Player.getWeaponsInventory().contains(getWeaponInput())) {
