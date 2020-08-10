@@ -1,4 +1,0 @@
-save
-freeze
-halt
-comeback

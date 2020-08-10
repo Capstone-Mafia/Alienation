@@ -25,30 +25,20 @@ package com.alienation.coregamefiles.parseinput;
 import java.io.*;
 import java.util.*;
 
+
 public class Look implements Action {
 
     private static final ArrayList<String> performAction = new ArrayList<>();
+    String fileTitle = "lookSyns.txt";
+    InputStream is = this.getClass().getResourceAsStream(File.separator + fileTitle);
 
-    //try to read file, if not, print stack trace
-    static {
-        try {
-            //locate the cvs txt file w/ synonyms
-            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
-                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
-                    "inputsynonyms" + File.separator + "lookSyns.txt";
+    {
 
-            //define the file by location
-            File synonyms = new File(fileLocation);
-
-            //instantiate scanner to read file
-            Scanner synonymScanner = new Scanner(synonyms);
-
-            //add to arraylist
-            while((synonymScanner.hasNext())) {
-                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        try(BufferedReader fileReader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(File.separator + fileTitle)))) {
+            while(fileReader.ready()) performAction.add(fileReader.readLine().toUpperCase().trim());
+        }
+        catch(IOException e){
+            System.out.println("Something went wrong with text parser");
         }
     }
 

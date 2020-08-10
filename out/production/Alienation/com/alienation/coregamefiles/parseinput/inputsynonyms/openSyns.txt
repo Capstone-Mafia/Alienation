@@ -1,6 +1,0 @@
-open
-initiate
-unfurl
-unshut
-unlatch
-unlock

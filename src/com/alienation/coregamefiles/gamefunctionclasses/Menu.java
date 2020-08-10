@@ -225,8 +225,4 @@ public class Menu {
     public static String getOxygenString() {
         return oxygen;
     }
-
-//    public static Weapons getWeaponInput(){
-//        return Weapons.valueOf(Input.getItem1().toUpperCase());
-//    }
 }

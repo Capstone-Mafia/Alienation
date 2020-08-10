@@ -1,3 +1,0 @@
-north
-n
-up
