@@ -34,6 +34,8 @@ public class Attack implements Action {
     static {
         try {
             //locate the cvs txt file w/ synonyms
+            //leave below example with "src" to remember old file path while testing new in .jar
+            //remove from all. rebuild jar. try running again. s
             String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
                     File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
                     "inputsynonyms" + File.separator + "attackSyns.txt";

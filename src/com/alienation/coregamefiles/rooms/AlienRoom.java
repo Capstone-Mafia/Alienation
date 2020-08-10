@@ -52,9 +52,9 @@ public class AlienRoom extends Room {
     // Get Story line while page loads
     public static String getStory() {
         List<String> availableItems = getAvailableItemsMap().get(Rooms.AlienRoom);
-        if (!availableItems.contains("Humanoid")) {
+        if (!availableItems.contains("humanoid")) {
             return getLastStory();
-        }else if (getAttackCount() > 0 && availableItems.contains("Humanoid")){
+        }else if (getAttackCount() > 0 && availableItems.contains("humanoid")){
                 return getUpdatedStory();
         }else{
             return getInitialStory();

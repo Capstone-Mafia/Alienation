@@ -57,7 +57,7 @@ public class ControlRoom extends Room {
     // Get Story line while page loads
     // check inventory for part
     public static String getStory() {
-        if (!Player.getInventory().contains("Ignition Switch")) { //if inventory does not contain ignition
+        if (!Player.getInventory().contains("ignition switch")) { //if inventory does not contain ignition
             return getInitialStory();
         } else{
             return getLastStory();

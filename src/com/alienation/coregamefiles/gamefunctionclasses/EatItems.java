@@ -20,7 +20,7 @@ public class EatItems {
     public static void eat(Rooms currentRoom) throws Exception {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        setItem1(Input.getItem1());; // Chips
+        setItem1(Input.getItem1()); // Chips
 
             //old logic, saving but revising
 //        if(items.contains(getItem2()) || items.contains(getItem1()) || getInventory().contains(getItem1())){

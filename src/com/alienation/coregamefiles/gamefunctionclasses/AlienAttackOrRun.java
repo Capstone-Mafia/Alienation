@@ -45,7 +45,7 @@ public class AlienAttackOrRun {
                     case SWAP:
                     case EQUIP:
                         repeat = false;
-                        swap(currentRoom);
+                        swap();
                         break;
                     default:
                         System.out.println("You must enter one of the following actions: ATTACK, RUN, FIGHT, FLEE, EAT, SWAP, EQUIP");

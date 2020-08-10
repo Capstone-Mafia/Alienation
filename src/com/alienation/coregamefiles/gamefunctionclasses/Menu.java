@@ -27,14 +27,8 @@ import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
 import com.alienation.coregamefiles.parseinput.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Pattern;
-
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.charactersetc.Player.*;
-import static com.alienation.coregamefiles.enums.Actions.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.AttackAlien.attack;
 import static com.alienation.coregamefiles.gamefunctionclasses.CheckInventory.checkInventory;
@@ -44,7 +38,6 @@ import static com.alienation.coregamefiles.gamefunctionclasses.ImageViewer.viewe
 import static com.alienation.coregamefiles.gamefunctionclasses.InvestigateRoom.investigate;
 import static com.alienation.coregamefiles.gamefunctionclasses.MoveRoom.moveRoom;
 import static com.alienation.coregamefiles.gamefunctionclasses.OpenItems.open;
-import static com.alienation.coregamefiles.gamefunctionclasses.ReadThings.read;
 import static com.alienation.coregamefiles.gamefunctionclasses.RunAway.run;
 import static com.alienation.coregamefiles.gamefunctionclasses.SaveGame.saveGameDataToFile;
 import static com.alienation.coregamefiles.gamefunctionclasses.SwapWeapons.swap;
@@ -57,21 +50,21 @@ import static com.alienation.coregamefiles.parseinput.Input.*;
 public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
-    private static String actionQuestion = "What will you do? (o for options)";
-    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
+    private static final String actionQuestion = "What will you do? (o for options)";
+    private static final String actions = "Try : look, open item , eat item, grab item, attack, swap, run, Map\n \n" +
             "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
             "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
             "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
             "SupplyRoom started with: \"Computer\", \"Desk\", \"Sofa\", \"Racks\", \"Supplies\", \"Cage\"\n" +
             "ControlRoom started with: \"Monitor\", \"Control Panel\", \"Pilot Seats\", \"Laser\", \"Chips\"";
 
-    private static String directions = "Try : N, north, S, South, e, W, west to move around\n";
-    private static String inv = "Check Inventory < i >";
+    private static final String directions = "Try : N, north, S, South, e, W, west to move around\n";
+    private static final String inv = "Check Inventory < i >";
     public static Actions action;
-    private static String saveGame = "Save the Game < save >";
+    private static final String saveGame = "Save the Game < save >";
     private static String answer;
     private static String item1;
-    private static String item2;
+//    private static String item2;  // removed item 2 from logic
     private static final String oxygen = "O\u2082"; // O₂
 
     /*************** PUBLIC METHODS  ******************/
@@ -101,7 +94,6 @@ public class Menu {
             }
         }
         Rooms currentRoom = getCurrentRoom();
-        Rooms nextRoom = null;
 
         // Action verbs... things the character can do
         switch (action) {
@@ -109,23 +101,50 @@ public class Menu {
                 investigate(currentRoom);
                 break;
             case OPEN:
-                open(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    open(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to open?");
+                    displayMenu();
+                }
             case EAT:
-                eat(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    eat(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to eat?");
+                    displayMenu();
+                }
             case GRAB:
-                grab(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    grab(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to grab?");
+                    displayMenu();
+                }
             case ATTACK:
-                attack(currentRoom);
-                break;
-            case READ:
-                read();
-                break;
+                try {
+                    assert item1 != null;
+                    attack(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to attack?");
+                    displayMenu();
+                }
             case SWAP:
-                swap(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    swap();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to swap with?");
+                    displayMenu();
+                }
             case NORTH:
                 moveRoom("N", currentRoom);
                 break;
@@ -158,17 +177,6 @@ public class Menu {
         }
     }
 
-//    // utility function to capitalize first letter of each word
-//    public static String capitalizeAll(String str) {
-//        if (str == null || str.isEmpty()) {
-//            return str;
-//        }
-//
-//        return Pattern.compile("\\b(.)(.*?)\\b")
-//                .matcher(str)
-//                .replaceAll(match -> match.group(1).toUpperCase() + match.group(2));
-//    }
-
     /*************** GETTER - SETTER METHODS  ******************/
     private static String getActionQuestion() {
         return actionQuestion;
@@ -186,28 +194,16 @@ public class Menu {
         return inv;
     }
 
-    public static void clear() {
-        for (int i = 0; i < 25; ++i) System.out.println();
-    }
-
     private static String getSaveGame(){
         return saveGame;
     }
 
     public static String getItem1() {
-        return item1;
+        return Input.getItem1();
     }
 
     public static void setItem1(String item1) {
         Menu.item1 = item1;
-    }
-
-    public static String getItem2() {
-        return item2;
-    }
-
-    public static void setItem2(String item2) {
-        Menu.item2 = item2;
     }
 
     public static String getAnswer() {
@@ -230,7 +226,7 @@ public class Menu {
         return oxygen;
     }
 
-    public static Weapons getWeaponInput(){
-        return Weapons.valueOf(item1.toUpperCase());
-    }
+//    public static Weapons getWeaponInput(){
+//        return Weapons.valueOf(Input.getItem1().toUpperCase());
+//    }
 }

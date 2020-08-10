@@ -33,16 +33,16 @@ import java.util.Set;
  */
 public enum Weapons{
 
-    TASER_GUN("Taser Gun", 1),
-    LASER("Laser", 3),
-    SQUIRT_GUN("Squirt Gun", 4),
-    FLAMETHROWER("Flamethrower", 8);
+    TASER_GUN("taser gun", 1),
+    LASER("laser", 3),
+    SQUIRT_GUN("squirt gun", 4),
+    FLAMETHROWER("flamethrower", 8);
      /**
     Set<String> weaponsSet = new HashSet<>();
     weaponsSet.add("Taser Gun");
      */
 
-    private String name;
+    private final String name;
     private int damagePoints;
 
     Weapons(String name, int damagePoints){
@@ -57,7 +57,7 @@ public enum Weapons{
         return damagePoints;
     }
 
-    /**This will maybe change the damagepoints of each weapon over time
+    /* This will maybe change the damage points of each weapon over time
      * if we want to add that feature
      */
     public void setDamagePoints(int damagePoints) {
