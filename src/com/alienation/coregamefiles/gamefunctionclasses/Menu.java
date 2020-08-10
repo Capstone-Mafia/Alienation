@@ -195,7 +195,7 @@ public class Menu {
     }
 
     public static String getItem1() {
-        return item1;
+        return Input.getItem1();
     }
 
     public static void setItem1(String item1) {
@@ -231,6 +231,7 @@ public class Menu {
     }
 
     public static Weapons getWeaponInput(){
-        return Weapons.valueOf(item1.toUpperCase());
+
+        return Weapons.valueOf(Input.getItem1().toUpperCase());
     }
 }

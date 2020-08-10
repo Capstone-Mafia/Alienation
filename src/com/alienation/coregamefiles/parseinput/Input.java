@@ -35,7 +35,7 @@ public class Input {
 
     private static String actionInput;
     private static String item1;
-    //private static String item2;
+    private static String item2;
 
     private static Actions parsedAction;
 
@@ -52,8 +52,9 @@ public class Input {
         assert Objects.requireNonNull(tokens)[0] != null;
 
         //first word, verb or direction, is 0th place in tokens string array
+
         actionInput = tokens[0];
-        item1 = tokens.length > 1 ? tokens[1] : " ";;
+        item1 = tokens.length > 1 ? tokens[1] : " ";
 
 //        // item 1 and two are obs empty if there is only one item in the tokens array
 //        if (tokens.length == 1){
