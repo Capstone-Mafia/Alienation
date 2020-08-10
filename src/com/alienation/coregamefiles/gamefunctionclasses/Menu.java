@@ -58,14 +58,14 @@ public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     private static String actionQuestion = "What will you do? (o for options)";
-    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
-            "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
-            "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
-            "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
-            "SupplyRoom started with: \"Computer\", \"Desk\", \"Sofa\", \"Racks\", \"Supplies\", \"Cage\"\n" +
-            "ControlRoom started with: \"Monitor\", \"Control Panel\", \"Pilot Seats\", \"Laser\", \"Chips\"";
+    private static String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n";
+//            "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
+//            "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
+//            "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
+//            "SupplyRoom started with: \"Computer\", \"Desk\", \"Sofa\", \"Racks\", \"Supplies\", \"Cage\"\n" +
+//            "ControlRoom started with: \"Monitor\", \"Control Panel\", \"Pilot Seats\", \"Laser\", \"Chips\"";
 
-    private static String directions = "Try : N, north, S, South, e, W, west to move around\n";
+    private static String directions = "Try : North, South, East, West to move around\n";
     private static String inv = "Check Inventory < i >";
     public static Actions action;
     private static String saveGame = "Save the Game < save >";
@@ -105,8 +105,8 @@ public class Menu {
         /********* lots of unimplemented actions, could be simplified" *******/
         // Action verbs... things the character can do
         switch (action) {
-            case INVESTIGATE:
-            case SEE:
+//            case INVESTIGATE:
+//            case SEE:
             case LOOK:
                 investigate(currentRoom);
                 break;
@@ -114,12 +114,12 @@ public class Menu {
                 open(currentRoom);
                 break;
             case EAT:
-            case DRINK:
+//            case DRINK:
                 eat(currentRoom);
                 break;
             case GRAB:
-            case GET:
-            case TAKE:
+//            case GET:
+//            case TAKE:
                 grab(currentRoom);
                 break;
             case FIGHT:
@@ -130,7 +130,7 @@ public class Menu {
                 read();
                 break;
             case EQUIP:
-            case HOLD:
+//            case HOLD:
             case SWAP:
                 swap(currentRoom);
                 break;
@@ -185,11 +185,11 @@ public class Menu {
 //    }
 
     /*************** GETTER - SETTER METHODS  ******************/
-    private static String getActionQuestion() {
+    public static String getActionQuestion() {
         return actionQuestion;
     }
 
-    private static String getActions() {
+    public static String getActions() {
         return actions;
     }
 

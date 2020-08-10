@@ -46,7 +46,7 @@ public class CapsuleRoom extends Room {
 
         // Line below is not needed - Guru
 //        System.out.println(RoomsMap.capsuleRoom());
-        Menu.displayMenu();
+//        Menu.displayMenu();
 
     }
 
@@ -66,7 +66,7 @@ public class CapsuleRoom extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public static String getInitialStory() {
-        return getAnsiBlue() + "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
+        return "\n\nAs you open your eyes your vision is blurry and your body hurts. You gasp to take your first breath as you wake from cryo-sleep.\n" +
                 "You can tell the oxygen levels are low as it seems harder to breathe.  As you look around you notice that there is one crew member\n" +
                 "missing and their sleeping capsule is shattered with blood splattered across the front. The ship seems to be drifting in\n" +
                 "space and the lights are dim, most likely on some sort of backup system. You notice a Taser on the floor.\n" +
@@ -80,14 +80,14 @@ public class CapsuleRoom extends Room {
                 "  / XXXXXX /\n" +
                 " / XXXXXX /\n" +
                 "(________(                \n" +
-                " `------'  "+ getAnsiReset();
+                " `------'  ";
     }
 
     public static String getUpdatedStory() {
-        return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Another crew member is missing. There is a blood trail....\n"+ getAnsiReset();
+        return "\n\nYou are back in the Capsule Room. Another crew member is missing. There is a blood trail....\n";
     }
 
     public static String getLastStory() {
-        return getAnsiBlue() + "\n\nYou are back in the Capsule Room. Nothing has changed. There are crew members missing and blood everywhere."+ getAnsiReset();
+        return"\n\nYou are back in the Capsule Room. Nothing has changed. There are crew members missing and blood everywhere.";
     }
 }

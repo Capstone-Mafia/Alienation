@@ -44,9 +44,9 @@ public class AlienRoom extends Room {
     // This method used to load Environment to user
     public static void loadEnvironment() throws Exception {
         Room.loadEnvironment();
-        System.out.println(RoomsMap.alienRoom());
+//        System.out.println(RoomsMap.alienRoom());
         System.out.println(getStory());
-        Menu.displayMenu();
+//        Menu.displayMenu();
     }
 
     // Get Story line while page loads
@@ -63,7 +63,7 @@ public class AlienRoom extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public static String getInitialStory() {
-        return getAnsiBlue() + "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
+        return "\n\nYou've entered a nasty smelling room. It smells like rotting flesh and the floor is covered with blood and a slimey substance.\n" +
                     "Wait... you see something in the corner slumped over, moving back and forth.\n" +
                 "       .-\"\"\"\"-.        .-\"\"\"\"-.\n" +
                 "      /        \\      /        \\\n" +
@@ -75,15 +75,15 @@ public class AlienRoom extends Room {
                 "       \\  __  /        \\  __  / \n" +
                 "        '.__.'          '.__.'\n" +
                 "         |  |            |  |\n" +
-                "         |  |            |  |" + getAnsiReset();
+                "         |  |            |  |" ;
     }
 
     public static String getUpdatedStory() {
-        return getAnsiBlue() + "\n\nLast time you were here you fought the alien. It's still in here.... I can smell it.\n" + getAnsiReset();
+        return "\n\nLast time you were here you fought the alien. It's still in here.... I can smell it.\n";
     }
 
     public static String getLastStory() {
-        return getAnsiBlue() + "\n\nYou are back in the room where you killed your crew member.... I mean alien. Nothing has changed except the pools of your friends blood.\n" +
-                    "OOPS... did it again." + getAnsiReset();
+        return "\n\nYou are back in the room where you killed your crew member.... I mean alien. Nothing has changed except the pools of your friends blood.\n" +
+                    "OOPS... did it again.";
     }
 }

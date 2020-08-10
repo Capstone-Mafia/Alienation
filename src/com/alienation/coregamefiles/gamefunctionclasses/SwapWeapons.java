@@ -4,6 +4,7 @@ import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class SwapWeapons {
         List<Weapons> playerInventory = getWeaponsInventory();
 
         System.out.println(space + getAnsiYellow() + "Which weapon would you like to hold?\n" + getAnsiReset());
+        Game.secondTextArea.setText("Which weapon would you like to hold?");
         System.out.println(getAnsiYellow() + lines + getAnsiReset());
         for (Weapons key : playerInventory) {
             System.out.println(getAnsiYellow() + key + getAnsiReset());
@@ -32,7 +34,9 @@ public class SwapWeapons {
 
             System.out.println(getAnsiRed() + "\nYou don't have any weapons in your inventory. " +
                     "Grab some weapons to swap!!" + getAnsiReset());
-            displayMenu();
+            Game.secondTextArea.setText("You don't have any weapons in your inventory." +
+                    "                    Grab some weapons to swap!!");
+//            displayMenu();
             return;
         }
 
@@ -44,15 +48,11 @@ public class SwapWeapons {
             setCurrentWeapon(Input.getItem1().toUpperCase());
 
             System.out.println(getAnsiYellow() + "\nYou are now holding a " + getItem1() + "." + getAnsiReset());
+            Game.secondTextArea.setText("You are now holding a " + getItem1());
 
-            /**
-             * remove that weapon input from the item list, and setCurrentWeapon with that weapon
-             *
-             * check if item exists in the inventory and replace the inventory with item
-             * does the method 'drop inventory' exist
-             */
         } catch (Exception e) {
             System.out.println(getAnsiRed() + "\nYou can't swap with that." + getAnsiReset());
+            Game.secondTextArea.setText("You can't swap with that.");
         } finally {
             displayMenu();
         }

@@ -24,6 +24,7 @@ package com.alienation.coregamefiles.charactersetc;
 
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
+import com.alienation.enginefiles.Game;
 import com.alienation.tools.Time;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Player {
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     public static final int MAX_HEALTH = 100;
     public static final int MIN_HEALTH = 0;
-    private static int health = 5;
+    private static int health = 500;
     private static Weapons currentWeapon = Weapons.FLAMETHROWER;
     private static Rooms currentRoom = Rooms.CapsuleRoom; // as initial default
     private static Rooms previousRoom;
@@ -78,6 +79,7 @@ public class Player {
     public static void checkHealth(){
         if(health <= 20){
             System.out.println(getAnsiRed() + "\nHealth is LOW!" + getAnsiReset());
+            Game.secondTextArea.setText("Health is LOW");
         }
     }
 

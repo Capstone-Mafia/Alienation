@@ -22,6 +22,7 @@
 
 package com.alienation.coregamefiles.parseinput;
 import com.alienation.coregamefiles.enums.Actions;
+import com.alienation.enginefiles.Game;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -43,17 +44,25 @@ public class Input {
 
         //item2 = null;
 
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
+        String grabInput = Game.input;
+        System.out.println("We made it to input in Input.java                                      " + grabInput);
         String delims = "[ ]+";
-        String[] tokens = s.split(delims);
+        String[] tokens = grabInput.split(delims);
+        System.out.println("Token from MENU " + tokens[0]);
+//        verb = tokens[0];
+
+
+//        Scanner scanner = new Scanner(System.in);
+//        String s = scanner.nextLine();
+//        String delims = "[ ]+";
+//        String[] tokens = s.split(delims);
 
         //don't accept empty input
         assert Objects.requireNonNull(tokens)[0] != null;
 
         //first word, verb or direction, is 0th place in tokens string array
         actionInput = tokens[0];
-        item1 = tokens.length > 1 ? tokens[1] : " ";;
+        item1 = tokens.length > 1 ? tokens[1] : " ";
 
 //        // item 1 and two are obs empty if there is only one item in the tokens array
 //        if (tokens.length == 1){

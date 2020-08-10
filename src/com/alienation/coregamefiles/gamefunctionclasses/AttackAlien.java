@@ -6,6 +6,7 @@ import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.HashSet;
 import java.util.List;
@@ -57,7 +58,8 @@ public class AttackAlien {
                 }
                 else {
                     System.out.println(getAnsiRed() + "\nYou can't attack that!" + getAnsiReset());
-                    displayMenu();
+                    Game.secondTextArea.setText("You can't attack that!");
+//                    displayMenu();
                 }
             } catch (Exception e) {
                 System.out.println();
@@ -68,7 +70,8 @@ public class AttackAlien {
         }
         else {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
+            Game.secondTextArea.setText("That's not in this room.");
         }
-        displayMenu();
+//        displayMenu();
     }
 }

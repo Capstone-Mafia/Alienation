@@ -3,6 +3,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.enums.Edibles;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class EatItems {
     public static void eat(Rooms currentRoom) throws Exception {
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        setItem1(Input.getItem1());; // Chips
+        setItem1(Input.getItem1()); // Chips
 
             //old logic, saving but revising
 //        if(items.contains(getItem2()) || items.contains(getItem1()) || getInventory().contains(getItem1())){
@@ -51,17 +52,22 @@ public class EatItems {
                 }
                 if(edibleItems == 0){
                     System.out.println(getAnsiRed() + "There is nothing to eat!!" + getAnsiReset());
+                    Game.secondTextArea.setText("There is nothing to eat!!");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "\nYou can't eat that." + getAnsiReset());
+                Game.secondTextArea.setText("You can't eat that.");
             }
         } else if(Input.getItem1().equals("empty")){
             System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
+            Game.secondTextArea.setText(action.toString().toLowerCase() +
+                    " what?" );
         }
         else {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room or your inventory." + getAnsiReset());
+            Game.secondTextArea.setText("That's not in this room or your inventory.");
         }
-        displayMenu();
+//        displayMenu();
     }
 }

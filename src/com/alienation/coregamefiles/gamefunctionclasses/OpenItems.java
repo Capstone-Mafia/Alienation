@@ -3,6 +3,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 import com.alienation.coregamefiles.enums.CanOpen;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,10 @@ public class OpenItems {
 
                 if(!getInventory().contains("Code")){ // make the key code not cage
                     System.out.println(getAnsiRed() + "\nIt's locked" + getAnsiReset());
+                    Game.secondTextArea.setText("It's locked");
                 }else {
                     System.out.println(getAnsiYellow() + "\nNew item added to inventory." + getAnsiReset());
+                    Game.secondTextArea.setText("New item added to inventory.");
                     List<String> newItems = new ArrayList<>();
                     newItems = getInventory();
                     newItems.add("Ignition Switch");
@@ -43,16 +46,20 @@ public class OpenItems {
 
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "\nYou can't open that!" + getAnsiReset());
+                Game.secondTextArea.setText("You can't open that!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }else if(Input.getItem1().equals("empty")){
             System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
+            Game.secondTextArea.setText(action.toString().toLowerCase() +
+                    " what?");
         }
         else {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
+            Game.secondTextArea.setText("That's not in this room.");
         }
-        displayMenu();
+//        displayMenu();
     }
 }

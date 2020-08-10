@@ -23,13 +23,14 @@
 package com.alienation.coregamefiles.charactersetc;
 
 import com.alienation.coregamefiles.gameart.Death;
+import com.alienation.enginefiles.Game;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 /**
  * Oxygen Class
  */
 public class Oxygen {
-    public static int oxygen = 50;
+    public static int oxygen = 300;
     public static int maxOxygen = 300;
     private static final String oTwo = "O\u2082"; // O₂
 
@@ -50,6 +51,7 @@ public class Oxygen {
             Oxygen.oxygen = Oxygen.oxygen - minusOxy;
         }
         System.out.println(getAnsiRed() + "-10 " + oTwo + getAnsiReset());
+        Game.secondTextArea.setText("-10 ");
     }
 
     //Increases oxygen levels SETTERS

@@ -41,7 +41,7 @@ public class Kitchen extends Room {
         Room.loadEnvironment();
         System.out.println(RoomsMap.kitchenRoom());
         System.out.println(getStory());
-        Menu.displayMenu();
+//        Menu.displayMenu();
     }
 
     // Get Story line while page loads
@@ -55,7 +55,7 @@ public class Kitchen extends Room {
 
     /*************** GETTER - SETTER METHODS  ******************/
     public static String getInitialStory() {
-        return getAnsiBlue() + "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
+        return "\n\nYou've entered the kitchen and you can immediately tell that something has gotten into the food. There are all\n" +
                 "types of nasty smells filling the air, but you are so hungry that the smells can't bother you at this point. There must be something\n" +
                 "that you can eat laying around here somewhere?\n" +
                 "       ___________,_____\n" +
@@ -70,11 +70,11 @@ public class Kitchen extends Room {
                 "      |     | ___ |_____|\n" +
                 "      |>    |[___]|     |\n" +
                 "      |     |[___]|=====|\n" +
-                "      |_____|=====|_____|"+ getAnsiReset();
+                "      |_____|=====|_____|";
     }
 
     public static String getUpdatedStory() {
-        return getAnsiBlue() + "\n\nYou are back in the kitchen where you found that delicious snack. It looks like something's been through here\n" +
-                "again.\n"+ getAnsiReset();
+        return "\n\nYou are back in the kitchen where you found that delicious snack. It looks like something's been through here\n" +
+                "again.\n";
     }
 }

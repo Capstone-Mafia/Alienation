@@ -5,6 +5,7 @@ import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,7 @@ public class GrabItems {
             try {
                 if (getXItems().contains(getItem1())){
                     System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
+                    Game.secondTextArea.setText("You can't grab that!");
 //                    displayMenu();
                 }
             }
@@ -51,12 +53,14 @@ public class GrabItems {
                 Oxygen.incOxygen(100);
                 System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels to " + Oxygen.getOxygen() +
                         getAnsiReset());
+                Game.secondTextArea.setText("You just increased" + getOxygenString() + " levels to " + Oxygen.getOxygen());
                 items.remove(getItem1());
                 setAvailableItemsMap(currentRoom, items);
 //                displayMenu();
             }
 
             System.out.println(getAnsiYellow() + "\n" + getItem1() + " added to Inventory." + getAnsiReset());
+            Game.secondTextArea.setText(getItem1() + " added to Inventory.");
             List<String> newItems = getInventory();
             newItems.add(getItem1());
             setInventory(newItems);
@@ -68,9 +72,12 @@ public class GrabItems {
         }else if(Input.getItem1().equals("")){
             System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
+            Game.secondTextArea.setText(action.toString().toLowerCase()  +
+                    "                     what?");
         }
         else if(addToInventory) {
             System.out.println(getAnsiRed() + "\n" + "That's not in this room." + getAnsiReset());
+            Game.secondTextArea.setText("That's not in this room.");
         }
 //        displayMenu();
     }

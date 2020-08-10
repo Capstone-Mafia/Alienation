@@ -1,54 +1,40 @@
 package com.alienation.enginefiles;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.alienation.coregamefiles.charactersetc.Oxygen;
+import com.alienation.coregamefiles.charactersetc.Player;
+import com.alienation.coregamefiles.gamefunctionclasses.Menu;
+import com.alienation.coregamefiles.gamefunctionclasses.MoveRoom;
+import com.alienation.coregamefiles.rooms.CapsuleRoom;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import com.alienation.coregamefiles.charactersetc.Alien;
-import com.alienation.coregamefiles.charactersetc.Oxygen;
-import com.alienation.coregamefiles.charactersetc.Player;
-import com.alienation.coregamefiles.enums.Rooms;
-import com.alienation.coregamefiles.gameart.Banner;
-import com.alienation.coregamefiles.gamefunctionclasses.CheckInventory;
-import com.alienation.coregamefiles.gamefunctionclasses.ImageViewer;
-import com.alienation.coregamefiles.gamefunctionclasses.Menu;
-import com.alienation.coregamefiles.gamefunctionclasses.MoveRoom;
-import com.alienation.coregamefiles.parseinput.Input;
-import com.alienation.coregamefiles.rooms.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 import static com.alienation.coregamefiles.charactersetc.Player.getCurrentRoom;
-import static com.alienation.coregamefiles.enums.Rooms.*;
-import static com.alienation.coregamefiles.gamefunctionclasses.LoadRoom.loadRoom;
-import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.*;
-import static com.alienation.coregamefiles.rooms.CapsuleRoom.getInitialStory;
 import static com.alienation.coregamefiles.rooms.CapsuleRoom.getStory;
-import static java.lang.System.getProperty;
 
 public class Game {
 
     public static JFrame window;
-//    Container con;
-    static JPanel secondTextpanel, textInputPanel, inventoryButtonPanel, titleNamePanel, infoPanel, mainMapPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
-    static JLabel titleNameLabel, carMapLabel, corMapLabel, arMapLabel, srMapLabel, kMapLabel, mainMapLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
+    static JPanel secondTextpanel;
+    static JPanel textInputPanel;
+    static JPanel inventoryButtonPanel;
+    static JPanel titleNamePanel;
+    static JPanel infoPanel;
+    static JPanel mainMapPanel;
+    static JPanel startButtonPanel;
+    static JPanel mainTextPanel;
+    static JPanel choiceButtonPanel;
+    static JLabel oxyLabel, oxyLabelName, titleNameLabel, carMapLabel, corMapLabel, arMapLabel, srMapLabel, kMapLabel, mainMapLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
     static Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
     static Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
     static JButton okButton, inv, startButton, choice1, choice2, choice3, choice4;
     public static JTextArea mainTextArea, secondTextArea;
-//    int playerHP, monsterHP, silverRing;
-//    String weapon;
+
     static JTextField textInputField;
     public static String position, input;
 
@@ -89,28 +75,36 @@ public class Game {
         infoPanel = new JPanel();
         infoPanel.setBounds(0, 0, 800, 50);
         infoPanel.setBackground(Color.blue);
-        infoPanel.setLayout(new GridLayout(1,4));
+        infoPanel.setLayout(new GridLayout(1,6));
 
         hpLabel = new JLabel("HP:");
-        hpLabel.setFont(normalFont);
+//        hpLabel.setFont(normalFont);
         hpLabel.setForeground(Color.white);
         infoPanel.add(hpLabel);
         hpLabelNumber = new JLabel();
-        hpLabelNumber.setFont(normalFont);
+//        hpLabelNumber.setFont(normalFont);
         hpLabelNumber.setForeground(Color.white);
         infoPanel.add(hpLabelNumber);
 
         weaponLabel = new JLabel("Weapon:");
-        weaponLabel.setFont(normalFont);
+//        weaponLabel.setFont(normalFont);
         weaponLabel.setForeground(Color.white);
         infoPanel.add(weaponLabel);
         weaponLabelName = new JLabel();
-        weaponLabelName.setFont(normalFont);
+//        weaponLabelName.setFont(normalFont);
         weaponLabelName.setForeground(Color.white);
         infoPanel.add(weaponLabelName);
 
-        weaponLabelName.setText(Player.getCurrentWeapon());
+        oxyLabel = new JLabel("Oxygen:");
+        oxyLabel.setForeground(Color.white);
+        infoPanel.add(oxyLabel);
+        oxyLabelName = new JLabel();
+        oxyLabelName.setForeground(Color.white);
+        infoPanel.add(oxyLabelName);
+
+        weaponLabelName.setText(String.valueOf(Player.getCurrentWeapon()));
         hpLabelNumber.setText(Integer.toString(Player.getHealth()));
+        oxyLabelName.setText(String.valueOf(Oxygen.getOxygen()));
 
         //Start Button
         startButton = new JButton("START");
@@ -144,24 +138,12 @@ public class Game {
         mainMapPanel.setBackground(Color.black);
         window.add(mainMapPanel);
 
-//        // Map Label
-//        BufferedImage img = null;
-//        // TODO: Fix Image path. make it look like image viewer.
-//        String imgPath = "/com/alienation/resources/" + "CapsuleRoom.png";
-//        img = ImageIO.read(getClass().getResource(imgPath));
-//        Image dimg = img.getScaledInstance(400, 350, Image.SCALE_SMOOTH);
-//        ImageIcon imgIcon = new ImageIcon(dimg);
-//        mainMapLabel = new JLabel();
-//        mainMapLabel.setIcon(imgIcon);
-//        mainMapPanel.add(mainMapLabel);
 
-
-        //Main text panel.
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(400, 50, 400, 175);
-        mainTextPanel.setBackground(Color.cyan);
+        mainTextPanel.setBackground(Color.black);
         window.add(mainTextPanel);
-//        window.pack();
+
 
         // Adding text field to text panel.
         mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
@@ -175,7 +157,7 @@ public class Game {
         // Second text panel
         secondTextpanel = new JPanel();
         secondTextpanel.setBounds(400,250, 400, 150);
-        secondTextpanel.setBackground(Color.green);
+        secondTextpanel.setBackground(Color.black);
         window.add(secondTextpanel);
 
         //Second text area
@@ -272,6 +254,8 @@ public class Game {
         inv.setActionCommand("inv");
         inventoryButtonPanel.add(inv);
 
+        new CapsuleRoom().loadEnvironment();
+        mainTextArea.setText(CapsuleRoom.getStory());
         capsuleRoom();
 
     }
@@ -285,7 +269,6 @@ public class Game {
 //        townGate();
 //    }
     public static void capsuleRoom() throws Exception {
-//        new CapsuleRoom().loadEnvironment();
         position = "CapsuleRoom";
         // Map Label
         BufferedImage img = null;
@@ -297,13 +280,8 @@ public class Game {
         carMapLabel = new JLabel();
         carMapLabel.setIcon(imgIcon);
         mainMapPanel.add(carMapLabel);
-        mainTextArea.setText(getInitialStory());
+        mainTextArea.setText(getStory());
         secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
-
-//        // trying to display inventory to the second text area.
-//        String delim = "-";
-//        String res = String.join(delim, Player.getInventory());
-//        secondTextArea.setText(res);
 
         choice1.setText("North");
         choice2.setText("South");
@@ -315,9 +293,6 @@ public class Game {
         inv.setVisible(true);
         okButton.setVisible(true);
         textInputField.setVisible(true);
-
-//        new CapsuleRoom().loadEnvironment();
-
     }
 
 
@@ -336,7 +311,7 @@ public class Game {
         srMapLabel.setIcon(imgIcon);
         mainMapPanel.add(srMapLabel);
         srMapLabel.setVisible(true);
-        mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
+//        mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
         secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
         okButton.setVisible(true);
         textInputField.setVisible(true);
@@ -347,6 +322,9 @@ public class Game {
         choice2.setVisible(true);
         choice3.setVisible(false);
         choice4.setVisible(false);
+        inv.setVisible(true);
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
     }
 
 
@@ -364,13 +342,18 @@ public class Game {
         corMapLabel.setIcon(imgIcon);
         mainMapPanel.add(corMapLabel);
         corMapLabel.setVisible(true);
-//        playerHP = playerHP -3;
-//        hpLabelNumber.setText(""+playerHP);
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
+
         choice1.setText("North");
         choice1.setVisible(true);
         choice2.setVisible(false);
         choice3.setVisible(false);
         choice4.setVisible(false);
+        inv.setVisible(true);
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
     }
 
 
@@ -387,6 +370,9 @@ public class Game {
         arMapLabel.setIcon(imgIcon);
         mainMapPanel.add(arMapLabel);
         arMapLabel.setVisible(true);
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
 
         choice1.setText("North");
         choice2.setText("West");
@@ -394,14 +380,15 @@ public class Game {
         choice2.setVisible(true);
         choice3.setVisible(false);
         choice4.setVisible(false);
+        inv.setVisible(true);
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
     }
 
 
     public static void kitchen() throws IOException {
         position = "Kitchen";
         mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
-//        playerHP = playerHP + 2;
-//        hpLabelNumber.setText(""+playerHP);
         BufferedImage img = null;
         // TODO: Fix Image path. make it look like image viewer.
         String imgPath = "/com/alienation/resources/" + "Kitchen.png";
@@ -412,6 +399,9 @@ public class Game {
         kMapLabel.setIcon(imgIcon);
         mainMapPanel.add(kMapLabel);
         kMapLabel.setVisible(true);
+        secondTextArea.setText(Menu.getActionQuestion() + "\n\n" + Menu.getActions() + "\n");
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
 
         choice1.setText("West");
         choice2.setText("South");
@@ -419,6 +409,9 @@ public class Game {
         choice2.setVisible(true);
         choice3.setVisible(false);
         choice4.setVisible(false);
+        inv.setVisible(true);
+        okButton.setVisible(true);
+        textInputField.setVisible(true);
     }
 
 
@@ -448,7 +441,7 @@ public class Game {
                         case "c1":
                             try {
                                 carMapLabel.setVisible(false);
-                                mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
+//                                mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
 
                                 //Todo: add move room to other room(cases).
                                 MoveRoom.moveRoom("N", getCurrentRoom());
@@ -472,7 +465,7 @@ public class Game {
                         case "c3":
                             try {
                                 carMapLabel.setVisible(false);
-                                MoveRoom.moveRoom("W", getCurrentRoom());
+                                MoveRoom.moveRoom("E", getCurrentRoom());
                                 System.out.println("Test for room location from game engine capsuleroom switch statement " + getCurrentRoom());
                                 alienRoom();
                             } catch (IOException e) {
@@ -485,7 +478,7 @@ public class Game {
                             try {
                                 String delim = "-";
                                 String res = String.join(delim, Player.getInventory());
-                                secondTextArea.setText(res);
+                                secondTextArea.setText("Items in the room: " + res);
 //                                CheckInventory.checkInventory();
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -495,7 +488,7 @@ public class Game {
                             input = textInputField.getText();
 
                             try {
-                                new CapsuleRoom().loadEnvironment();
+                                Menu.displayMenu();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -509,7 +502,7 @@ public class Game {
                         case "c1":
 
                             srMapLabel.setVisible(false);
-                            mainTextArea.setText(com.alienation.coregamefiles.rooms.CapsuleRoom.getStory());
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.CapsuleRoom.getStory());
                             try {
                                 MoveRoom.moveRoom("S", getCurrentRoom());
                                 System.out.println("Test for room location from game engine Supplyroom switch statement " + getCurrentRoom());
@@ -519,7 +512,8 @@ public class Game {
                             }
                             break;
                         case "c2":
-                            mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
+
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
                             try {
                                 srMapLabel.setVisible(false);
                                 MoveRoom.moveRoom("E", getCurrentRoom());
@@ -550,26 +544,49 @@ public class Game {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-//                            Input.getInput();
-
                     }
                     break;
 
                 case "Kitchen":
                     switch(yourChoice){
                         case "c1":
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.SupplyRoom.getStory());
                             try {
                                 kMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("W", getCurrentRoom());
                                 supplyRoom();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
                         case "c2":
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.AlienRoom.getStory());
                             try {
                                 kMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("S", getCurrentRoom());
                                 alienRoom();
                             } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        case "inv":
+                            try {
+                                String delim = "-";
+                                String res = String.join(delim, Player.getInventory());
+                                secondTextArea.setText(res);
+//                                CheckInventory.checkInventory();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "ok":
+                            input = textInputField.getText();
+                            try {
+                                Menu.displayMenu();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                     }
@@ -577,37 +594,72 @@ public class Game {
                 case "AlienRoom":
                     switch(yourChoice){
                         case "c1":
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.Kitchen.getStory());
                             try {
                                 arMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("N", getCurrentRoom());
                                 kitchen();
                             } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
                         case "c2":
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.CapsuleRoom.getStory());
                             try {
                                 arMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("W", getCurrentRoom());
                                 capsuleRoom();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
-//                        case "c3":
-//                            try {
-//                                cRoom();
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                            break;
-//                        case "c4": west();break;
+                       case "inv":
+                            try {
+                                String delim = "-";
+                                String res = String.join(delim, Player.getInventory());
+                                secondTextArea.setText(res);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "ok":
+                            input = textInputField.getText();
+                            try {
+                                Menu.displayMenu();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                     }
                     break;
                 case "ControlRoom":
                     switch(yourChoice){
                         case "c1":
+//                            mainTextArea.setText(com.alienation.coregamefiles.rooms.CapsuleRoom.getStory());
                             try {
                                 corMapLabel.setVisible(false);
+                                MoveRoom.moveRoom("N", getCurrentRoom());
                                 capsuleRoom();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        case "inv":
+                            try {
+                                String delim = "-";
+                                String res = String.join(delim, Player.getInventory());
+                                secondTextArea.setText(res);
+//                                CheckInventory.checkInventory();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "ok":
+                            input = textInputField.getText();
+                            try {
+                                Menu.displayMenu();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

@@ -2,6 +2,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.rooms.Room;
+import com.alienation.enginefiles.Game;
 
 import static com.alienation.coregamefiles.charactersetc.Player.setPreviousRoom;
 import static com.alienation.coregamefiles.charactersetc.Player.setTempRoom;
@@ -22,7 +23,8 @@ public class MoveRoom {
         }
         else{
             System.out.println(getAnsiRed() + "\nThere doesn't seem to be a door this way.\n" + getAnsiReset());
-            displayMenu();
+            Game.secondTextArea.setText("There doesn't seem to be a door this way.");
+//            displayMenu();
         }
     }
 

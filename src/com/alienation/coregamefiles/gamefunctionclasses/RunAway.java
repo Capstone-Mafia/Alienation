@@ -2,6 +2,7 @@ package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Rooms;
+import com.alienation.enginefiles.Game;
 
 import java.util.List;
 import java.util.Set;
@@ -25,15 +26,16 @@ public class RunAway {
             for(String alien : aliens){
                 if(key.equals(alien)){
                     System.out.println(getAnsiRed() + "\n\nYou ran away as fast as you can!" + getAnsiReset());
-                    loadRoom(getPreviousRoom());
-
+                    Game.secondTextArea.setText("You ran away as fast as you can!");
                     foundAlien = true;
+                    loadRoom(getPreviousRoom());
                 }
             }
         }
         if(!foundAlien){
             System.out.println(getAnsiRed() + "\nYou can only run from an alien scaredy pants!" + getAnsiReset());
+            Game.secondTextArea.setText("You can only run from an alien scaredy pants!");
         }
-        displayMenu();
+//        displayMenu();
     }
 }
