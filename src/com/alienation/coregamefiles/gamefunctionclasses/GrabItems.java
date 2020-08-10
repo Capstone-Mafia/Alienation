@@ -28,7 +28,9 @@ public class GrabItems {
         boolean addToInventory = true;
 
         for (Weapons weapon : Weapons.values()){
-            if (weapon.getName().equals(getItem1()) && getAvailableItemsMap().get(currentRoom).contains(getItem1())){
+            String my_item1 = Input.getItem1();
+
+            if (weapon.getName().equalsIgnoreCase(my_item1) && getAvailableItemsMap().get(currentRoom).contains(my_item1)){
                 addToInventory = true;
                 addToWeaponsInventory(weapon);
             }
@@ -47,7 +49,7 @@ public class GrabItems {
                 e.printStackTrace();
             }
 
-            if(getItem1().equals("oxygen")){
+            if(Input.getItem1().equals("oxygen")){
                 Oxygen.incOxygen(100);
                 System.out.println(getAnsiYellow() + "\nYou just increased " + getOxygenString() + " levels to " + Oxygen.getOxygen() +
                         getAnsiReset());
@@ -58,14 +60,14 @@ public class GrabItems {
 
             System.out.println(getAnsiYellow() + "\n" + getItem1() + " added to Inventory." + getAnsiReset());
             List<String> newItems = getInventory();
-            newItems.add(getItem1());
+            newItems.add(Input.getItem1());
             setInventory(newItems);
 
             // delete item from room
             items.remove(getItem1());
             setAvailableItemsMap(currentRoom, items);
 
-        }else if(Input.getItem1().equals("")){
+        }else if(getItem1().equals("")){
             System.out.println(getAnsiRed() + "\n" + action.toString().toLowerCase() +
                     " what?" + getAnsiReset());
         }
