@@ -98,7 +98,7 @@ public class AlienAttack {
                     inventory.add("Code");
                     setInventory(inventory);
                     setAvailableItemsMap(currentRoom, availableItems);
-                    displayMenu();
+//                    displayMenu();
                 }
             }
             else {
