@@ -28,22 +28,21 @@ import java.util.*;
 
 public class Look implements Action {
 
-    private static final ArrayList<String> performAction = new ArrayList<>();
-
+    public static final ArrayList<String> performAction = new ArrayList<>();
     {
         String fileName= "src/com/alienation/resources/lookSyns.txt";
         try {
-            InputStream myObj = getClass().getResourceAsStream(fileName);
-            InputStreamReader isr = new InputStreamReader(myObj);
-            BufferedReader myBReader = new BufferedReader(isr);
-            Scanner myReader = new Scanner(myBReader);
+            InputStream is = getClass().getResourceAsStream(fileName);
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            Scanner myReader = new Scanner(br);
             while (myReader.hasNextLine()) {
                 performAction.add(myReader.nextLine().toUpperCase().trim());
             }
             myReader.close();
-            myBReader.close();
+            br.close();
             isr.close();
-            myObj.close();
+            is.close();
         }
         catch (IOException e) {
             e.printStackTrace();
