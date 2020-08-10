@@ -35,6 +35,7 @@ public class EatItems {
                     if(items.contains(edible.getName())){
                         edibleItems++;
                         System.out.println(getAnsiYellow() + "\nYou ate " + getItem1() + ".  HP ++" + getAnsiReset());
+                        Game.secondTextArea.setText("You ate " + getItem1() + ".  HP ++");
                         //Increase health points
                         setHealth(healthPoints);
                         //Remove from available items of room
@@ -43,6 +44,7 @@ public class EatItems {
                     }else if(getInventory().contains(getItem1())){
                         edibleItems++;
                         System.out.println(getAnsiYellow() + "\nYou ate " + getItem1() + ".  HP ++" + getAnsiReset());
+                        Game.secondTextArea.setText("You ate " + getItem1() + ".  HP ++");
                         //Increase health points
                         setHealth(healthPoints);
                         List<String> newItems = getInventory();

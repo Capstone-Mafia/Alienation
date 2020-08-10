@@ -4,6 +4,7 @@ import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.gameart.Death;
+import com.alienation.enginefiles.Game;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,7 @@ public class AlienAttack {
 
     public static void alienAttack(Rooms currentRoom, Alien alien){
         System.out.println(getAnsiRed() + "\nAttacking Alien..." + getAnsiReset());
+        Game.secondTextArea.setText("Attacking Alien...");
 
         attackCount ++;
         try {
@@ -48,8 +50,10 @@ public class AlienAttack {
                 }
 
                 System.out.println(getAnsiRed() + "\n-" + newWeaponDamagePoints + " dmg");
+                Game.secondTextArea.setText("newWeaponDamagePoints + \" dmg\"");
                 System.out.println(getAnsiBlue() + "\nAlien HP: " + getAnsiGreen() + alienNewHealthPoints +
                         getAnsiReset());
+                Game.secondTextArea.setText("Alien HP: " + alienNewHealthPoints);
                 TimeUnit.SECONDS.sleep(2);
 
                 /**character newHealthPoints after Alien Attack, wrong
@@ -59,14 +63,17 @@ public class AlienAttack {
                     TimeUnit.SECONDS.sleep(2);
 
                     System.out.println(getAnsiRed() + "\nOops!! Alien attacked you back..." + getAnsiReset());
+                    Game.secondTextArea.setText("\nOops!! Alien attacked you back...");
                     int characterFinalHealth =  ((getHealth() - alienDamagePoints) < 0 ? 0 :
                             (getHealth() - alienDamagePoints));
 
 
                     setHealth(characterFinalHealth);
                     System.out.println("\n-" + alienDamagePoints + " dmg" + getAnsiReset());
+                    Game.secondTextArea.setText(alienDamagePoints + " dmg" );
                     System.out.println(getAnsiBlue() + "\nYour HP: " + getAnsiGreen() + getHealth() +
                             getAnsiReset());
+                    Game.secondTextArea.setText("Your HP: " + getHealth());
 
                     if(getHealth() == 0){
                         Death.death();
@@ -82,7 +89,10 @@ public class AlienAttack {
                     availableItems.remove(alien);
                     System.out.println(getAnsiRed() + "\nThe alien is fatally wounded and falls to it's death " +
                             "in a pool of blood." + getAnsiReset());
+                    Game.secondTextArea.setText("\\nThe alien is fatally wounded and falls to it's death \" +\n" +
+                            "                            \"in a pool of blood.");
                     System.out.println(getAnsiBlue() + "\nThe alien has dropped something." + getAnsiReset());
+                    Game.secondTextArea.setText("\nThe alien has dropped something.");
 
                     List<String> inventory = getInventory();
                     inventory.add("Code");

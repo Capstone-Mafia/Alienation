@@ -4,6 +4,7 @@ import com.alienation.coregamefiles.charactersetc.Alien;
 import com.alienation.coregamefiles.enums.Actions;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.parseinput.Input;
+import com.alienation.enginefiles.Game;
 
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -19,6 +20,7 @@ public class AlienAttackOrRun {
 
     public static void alienAttackOrRun(Rooms currentRoom, Alien alienType) {
         System.out.println(getAnsiYellow() + "\nWhat do you want to do? FIGHT/ FLEE/ EAT/ EQUIP?" + getAnsiReset());
+        Game.secondTextArea.setText("What do you want to do? FIGHT/ FLEE/ EAT/ EQUIP?");
 
 
         boolean repeat = true;
@@ -49,11 +51,13 @@ public class AlienAttackOrRun {
                         break;
                     default:
                         System.out.println("You must enter one of the following actions: ATTACK, RUN, FIGHT, FLEE, EAT, SWAP, EQUIP");
+                        Game.secondTextArea.setText("You must enter one of the following actions: ATTACK, RUN, FIGHT, FLEE, EAT, SWAP, EQUIP");
                         repeat = true;
                         break;
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(getAnsiRed() + "\nCan't do that!" + getAnsiReset());
+                Game.secondTextArea.setText("Can't do that!");
                 repeat = true;
             } catch (Exception e) {
                 e.printStackTrace();
