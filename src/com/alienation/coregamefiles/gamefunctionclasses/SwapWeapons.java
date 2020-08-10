@@ -22,7 +22,6 @@ public class SwapWeapons {
 
         for (Weapons weapon : Weapons.values()){
             if (weapon.getName().equalsIgnoreCase(getItem1()) && getAvailableItemsMap().get(getCurrentRoom()).contains(getItem1())){
-//                addToInventory = false;
                 addToWeaponsInventory(weapon);
             }
         }
