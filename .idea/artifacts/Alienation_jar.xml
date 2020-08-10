@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Alienation:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Alienation_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Alienation.jar">
+        <element id="module-output" name="Alienation" />
+      </element>
+    </root>
+  </artifact>
+</component>
