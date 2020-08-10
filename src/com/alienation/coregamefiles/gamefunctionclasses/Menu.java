@@ -27,7 +27,6 @@ import com.alienation.coregamefiles.enums.*;
 import com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap;
 import com.alienation.coregamefiles.parseinput.*;
 
-
 import static com.alienation.coregamefiles.charactersetc.Oxygen.getOxygen;
 import static com.alienation.coregamefiles.charactersetc.Player.*;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -52,7 +51,7 @@ public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     private static final String actionQuestion = "What will you do? (o for options)";
-    private static final String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
+    private static final String actions = "Try : look, open item , eat item, grab item, attack, swap, run, Map\n \n" +
             "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
             "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
             "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
@@ -95,7 +94,6 @@ public class Menu {
             }
         }
         Rooms currentRoom = getCurrentRoom();
-        //Rooms nextRoom = null;  //never used. save for later
 
         // Action verbs... things the character can do
         switch (action) {
@@ -103,23 +101,50 @@ public class Menu {
                 investigate(currentRoom);
                 break;
             case OPEN:
-                open(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    open(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to open?");
+                    displayMenu();
+                }
             case EAT:
-                eat(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    eat(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to eat?");
+                    displayMenu();
+                }
             case GRAB:
-                grab(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    grab(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to grab?");
+                    displayMenu();
+                }
             case ATTACK:
-                attack(currentRoom);
-                break;
-//            case READ:    //there is currently no logic for reading
-//                read();
-//                break;
+                try {
+                    assert item1 != null;
+                    attack(currentRoom);
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to attack?");
+                    displayMenu();
+                }
             case SWAP:
-                swap(currentRoom);
-                break;
+                try {
+                    assert item1 != null;
+                    swap();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("What do you want to swap with?");
+                    displayMenu();
+                }
             case NORTH:
                 moveRoom("N", currentRoom);
                 break;
@@ -152,17 +177,6 @@ public class Menu {
         }
     }
 
-//    // utility function to capitalize first letter of each word
-//    public static String capitalizeAll(String str) {
-//        if (str == null || str.isEmpty()) {
-//            return str;
-//        }
-//
-//        return Pattern.compile("\\b(.)(.*?)\\b")
-//                .matcher(str)
-//                .replaceAll(match -> match.group(1).toUpperCase() + match.group(2));
-//    }
-
     /*************** GETTER - SETTER METHODS  ******************/
     private static String getActionQuestion() {
         return actionQuestion;
@@ -180,10 +194,6 @@ public class Menu {
         return inv;
     }
 
-//    public static void clear() {
-//        for (int i = 0; i < 25; ++i) System.out.println();
-//    }   //never used. save for later
-
     private static String getSaveGame(){
         return saveGame;
     }
@@ -195,14 +205,6 @@ public class Menu {
     public static void setItem1(String item1) {
         Menu.item1 = item1;
     }
-
-//    public static String getItem2() {
-//        return item2;
-//    }   //there is no item2 to get
-
-//    public static void setItem2(String item2) {
-//        Menu.item2 = item2;
-//    }  //removed item2 from logic. saving in case we revert back
 
     public static String getAnswer() {
         return answer;
@@ -224,8 +226,7 @@ public class Menu {
         return oxygen;
     }
 
-    public static Weapons getWeaponInput(){
-
-        return Weapons.valueOf(Input.getItem1().toUpperCase());
-    }
+//    public static Weapons getWeaponInput(){
+//        return Weapons.valueOf(Input.getItem1().toUpperCase());
+//    }
 }

@@ -16,15 +16,23 @@ public class CheckInventory {
         final String space = "\n";
         List<String> inventory = getInventory();
         List<Weapons> weaponsInventory = getWeaponsInventory();
-
         final String lines = "************";
-        System.out.println(space + getAnsiYellow() + "Inventory\n");
+
+        /*
+         * Print inventory section
+         */
+        System.out.println(space + getAnsiYellow() + "Inventory");
         System.out.println(lines);
         for (Object item : inventory) {
             System.out.println(item);
         }
         System.out.println(lines + getAnsiReset());
 
+        /*
+         * Print weapons section
+         */
+        System.out.println(space + "Weapons");
+        System.out.println(lines);
         for (Object item : weaponsInventory) {
             System.out.println(item);
         }

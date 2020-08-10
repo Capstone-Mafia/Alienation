@@ -1,7 +1,6 @@
 package com.alienation.coregamefiles.gamefunctionclasses;
 
 import com.alienation.coregamefiles.charactersetc.Oxygen;
-import com.alienation.coregamefiles.charactersetc.Player;
 import com.alienation.coregamefiles.enums.Rooms;
 import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.coregamefiles.parseinput.Input;
@@ -11,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.alienation.coregamefiles.charactersetc.Player.*;
-import static com.alienation.coregamefiles.enums.Items.OXYGEN;
 import static com.alienation.coregamefiles.gameart.TextColors.*;
 import static com.alienation.coregamefiles.gamefunctionclasses.Menu.*;
 import static com.alienation.coregamefiles.hashmaps.AvailableItemsHashMap.getAvailableItemsMap;
@@ -28,15 +26,13 @@ public class GrabItems {
         boolean addToInventory = true;
 
         for (Weapons weapon : Weapons.values()){
-            String my_item1 = Input.getItem1();
-
-            if (weapon.getName().equalsIgnoreCase(my_item1) && getAvailableItemsMap().get(currentRoom).contains(my_item1)){
-                addToInventory = true;
+            if (weapon.getName().equalsIgnoreCase(getItem1()) && getAvailableItemsMap().get(currentRoom).contains(getItem1())){
+                addToInventory = false;
                 addToWeaponsInventory(weapon);
             }
         }
 
-        if(addToInventory && items.contains(getItem1())){
+        if(items.contains(getItem1())){
             try {
                 if (getXItems().contains(getItem1())){
                     System.out.println(getAnsiRed() + "\nYou can't grab that!" + getAnsiReset());
@@ -77,14 +73,10 @@ public class GrabItems {
         displayMenu();
     }
 
-
     //Get items which user can't grab
     private static List<String> getXItems(){
-        List<String> xItems = new ArrayList<>();
-        xItems.addAll(Arrays.asList("Locker", "Pods", "Cabinets", "Computer", "Desk", "Sofa",
-                "Racks", "Cage", "Supplies", "Refrigerator", "Microwave", "Dustbin",
-                "Monitor", "Control Panel", "Pilot Seats", "Humanoid", "Bed", "Mirror", "Old Box"));
-        return xItems;
+        return new ArrayList<>(Arrays.asList("locker", "lockers", "pods", "cabinets", "computer", "desk", "sofa",
+                "racks", "cage", "supplies", "refrigerator", "microwave", "dustbin",
+                "monitor", "control Panel", "pilot seats", "pilot", "humanoid", "bed", "mirror", "old box", "old"));
     }
-
 }
