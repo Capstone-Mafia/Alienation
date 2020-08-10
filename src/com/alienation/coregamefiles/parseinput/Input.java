@@ -56,22 +56,6 @@ public class Input {
         actionInput = tokens[0];
         item1 = tokens.length > 1 ? tokens[1] : " ";
 
-        if (tokens.length == 1){
-            item1 = actionInput;
-        }
-
-        // if tokens array is two items, position 0 & 1
-        if (tokens.length == 2){ // eat snickers
-            item1 = tokens[1];
-            //item2 = "empty";
-        }
-
-        if (tokens.length == 3){ // eat oxygen tank
-            item1 = tokens[1];
-            item2 = tokens[2];
-            item1 = item1 + item2;
-        }
-
 //        // item 1 and two are obs empty if there is only one item in the tokens array
 //        if (tokens.length == 1){
 //            item1 = "empty";
