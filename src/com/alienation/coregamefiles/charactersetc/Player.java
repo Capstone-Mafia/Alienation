@@ -27,7 +27,6 @@ import com.alienation.coregamefiles.enums.Weapons;
 import com.alienation.tools.Time;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.alienation.coregamefiles.gameart.TextColors.*;
@@ -47,7 +46,7 @@ public class Player {
     private static Rooms previousRoom;
     private static Rooms tempRoom;
     private static List<String> inventory = new ArrayList<>();
-    private static List<Weapons> weaponsInventory = new ArrayList<>();
+    private static final List<Weapons> weaponsInventory = new ArrayList<>();
     private static Time time = new Time();
 
 
@@ -125,9 +124,9 @@ public class Player {
     public static void removeFromInventory(String newInventory) {
         getInventory().remove(newInventory);
     }
-    public static void removeFromInventory(Object newInventory) {
-        getInventory().remove(newInventory);
-    }
+//    public static void removeFromInventory(Object newInventory) {
+//        getInventory().remove(newInventory);
+//    }
 
     public static Rooms getPreviousRoom() {
         return previousRoom;
