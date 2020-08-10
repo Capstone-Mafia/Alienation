@@ -51,7 +51,7 @@ public class Menu {
 
     /*************** PRIVATE VARIABLE DECLARATIONS  ******************/
     private static final String actionQuestion = "What will you do? (o for options)";
-    private static final String actions = "Try : look, open item , eat item, grab item, attack, read, swap, run, Map\n \n" +
+    private static final String actions = "Try : look, open item , eat item, grab item, attack, swap, run, Map\n \n" +
             "CapsuleRoom started with: \"Pods\", \"Oxygen Tank\", \"Racks\", \"Lockers\"\n" +
             "AlienRoom started with: \"Humanoid\", \"Bed\", \"Mirror\", \"Old Box\"\n" +
             "Kitchen started with: \"Refrigerator\", \"Microwave\", \"Cabinets\", \"Dustbin\", \"Snickers\", \"Laser\"\n" +
