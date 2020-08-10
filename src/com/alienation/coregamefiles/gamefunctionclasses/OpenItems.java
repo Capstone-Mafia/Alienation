@@ -22,18 +22,18 @@ public class OpenItems {
 
         List<String> items = getAvailableItemsMap().get(currentRoom);
 
-        if(items.contains(getItem2()) || items.contains(getItem1())) {
+        if(items.contains(getItem1())) {
             try {
                 CanOpen itemToOpen = CanOpen.valueOf(getItem1().toUpperCase()); // cage
                 //String upperAnswer = getItem1().toUpperCase();
 
-                if(!getInventory().contains("Code")){ // make the key code not cage
+                if(!getInventory().contains("code")){ // make the key code not cage
                     System.out.println(getAnsiRed() + "\nIt's locked" + getAnsiReset());
                 }else {
                     System.out.println(getAnsiYellow() + "\nNew item added to inventory." + getAnsiReset());
                     List<String> newItems = new ArrayList<>();
                     newItems = getInventory();
-                    newItems.add("Ignition Switch");
+                    newItems.add("ignition Switch");
                     // delete item from room and code from inventory
                     items.remove("Ignition Switch");
                     setAvailableItemsMap(currentRoom, items);
