@@ -29,16 +29,24 @@ import java.util.*;
 public class Look implements Action {
 
     private static final ArrayList<String> performAction = new ArrayList<>();
-    String fileTitle = "lookSyns.txt";
-    InputStream is = this.getClass().getResourceAsStream(File.separator + fileTitle);
 
     {
-
-        try(BufferedReader fileReader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(File.separator + fileTitle)))) {
-            while(fileReader.ready()) performAction.add(fileReader.readLine().toUpperCase().trim());
+        String fileName= "src/com/alienation/resources/lookSyns.txt";
+        try {
+            InputStream myObj = getClass().getResourceAsStream(fileName);
+            InputStreamReader isr = new InputStreamReader(myObj);
+            BufferedReader myBReader = new BufferedReader(isr);
+            Scanner myReader = new Scanner(myBReader);
+            while (myReader.hasNextLine()) {
+                performAction.add(myReader.nextLine().toUpperCase().trim());
+            }
+            myReader.close();
+            myBReader.close();
+            isr.close();
+            myObj.close();
         }
-        catch(IOException e){
-            System.out.println("Something went wrong with text parser");
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

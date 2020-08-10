@@ -31,52 +31,51 @@ public class Attack implements Action {
 
     private static final ArrayList<String> performAction = new ArrayList<>();
 
-    static {
-        try {
-            try (InputStream inputStream = Look.class.getResourceAsStream("/attackSyns.txt");
-                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-
-                String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
-
-                //define file
-                File synonyms = new File(contents);
-                //instantiate scanner to read file
-                Scanner synonymScanner = new Scanner(synonyms);
-
-                //add to arraylist
-                while((synonymScanner.hasNext())) {
-                    performAction.add(synonymScanner.nextLine().toUpperCase().trim());
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-//    //try to read file, if not, print stack trace
 //    static {
 //        try {
-//            //locate the cvs txt file w/ synonyms
-//            //leave below example with "src" to remember old file path while testing new in .jar
-//            //remove from all. rebuild jar. try running again. s
-//            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
-//                    File.separator + "coregamefiles" + File.separator + "parseinput" + File.separator +
-//                    "inputsynonyms" + File.separator + "attackSyns.txt";
+//            try (InputStream inputStream = Look.class.getResourceAsStream("/attackSyns.txt");
+//                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 //
-//            //define the file by location
-//            File synonyms = new File(fileLocation);
+//                String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
 //
-//            //instantiate scanner to read file
-//            Scanner synonymScanner = new Scanner(synonyms);
+//                //define file
+//                File synonyms = new File(contents);
+//                //instantiate scanner to read file
+//                Scanner synonymScanner = new Scanner(synonyms);
 //
-//            //add to arraylist
-//            while((synonymScanner.hasNext())) {
-//                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+//                //add to arraylist
+//                while((synonymScanner.hasNext())) {
+//                    performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+//                }
 //            }
-//        } catch (Exception e) {
+//        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 //    }
+
+    //try to read file, if not, print stack trace
+    static {
+        try {
+            //locate the cvs txt file w/ synonyms
+            //leave below example with "src" to remember old file path while testing new in .jar
+            //remove from all. rebuild jar. try running again. s
+            String fileLocation = "src" + File.separator + "com" + File.separator + "alienation" +
+                    File.separator + "resources" + File.separator + "attackSyns.txt";
+
+            //define the file by location
+            File synonyms = new File(fileLocation);
+
+            //instantiate scanner to read file
+            Scanner synonymScanner = new Scanner(synonyms);
+
+            //add to arraylist
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static ArrayList<String> getPerformAction() {
         return performAction;
