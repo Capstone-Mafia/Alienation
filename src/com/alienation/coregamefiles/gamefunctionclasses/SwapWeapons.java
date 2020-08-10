@@ -26,7 +26,7 @@ public class SwapWeapons {
             System.out.println(getAnsiYellow() + key + getAnsiReset());
         }
 
-        Input.getInput();
+        //Input.getInput();
         //setItem1();
 
         System.out.println(getAnsiYellow() + lines + getAnsiReset());
