@@ -23,6 +23,7 @@
 package com.alienation.client;
 
 import com.alienation.enginefiles.Engine;
+import com.alienation.enginefiles.Game;
 
 import static com.alienation.coregamefiles.gameart.Banner.*;
 import static com.alienation.enginefiles.Engine.start;
@@ -34,7 +35,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             System.out.println(getBanner());
-            start();
+            new Game();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Something wrong with the Game!!!");
