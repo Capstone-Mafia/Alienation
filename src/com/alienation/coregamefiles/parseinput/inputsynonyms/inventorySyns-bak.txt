@@ -1,0 +1,6 @@
+inventory
+satchel
+i
+bag
+backpack
+supplies
