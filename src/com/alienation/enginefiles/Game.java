@@ -57,10 +57,10 @@ public class Game {
     Kitchen kitchenRoom = new Kitchen();
 
 
-    public static void main(String[] args) {
-
-        new Game();
-    }
+//    public static void main(String[] args) {
+//
+//        new Game();
+//    }
 
     public Game(){
 

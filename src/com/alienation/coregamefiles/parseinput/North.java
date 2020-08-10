@@ -9,22 +9,22 @@ public class North implements Action {
 
     private static final ArrayList<String> performAction = new ArrayList<>();
 
-    static {
+    {
+        String fileName = "src/com/alienation/resources/northSyns.txt";
         try {
-            try (InputStream inputStream = Look.class.getResourceAsStream("/northSyns.txt");
-                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            InputStream is = getClass().getResourceAsStream(fileName);
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            String contents = br.lines().collect(Collectors.joining(System.lineSeparator()));
 
-                String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            //define file
+            File synonyms = new File(contents);
+            //instantiate scanner to read file
+            Scanner synonymScanner = new Scanner(synonyms);
 
-                //define file
-                File synonyms = new File(contents);
-                //instantiate scanner to read file
-                Scanner synonymScanner = new Scanner(synonyms);
-
-                //add to arraylist
-                while((synonymScanner.hasNext())) {
-                    performAction.add(synonymScanner.nextLine().toUpperCase().trim());
-                }
+            //add to arraylist
+            while((synonymScanner.hasNext())) {
+                performAction.add(synonymScanner.nextLine().toUpperCase().trim());
             }
         } catch (IOException e) {
             e.printStackTrace();
